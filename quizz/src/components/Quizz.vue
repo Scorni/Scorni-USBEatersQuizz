@@ -18,32 +18,44 @@
                   <option v-for="value in this.requestOptions.category"  :key="value.category">
                     {{value}}
                   </option>
-                </select><br>
+                </select>
+                <p id="clearCategorySelected" ref="clearCategorySelected" v-on:click="resetTag($event)" hidden>❌</p>
+                <br>    
             </div>
           </div>
           <div class="col-1-2">
             <div class="content">
-            <h4>Tag</h4>
+              <h4>Tag</h4>
               <select v-model="tagSelected" id="tagSelected" ref="tagSelected">
                 <option v-for="value in this.requestOptions.tag" :key="value.tag">
                   {{value}}
                 </option>
-              </select><br>
+              </select>
+              <p id="clearTagSelected" ref="clearTagSelected" v-on:click="resetTag($event)" hidden>❌</p>
+              <br>
               </div>
           </div>
       </div>
         
 
+         <div class="col-1-1">
+            <div class="content">
+              <h4>Difficulty</h4>
+              <select v-model="difficultySelected" id="difficultySelected" >
+              <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty">
+                {{value}}
+              </option>
+            </select><br>
+            </div>
+         </div>
+        <div class="col-1-1">
+            <div class="content">
+              <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
+            </div>
+        </div>
         
-        <h4>Difficulty</h4>
-        <select v-model="difficultySelected" id="difficultySelected" >
-          <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty">
-            {{value}}
-          </option>
-        </select><br>
 
         
-        <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
       </form>
     </div>
   </div>
@@ -60,15 +72,24 @@ export default {
     msg: String
   },
   methods: {
-    // onChange(event) {
-      
-    //   if(event.target.id === "categorySelected"){
-    //     console.log(event.target.id, this.key);
+    resetTag: function(event){
+      // TODO: check why this refreshing when updateing data variable
+            console.log(event.currentTarget.id);
+            // ref = event.currentTarget.id
+            if(event.currentTarget.id === "clearTagSelected"){
+              // this.$refs.tagSelected.value =null
+              // this.tagSelected = ""
+              this.$refs.categorySelected.removeAttribute("disabled","disabled");
+            }else{
+              // this.$refs.categorySelected.value =null
 
-    //   }else if(event.target.id === "tagSelected"){
-    //     console.log(event.target.id, this.key);
-    //   }
-    // }
+              // this.$refs.tagSelected.removeAttribute("disabled","disabled");
+                            this.tagSelected = ""
+
+              this.categorySelected = ""
+
+            }
+    }
   },
   data() {
     return {
@@ -76,18 +97,19 @@ export default {
       categorySelected :"",
       difficultySelected :"",
       tagSelected :"",
-      
     };
   },
   watch: {
     categorySelected: function() {
-        this.$refs.tagSelected.setAttribute("disabled","disabled")
+        this.$refs.tagSelected.setAttribute("disabled","disabled");
+        this.$refs.clearCategorySelected.removeAttribute("hidden");
+
     },
     tagSelected: function() {
-        this.$refs.categorySelected.setAttribute("disabled","disabled")
-        this.$refs.tagSelected.setAttribute("disabled","disabled")
+        this.$refs.categorySelected.setAttribute("disabled","disabled");
+        this.$refs.clearTagSelected.removeAttribute("hidden");
     },
-  }
+  },
 }
 
 </script>
