@@ -53,6 +53,9 @@
               <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
             </div>
         </div>
+        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
+          <router-link :to="{ name: 'generatedQuizz', params: { question : 'questionGenerated'}}" >generate Quizz</router-link>
+        </div>
         
 
         
@@ -62,8 +65,7 @@
 </template>
 
 <script>
-// TODO: Redirect de base sur cette page + système de route
-//import { getQuestions } from '../services/generateQuestion';
+import { getQuestions } from '../services/generateQuestion';
 import { getOptions } from '../services/getRequestParameters';
 
 export default {
@@ -71,44 +73,60 @@ export default {
   props: {
     msg: String
   },
-  methods: {
-    resetTag: function(event){
-      // TODO: check why this refreshing when updateing data variable
-            console.log(event.currentTarget.id);
-            // ref = event.currentTarget.id
-            if(event.currentTarget.id === "clearTagSelected"){
-              // this.$refs.tagSelected.value =null
-              // this.tagSelected = ""
-              this.$refs.categorySelected.removeAttribute("disabled","disabled");
-            }else{
-              // this.$refs.categorySelected.value =null
-
-              // this.$refs.tagSelected.removeAttribute("disabled","disabled");
-                            this.tagSelected = ""
-
-              this.categorySelected = ""
-
-            }
-    }
-  },
   data() {
     return {
       requestOptions : getOptions(),
       categorySelected :"",
       difficultySelected :"",
       tagSelected :"",
+      questionGenerated : "",
     };
+  },
+  methods: {
+    resetTag: function(event){
+            if(event.currentTarget.id === "clearTagSelected"){
+              this.$refs.categorySelected.removeAttribute("disabled","disabled");
+            }else{
+              this.$refs.tagSelected.removeAttribute("disabled","disabled");
+            }
+            this.tagSelected = ""
+            this.categorySelected = ""
+    },
+    showButtonGenerateQuizz: function(){
+      if((this.tagSelected !== "" && this.difficultySelected !== "") || (this.categorySelected !== "" && this.difficultySelected !== "")){
+        this.$refs.generateQuizz.removeAttribute("hidden");
+        this.questionGenerated = getQuestions(10);
+      }else{
+        this.$refs.generateQuizz.setAttribute("hidden","hidden");
+      }
+    },
   },
   watch: {
     categorySelected: function() {
+      if(this.categorySelected === ""){
+        this.$refs.tagSelected.removeAttribute("disabled");
+        this.$refs.clearCategorySelected.setAttribute("hidden","hidden");
+      }else{
         this.$refs.tagSelected.setAttribute("disabled","disabled");
         this.$refs.clearCategorySelected.removeAttribute("hidden");
+      }
+      this.showButtonGenerateQuizz();
 
     },
     tagSelected: function() {
+        
+      if(this.tagSelected === ""){
+        this.$refs.categorySelected.removeAttribute("disabled");
+        this.$refs.clearTagSelected.setAttribute("hidden","hidden");
+      }else{
         this.$refs.categorySelected.setAttribute("disabled","disabled");
         this.$refs.clearTagSelected.removeAttribute("hidden");
+      }
+      this.showButtonGenerateQuizz();
     },
+    difficultySelected: function() {
+      this.showButtonGenerateQuizz();
+    }
   },
 }
 
