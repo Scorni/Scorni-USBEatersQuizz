@@ -1,0 +1,4 @@
+Options selected
+->generateURL::Check
+-->router.push(url,QuestionsFromUrlApi)
+--->QuestionList{[]}.pop at every iteration to QuestionAnswered{[]}.push

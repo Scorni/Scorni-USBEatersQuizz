@@ -18,40 +18,54 @@
                   <option v-for="value in this.requestOptions.category"  :key="value.category">
                     {{value}}
                   </option>
-                </select><br>
+                </select>
+                <p id="clearCategorySelected" ref="clearCategorySelected" v-on:click="resetTag($event)" hidden>❌</p>
+                <br>    
             </div>
           </div>
           <div class="col-1-2">
             <div class="content">
-            <h4>Tag</h4>
+              <h4>Tag</h4>
               <select v-model="tagSelected" id="tagSelected" ref="tagSelected">
                 <option v-for="value in this.requestOptions.tag" :key="value.tag">
                   {{value}}
                 </option>
-              </select><br>
+              </select>
+              <p id="clearTagSelected" ref="clearTagSelected" v-on:click="resetTag($event)" hidden>❌</p>
+              <br>
               </div>
           </div>
       </div>
         
 
+         <div class="col-1-1">
+            <div class="content">
+              <h4>Difficulty</h4>
+              <select v-model="difficultySelected" id="difficultySelected" >
+              <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty">
+                {{value}}
+              </option>
+            </select><br>
+            </div>
+         </div>
+        <div class="col-1-1">
+            <div class="content">
+              <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
+            </div>
+        </div>
+        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
+          <router-link :to="{ name: 'generatedQuizz', params: { question : 'questionGenerated'}}" >generate Quizz</router-link>
+        </div>
         
-        <h4>Difficulty</h4>
-        <select v-model="difficultySelected" id="difficultySelected" >
-          <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty">
-            {{value}}
-          </option>
-        </select><br>
 
         
-        <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-// TODO: Redirect de base sur cette page + système de route
-//import { getQuestions } from '../services/generateQuestion';
+import { getQuestions } from '../services/generateQuestion';
 import { getOptions } from '../services/getRequestParameters';
 
 export default {
@@ -59,35 +73,61 @@ export default {
   props: {
     msg: String
   },
-  methods: {
-    // onChange(event) {
-      
-    //   if(event.target.id === "categorySelected"){
-    //     console.log(event.target.id, this.key);
-
-    //   }else if(event.target.id === "tagSelected"){
-    //     console.log(event.target.id, this.key);
-    //   }
-    // }
-  },
   data() {
     return {
       requestOptions : getOptions(),
       categorySelected :"",
       difficultySelected :"",
       tagSelected :"",
-      
+      questionGenerated : "",
     };
+  },
+  methods: {
+    resetTag: function(event){
+            if(event.currentTarget.id === "clearTagSelected"){
+              this.$refs.categorySelected.removeAttribute("disabled","disabled");
+            }else{
+              this.$refs.tagSelected.removeAttribute("disabled","disabled");
+            }
+            this.tagSelected = ""
+            this.categorySelected = ""
+    },
+    showButtonGenerateQuizz: function(){
+      if((this.tagSelected !== "" && this.difficultySelected !== "") || (this.categorySelected !== "" && this.difficultySelected !== "")){
+        this.$refs.generateQuizz.removeAttribute("hidden");
+        this.questionGenerated = getQuestions(10);
+      }else{
+        this.$refs.generateQuizz.setAttribute("hidden","hidden");
+      }
+    },
   },
   watch: {
     categorySelected: function() {
-        this.$refs.tagSelected.setAttribute("disabled","disabled")
+      if(this.categorySelected === ""){
+        this.$refs.tagSelected.removeAttribute("disabled");
+        this.$refs.clearCategorySelected.setAttribute("hidden","hidden");
+      }else{
+        this.$refs.tagSelected.setAttribute("disabled","disabled");
+        this.$refs.clearCategorySelected.removeAttribute("hidden");
+      }
+      this.showButtonGenerateQuizz();
+
     },
     tagSelected: function() {
-        this.$refs.categorySelected.setAttribute("disabled","disabled")
-        this.$refs.tagSelected.setAttribute("disabled","disabled")
+        
+      if(this.tagSelected === ""){
+        this.$refs.categorySelected.removeAttribute("disabled");
+        this.$refs.clearTagSelected.setAttribute("hidden","hidden");
+      }else{
+        this.$refs.categorySelected.setAttribute("disabled","disabled");
+        this.$refs.clearTagSelected.removeAttribute("hidden");
+      }
+      this.showButtonGenerateQuizz();
     },
-  }
+    difficultySelected: function() {
+      this.showButtonGenerateQuizz();
+    }
+  },
 }
 
 </script>
