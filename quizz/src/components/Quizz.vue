@@ -49,12 +49,15 @@
             </div>
          </div>
         <div class="col-1-1">
-            <div class="content">
-              <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
+            <div class="content" v-if="categorySelected">
+              <span>Selected: {{ categorySelected}} - {{difficultySelected}}</span>
+            </div>
+            <div v-else>
+              <span>Selected: {{ tagSelected }} - {{ difficultySelected}} </span>
             </div>
         </div>
         <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-          <router-link :to="{ name: 'generatedQuizz', params: { question : 'questionGenerated'}}" >generate Quizz</router-link>
+          <router-link :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz</router-link>
         </div>
         
 
@@ -65,11 +68,10 @@
 </template>
 
 <script>
-import { getQuestions } from '../services/generateQuestion';
 import { getOptions } from '../services/getRequestParameters';
 
 export default {
-  name: 'HelloWorld',
+  name: 'MyQuizz',
   props: {
     msg: String
   },
@@ -79,7 +81,6 @@ export default {
       categorySelected :"",
       difficultySelected :"",
       tagSelected :"",
-      questionGenerated : "",
     };
   },
   methods: {
@@ -92,10 +93,9 @@ export default {
             this.tagSelected = ""
             this.categorySelected = ""
     },
-    showButtonGenerateQuizz: function(){
+    showButtonGenerateQuizz: async function(){
       if((this.tagSelected !== "" && this.difficultySelected !== "") || (this.categorySelected !== "" && this.difficultySelected !== "")){
         this.$refs.generateQuizz.removeAttribute("hidden");
-        this.questionGenerated = getQuestions(10);
       }else{
         this.$refs.generateQuizz.setAttribute("hidden","hidden");
       }

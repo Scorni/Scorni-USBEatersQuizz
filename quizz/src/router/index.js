@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LeaderboardView from '../views/LeaderboardView.vue'
 import GeneratedQuizzView from '../views/GeneratedQuizzView.vue'
+import QuestionView from '../views/QuestionView.vue'
 
 const routes = [
   {
@@ -26,6 +27,12 @@ const routes = [
     path: '/generatedQuizz',
     name: 'generatedQuizz',
     component: GeneratedQuizzView,
+    props:true
+  },
+  {
+    path: '/question',
+    name: 'question',
+    component: QuestionView,
     props:true
   },
 ]
