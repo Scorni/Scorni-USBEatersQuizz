@@ -1,38 +1,55 @@
 // TODO: get props 
 <template>
   <div class="hello">
-    <h1>lol</h1>
+    <h1>Your generated Quizz 💾 </h1>
          <div class="col-1-1">
             <div class="content">
-              param: {{this.$route.params.question}}
             </div>
          </div>
         <div class="col-1-1">
-            <div class="content">
-              <span>Selected: {{categorySelected}} - {{difficultySelected}} - {{tagSelected}}</span>
+            <div class="content" v-if="$route.params.category">
+              <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
+            </div>
+            <div v-else-if="$route.params.tag">
+              <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
+            </div>
+            <div v-else>
+              <span>You didn't choose your Quizz's options 🤔 </span>
             </div>
         </div>
-        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-          <router-link :to="{ name: 'generatedQuizz', param : 'questionGenerated'}" >generate Quizz</router-link>
+        <p>
+          {{$route.params.category}}
+        </p>
+        <p>
+          <!-- {{questionGenerated}} -->
+        </p>
+        <div v-for="value in this.questionGenerated" :key="value.question">
+          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value)}}"> {{this.questionGenerated.indexOf(value)}}</router-link>
+          {{value.question}}  <br>
+          {{value.answer}}  <br>
+          {{value.multiple_correct_answers}} <br>
+          {{value.correct_answer}}  <br>
         </div>
     </div>
 </template>
 
 <script>
-// import { getQuestions } from '../services/generateQuestion';
+import { getQuestions } from '../services/generateQuestion';
 
 console.log();
 export default {
   name: 'GeneratedQuizz',
   props: {
-    question: {type:Object, required:true}
   },
   data() {
     return {
+      questionGenerated : this.getQuestion(),
     };
   },
   methods: {
-    
+    getQuestion:async function(){
+      this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
+    }
   },
   computed:{
      
