@@ -1,34 +1,33 @@
-// TODO: get props 
 <template>
   <div class="hello">
     <h1>{{ msg }} </h1>
          <div class="col-1-1">
             <div class="content">
-                {{ $route.params.number}}
-                {{ this.question}}
+                {{ $route.params.number }}
             </div>
          </div>
-         <!-- <div v-for="value in this.question" :key="value.question">
-          {{value.answers}}
-        </div> -->
-        
-        <!-- <div class="col-1-1">
-            <div class="content" v-if="$route.params.category">
-              <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
+         <div class="col-1-1">
+            <div class="content">
+              {{question}}
+              {{correct_answer}}
             </div>
-            <div v-else-if="$route.params.tag">
-              <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
+         </div>
+        <div class="col-1-1">
+          <div class="content">
+            <div v-for="value in answers" :key="value.answer">
+              <p>{{value}}</p>
+              
             </div>
-            <div v-else>
-              <span>You didn't choose your Quizz's options 🤔 </span>
-            </div>
+          </div>  
         </div>
-        <p>
-          {{$route.params.category}}
-        </p> -->
-        <p>
-          <!-- {{questionGenerated}} -->
-        </p>
+        <div class="col-1-1">
+          <div class="content">
+            <div v-for="value in correct_answers" :key="value.answer">
+              <p>{{value}}</p>
+              
+            </div>
+          </div>  
+        </div>
         <!-- <div v-for="value in this.questionGenerated" :key="value.question">
           <router-link :to="{ name: 'question', param: { question: this.questionGenerated.question}}"></router-link>
           {{this.questionGenerated.indexOf(value)}}
@@ -48,38 +47,37 @@ export default {
   },
   data() {
     return {
-        question : this.parse(this.$route.params.question),
-        answers : [],
-        correct_answer : "",
-        correct_answers : "",
+        question: this.fillMe("question"),
+        answers : this.fillMe("answers"),
+        correct_answer : this.fillMe("correct_answer"),
+        correct_answers : this.fillMe("correct_answers"),
     };
   },
   methods: {
-    parse: function (e){
-        
-        this.question = JSON.parse(e)
-        console.log(this.question);
-        for(let value in this.question){
-            console.log(value);
+    // TODO: split libellée && value
+    fillMe:function(e){
+      let request = JSON.parse(this.$route.params.question)
+      let content= new Array()
+      for(let id in request){
+        if(id === e){
+          if(typeof request[id] === 'object' && request[id] !== null){
+            for(let value in request[id]){
+              if(request[id][value] !== null){
+                content.push(value)
+                content.push(request[id][value])
+              }
+            }
+          }else{
+            content = request[id]
+          }
         }
+      }
+      return content
     }
   },
   computed:{
      
   },
-//   mounted:{
-//       setVariables: function(){
-//           for(let value in this.question){
-//               if(value === "answers"){
-//                   for(let answer in value){
-//                       this.answers.push(answer)
-//                   }
-//               }
-//         }
-//         console.log(this.answers);
-//       }
-//   }
- 
 }
 
 </script>
