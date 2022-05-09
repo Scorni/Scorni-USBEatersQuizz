@@ -14,18 +14,10 @@
          </div>
         <div class="col-1-1">
           <div class="content">
-            <div v-for="value in answers" :key="value.answer">
-              <p>{{value}}</p>
-              
+            <div  v-for="(value,key) in answers" :key="key.answer">
+                <button v-bind:id= "key" ref="key">{{ value }}</button>
             </div>
-          </div>  
-        </div>
-        <div class="col-1-1">
-          <div class="content">
-            <div v-for="value in correct_answers" :key="value.answer">
-              <p>{{value}}</p>
-              
-            </div>
+            
           </div>  
         </div>
         <!-- <div v-for="value in this.questionGenerated" :key="value.question">
@@ -57,14 +49,13 @@ export default {
     // TODO: split libellée && value
     fillMe:function(e){
       let request = JSON.parse(this.$route.params.question)
-      let content= new Array()
+      let content= new Object();
       for(let id in request){
         if(id === e){
           if(typeof request[id] === 'object' && request[id] !== null){
             for(let value in request[id]){
               if(request[id][value] !== null){
-                content.push(value)
-                content.push(request[id][value])
+                content[value] = request[id][value]
               }
             }
           }else{
@@ -72,7 +63,8 @@ export default {
           }
         }
       }
-      return content
+      console.log(content);
+      return content;
     }
   },
   computed:{
