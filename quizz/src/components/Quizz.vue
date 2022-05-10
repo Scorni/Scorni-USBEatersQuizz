@@ -36,8 +36,6 @@
               </div>
           </div>
       </div>
-        
-
          <div class="col-1-1">
             <div class="content">
               <h4>Difficulty</h4>
@@ -59,9 +57,6 @@
         <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
           <router-link :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz</router-link>
         </div>
-        
-
-        
       </form>
     </div>
   </div>
@@ -69,7 +64,6 @@
 
 <script>
 import { getOptions } from '../services/getRequestParameters';
-
 export default {
   name: 'MyQuizz',
   props: {

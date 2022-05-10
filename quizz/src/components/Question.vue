@@ -9,24 +9,37 @@
          <div class="col-1-1">
             <div class="content">
               {{question}}
-              {{correct_answer}}
             </div>
          </div>
         <div class="col-1-1">
           <div class="content">
-            <div  v-for="(value,key) in answers" :key="key.answer">
-                <button v-bind:id= "key" ref="key">{{ value }}</button>
+            <div v-if="this.correct_answer">
+              <div  v-for="(value,key) in answers" :key="key.answer">
+                <button v-on:click="this.answerPick(key)" v-bind:id= "key" ref="key">{{ value }}</button>
+              </div>
             </div>
-            
+          </div>
+        </div>
+        <div class="col-1-1">
+          <div class="content">
+            <div v-if="this.validatedAnswer" id="validatedAnswer">
+              <p>Right !</p>
+            </div>
+            <div v-else-if="this.validatedAnswer === false">
+              <p>Wrong !</p>
+            </div>
+            <div v-else>
+              <p>Pick an answer !</p>
+            </div>
           </div>  
         </div>
-        <!-- <div v-for="value in this.questionGenerated" :key="value.question">
+        <!--<div v-for="value in this.questionGenerated" :key="value.question">
           <router-link :to="{ name: 'question', param: { question: this.questionGenerated.question}}"></router-link>
           {{this.questionGenerated.indexOf(value)}}
-        </div>
+        </div>-->
         <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-          <router-link :to="{ name: 'generatedQuizz', param : 'questionGenerated'}" >generate Quizz</router-link>
-        </div> -->
+          <router-link :to="{ name: 'generatedQuizz', param : $route.params.question}" >generate Quizz</router-link>
+        </div>
     </div>
 </template>
 
@@ -43,10 +56,10 @@ export default {
         answers : this.fillMe("answers"),
         correct_answer : this.fillMe("correct_answer"),
         correct_answers : this.fillMe("correct_answers"),
+        validatedAnswer : "",
     };
   },
   methods: {
-    // TODO: split libellée && value
     fillMe:function(e){
       let request = JSON.parse(this.$route.params.question)
       let content= new Object();
@@ -56,6 +69,7 @@ export default {
             for(let value in request[id]){
               if(request[id][value] !== null){
                 content[value] = request[id][value]
+
               }
             }
           }else{
@@ -65,10 +79,20 @@ export default {
       }
       console.log(content);
       return content;
+    },
+    answerPick:function(key){
+      this.validatedAnswer = false
+      this.$refs.generateQuizz.setAttribute("hidden","hidden");
+      if(this.correct_answer){
+        if(key === this.correct_answer){
+        this.validatedAnswer = true;
+        this.$refs.generateQuizz.removeAttribute("hidden");
+        }
+      }else if(this.correct_answers){
+        console.log('there is multiple answers');
+      }
+      console.log(key + " : " + this.correct_answer);
     }
-  },
-  computed:{
-     
   },
 }
 
