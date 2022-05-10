@@ -14,7 +14,7 @@
         <div class="col-1-1">
           <div class="content">
             <div v-if="this.correct_answer">
-              <div  v-for="(value,key) in answers" :key="key.answer">
+              <div v-for="(value,key) in answers" :key="key.answer">
                 <button v-on:click="this.answerPick(key)" v-bind:id= "key" ref="key">{{ value }}</button>
               </div>
             </div>
@@ -69,7 +69,6 @@ export default {
             for(let value in request[id]){
               if(request[id][value] !== null){
                 content[value] = request[id][value]
-
               }
             }
           }else{
@@ -77,27 +76,40 @@ export default {
           }
         }
       }
-      console.log(content);
       return content;
+    },
+    checkCorrectAnswersLength : function(){
+      let areTrue = 0;
+      for(let i in this.correct_answers){
+        if(this.correct_answers[i] === "true"){
+          areTrue+= 1
+        }
+      }
+      areTrue > 1 ? areTrue = true : areTrue = false
+      return areTrue;
     },
     answerPick:function(key){
       this.validatedAnswer = false
       this.$refs.generateQuizz.setAttribute("hidden","hidden");
-      if(this.correct_answer){
-        if(key === this.correct_answer){
-        this.validatedAnswer = true;
-        this.$refs.generateQuizz.removeAttribute("hidden");
+      if(this.checkCorrectAnswersLength() === true){
+        for(let i in this.correct_answers){
+          console.log(this.correct_answers[i] + ":"+ i + ":" + key);
+          if(key === i){
+            console.log(i);
+          }
         }
-      }else if(this.correct_answers){
-        console.log('there is multiple answers');
+      }else if(this.correct_answer){
+        if(key === this.correct_answer){
+          this.validatedAnswer = true;
+          this.$refs.generateQuizz.removeAttribute("hidden");
+        }
       }
-      console.log(key + " : " + this.correct_answer);
+      console.log(key + " : " + this.correct_answer + " : " + this.correct_answers);
     }
   },
 }
 
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {

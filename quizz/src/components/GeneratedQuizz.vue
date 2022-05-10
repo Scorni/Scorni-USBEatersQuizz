@@ -25,7 +25,7 @@
           <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value)}}"> {{this.questionGenerated.indexOf(value)}}</router-link>
           {{value.question}}  <br>
           {{value.answer}}  <br>
-          {{value.multiple_correct_answers}} <br>
+          {{value.multiple_correct_answers}} jij<br>
           {{value.correct_answer}}  <br>
         </div>
     </div>
