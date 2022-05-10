@@ -1,4 +1,3 @@
-// TODO: get props 
 <template>
   <div class="hello">
     <h1>Your generated Quizz 💾 </h1>
@@ -21,13 +20,12 @@
           {{$route.params.category}}
         </p>
         <p>
-          <!-- {{questionGenerated}} -->
         </p>
         <div v-for="value in this.questionGenerated" :key="value.question">
           <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value)}}"> {{this.questionGenerated.indexOf(value)}}</router-link>
           {{value.question}}  <br>
           {{value.answer}}  <br>
-          {{value.multiple_correct_answers}} <br>
+          {{value.multiple_correct_answers}} jij<br>
           {{value.correct_answer}}  <br>
         </div>
     </div>
@@ -39,8 +37,6 @@ import { getQuestions } from '../services/generateQuestion';
 console.log();
 export default {
   name: 'GeneratedQuizz',
-  props: {
-  },
   data() {
     return {
       questionGenerated : this.getQuestion(),
@@ -51,10 +47,6 @@ export default {
       this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
     }
   },
-  computed:{
-     
-  }
- 
 }
 
 </script>
