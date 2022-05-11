@@ -14,14 +14,13 @@
         <div class="col-1-1">
           <div class="content">
             <div v-if="this.correct_answer">
-              <div v-for="(value,key) in answers" :key="key.answer">
-                <button v-on:click="this.answerPick(key)" v-bind:id= "key" ref="key">{{ value }}</button>
+              <div v-for="(value,key) in answers" :key="key.answer" >
+                <button v-on:click="this.answerPick(key,value)" v-bind:id= "value" ref="value">{{ value }}</button>
               </div>
             </div>
             <div v-else-if="this.checkCorrectAnswersLength()">
-              <p>test</p>
               <div v-for="(value,key) in answers" :key="key.answer">
-                <button v-on:click="this.answerPick(key)" v-bind:id= "key" ref="key">{{ value }}</button>
+                <p v-on:click="this.answerPick(key,value)" v-bind:id= "value" ref="value">{{ value }}</p>
               </div>
             </div>
           </div>
@@ -39,11 +38,14 @@
             </div>
           </div>  
         </div>
+        <div class="col-1-1" ref="validateAnswers" id="validateAnswers" >
+          <button>Confirm answer(s)</button>
+        </div>
         <!--<div v-for="value in this.questionGenerated" :key="value.question">
           <router-link :to="{ name: 'question', param: { question: this.questionGenerated.question}}"></router-link>
           {{this.questionGenerated.indexOf(value)}}
         </div>-->
-        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
+        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden >
           <router-link :to="{ name: 'generatedQuizz', param : $route.params.question}" >generate Quizz</router-link>
         </div>
     </div>
@@ -73,9 +75,7 @@ export default {
         if(id === e){
           if(typeof request[id] === 'object' && request[id] !== null){
             for(let value in request[id]){
-              if(request[id][value] !== null){
-                content[value] = request[id][value]
-              }
+              request[id][value] !== null ? content[value] = request[id][value] : content[value]
             }
           }else{
             content = request[id]
@@ -87,31 +87,41 @@ export default {
     checkCorrectAnswersLength : function(){
       let areTrue = 0;
       for(let i in this.correct_answers){
-        if(this.correct_answers[i] === "true"){
-          areTrue+= 1
-        }
+        this.correct_answers[i] === "true" ? areTrue += 1 : areTrue
       }
+      console.log(areTrue);
       areTrue > 1 ? areTrue = true : areTrue = false
       return areTrue;
     },
-    answerPick:function(key){
+    
+    answerPick:function(key,value){
       this.validatedAnswer = false
       this.$refs.generateQuizz.setAttribute("hidden","hidden");
-      if(this.checkCorrectAnswersLength() === true){
-        for(let i in this.correct_answers){
-          console.log(this.correct_answers[i] + ":"+ i + ":" + key);
-          if(key === i){
-            console.log(i);
+      if(this.checkCorrectAnswersLength()){
+        for(let i in this.$refs.value){
+          if(this.$refs.value[i].id === value && this.$refs.value[i].className === "answerPick"){
+            this.$refs.value[i].className = ""
+          }else{
+            this.$refs.value[i].id === value ? this.$refs.value[i].className = 'answerPick' : console.log("non");
+            this.$refs.validateAnswers.removeAttribute("hidden");
           }
         }
+        // for(let i in this.correct_answers){
+        //   console.log(this.correct_answers[i] + ":"+ i + ":" + key);
+        //   if(key === i){
+        //     console.log(i);
+        //   }
+        // }
       }else if(this.correct_answer){
         if(key === this.correct_answer){
           this.validatedAnswer = true;
           this.$refs.generateQuizz.removeAttribute("hidden");
         }
       }
+      this.emptyAnswers();
       console.log(key + " : " + this.correct_answer + " : " + this.correct_answers);
-    }
+    },
+    
   },
 }
 
@@ -131,5 +141,8 @@ li {
 }
 a {
   color: #926dde;
+}
+.answerPick{
+  color: aqua;
 }
 </style>
