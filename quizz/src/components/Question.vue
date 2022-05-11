@@ -18,6 +18,12 @@
                 <button v-on:click="this.answerPick(key)" v-bind:id= "key" ref="key">{{ value }}</button>
               </div>
             </div>
+            <div v-else-if="this.checkCorrectAnswersLength()">
+              <p>test</p>
+              <div v-for="(value,key) in answers" :key="key.answer">
+                <button v-on:click="this.answerPick(key)" v-bind:id= "key" ref="key">{{ value }}</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-1-1">
