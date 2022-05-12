@@ -18,10 +18,9 @@
         </p>
         <p>
         </p>
-        <!-- TODO: check if success/failure exist and display whatever color on the background -->
         <div v-if="$route.params.result === 'success'">success</div>
         <div v-else-if="$route.params.result === 'failure'">failure</div>
-        <div v-for="value in this.questionGenerated" :key="value.question">
+        <div v-for="value in this.questionGenerated" :key="value.question" v-bind:id="this.questionGenerated.indexOf(value)" ref="question">
           <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated)}}  "> {{this.questionGenerated.indexOf(value)}}</router-link>
           {{value.question}}  <br>
           {{value.answer}}  <br>
@@ -40,7 +39,6 @@ export default {
   data() {
     return {
       questionGenerated : this.getQuestion(),
-      questionsAnsweredAndNumber : this.getResult(),
       successQuestion : new Array()
     };
   },
@@ -50,16 +48,19 @@ export default {
       this.questionGenerated = await JSON.parse(this.$route.params.questionsList) :
       this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
     },
-    // TODO: trouver le moyen de push pcq c'est kc
-    getResult: async function(){
+    // TODO: get refs
+    countSuccessQuestion : function (){
       if(this.$route.params.result === 'success' && this.$route.params.questionNumber){
-        this.successQuestion.push(this.$route.params.questionNumber)
+        this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result;
+        console.log(this.$refs);
+        // this.$refs.question.id === this.$route.params.questionNumber ? console.log("yes") : console.log("no");
       }
-      //   ? 
-      // this.questionsAnsweredAndNumber[this.$route.params.questionNumber] = this.$route.params.result :
-      // this.questionsAnsweredAndNumber[this.$route.params.questionNumber] = this.$route.params.result
     }
   },
+  mounted(){
+    this.countSuccessQuestion();
+    
+  }
 }
 
 </script>
