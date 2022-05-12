@@ -3,15 +3,14 @@
     <h1>{{ msg }} </h1>
          <div class="col-1-1">
           <div class="content">
-            <div ref="champion" hidden>
+            <!-- <p>{{$route.params.questionsList}}</p> -->
+            <div v-if="this.result || this.goodAnswers && !this.badAnswers" ref="champion">
               <h2>🏆🏆🏆 Champion ! Vraiment un crack comme on en fait plus .... 🏆🏆🏆</h2>
             </div>
-          </div>
-         </div>
-         <div class="col-1-1">
-          <div class="content">
-            <div ref="loser" hidden>
+            <div v-else-if="this.result === false || this.badAnswers" ref="loser">
               <h2>💀💀💀 Loser ! Vraiment à chier .... 💀💀💀</h2>
+              <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
+              <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
             </div>
           </div>
          </div>
@@ -36,18 +35,21 @@
         </div>
         <div v-if="this.numberOfAnswer > 0">
           <div class="col-1-1" ref="validateAnswers" id="validateAnswers">
-            <button v-on:click="this.result()">Confirm answer(s)</button>
+            <button v-on:click="this.getResult()">Confirm answer(s)</button>
           </div>
         </div>
-        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden >
-          <router-link :to="{ name: 'generatedQuizz', param : $route.params.question}" >generate Quizz</router-link>
+        <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) || this.result === true">
+          <router-link :to="{ name: 'generatedQuizz', param : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList}}" > 🏆 Return to the question's list 🏆</router-link>
         </div>
+        <div v-else-if="this.badAnswers > 0 || this.result === false">
+          <router-link :to="{ name: 'generatedQuizz', param : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList}}" > 💀 Return to the question's list 💀</router-link>
+        </div>
+        
     </div>
 </template>
 
 <script>
 
-console.log();
 export default {
   name: 'MyQuestion',
   props: { msg :String
@@ -59,22 +61,25 @@ export default {
         correct_answer : this.fillMe("correct_answer"),
         correct_answers : this.fillMe("correct_answers"),
         numberOfAnswer : 0,
-        answersChoosed : {},
+        answersChoosed : new Object(),
+        result: null,
+        goodAnswers : 0,
+        badAnswers: 0,
 
     };
   },
   methods: {
     fillMe:function(e){
-      let request = JSON.parse(this.$route.params.question)
+      let request = JSON.parse(this.$route.params.question);
       let content= new Object();
       for(let id in request){
         if(id === e){
           if(typeof request[id] === 'object' && request[id] !== null){
-            for(let value in request[id]){
-              request[id][value] !== null ? content[value] = request[id][value] : content[value]
+            for(const value in request[id]){
+              request[id][value] !== null ? content[value] = request[id][value] : content[value];
             }
           }else{
-            content = request[id]
+            content = request[id];
           }
         }
       }
@@ -83,50 +88,69 @@ export default {
     // return true if multiple correct answers
     checkCorrectAnswersLength : function(){
       let areTrue = 0;
-      for(let i in this.correct_answers){
-        this.correct_answers[i] === "true" ? areTrue += 1 : areTrue
+      for(const i in this.correct_answers){
+        this.correct_answers[i] === "true" ? areTrue += 1 : areTrue;
       }
-      areTrue > 1 ? areTrue = true : areTrue = false
+      areTrue > 1 ? areTrue = true : areTrue = false;
       return areTrue;
     },
     //handle single and multiple answer's picking
     answerPick:function(key,value){
       // Multiple answers case
       if(this.checkCorrectAnswersLength()){
-        for(let i in this.$refs.key){
+        this.badAnswers = 0;
+        this.goodAnswers = 0;
+        for(const i in this.$refs.key){
           if(this.$refs.key[i].id === key && this.$refs.key[i].className === "answerPick"){
-            this.$refs.key[i].className = ""
+            this.$refs.key[i].className = "";
             delete this.answersChoosed[key];
           }else if(this.$refs.key[i].id === key){
             this.$refs.key[i].className = 'answerPick';
-            this.answersChoosed[key] = value
+            this.answersChoosed[key] = value;
           }
         }
       // Single answer case
       }else{
-          this.answersChoosed[key] = this.answers[key]
-          for(let i in this.$refs.key){
+          this.answersChoosed = new Object();
+          for(const i in this.$refs.key){
             if(this.$refs.key[i].id === key){
               this.$refs.key[i].className = 'answerPick';
-              this.answersChoosed[key] = value
+              this.answersChoosed[key] = value;
             }else if(this.$refs.key[i].className === "answerPick"){
-              this.$refs.key[i].className = ""
-              delete this.answersChoosed[key];
+              this.$refs.key[i].className = "";
             }
           }
       }
       this.numberOfAnswer = Object.keys(this.answersChoosed).length;
     },
     //check if the answer(s) are the right ones
-    result : function(){
-      if(this.numberOfAnswer > 1){
-        // TODO:
-        //loop over answers and iterate for every good answers then check if the number is equal
-        //Handle to unable to cheat on button click
-        console.log("that's a  lot");
+    getResult : function(){
+      if(this.checkCorrectAnswersLength()){
+        this.badAnswers = 0;
+        this.goodAnswers = 0;
+        for(const i in Object.keys(this.answersChoosed)){
+          for (const j in Object.keys(this.correct_answers)) {
+            if(Object.keys(this.correct_answers)[j].slice(0,8) === Object.keys(this.answersChoosed)[i] && Object.values(this.correct_answers)[j] === 'true'){
+              this.goodAnswers++
+              this.$refs["key"][j].className = "goodAnswer"
+            }else if(Object.keys(this.correct_answers)[j].slice(0,8) === Object.keys(this.answersChoosed)[i] && Object.values(this.correct_answers)[j] === 'false'){
+              this.badAnswers++;
+              this.$refs["key"][j].className = "wrongAnswer"
+            }
+          }
+        }
       }else{
-        Object.keys(this.answersChoosed)[0] === this.correct_answer ? this.$refs.champion.removeAttribute('hidden') : this.$refs.loser.removeAttribute('hidden');
-        this.numberOfAnswer = 0
+        this.numberOfAnswer = 0;
+        for(const i in this.$refs["key"]){
+          this.$refs["key"][i].className = ""
+          if(Object.keys(this.answersChoosed)[0] === this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
+            this.result = true ;
+            this.$refs["key"][i].className = "goodAnswer";
+          }else if(Object.keys(this.answersChoosed)[0] !== this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
+            this.result = false;
+            this.$refs["key"][i].className = "wrongAnswer"
+          }
+        }
       }
     }
     
@@ -152,5 +176,11 @@ a {
 }
 .answerPick{
   color: aqua;
+}
+.goodAnswer{
+  background-color: rgb(58, 117, 10);
+}
+.wrongAnswer{
+  background-color: rgb(196, 2, 2);
 }
 </style>
