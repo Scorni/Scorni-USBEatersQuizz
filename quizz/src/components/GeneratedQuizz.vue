@@ -22,7 +22,7 @@
         <p>
         </p>
         <div v-for="value in this.questionGenerated" :key="value.question">
-          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value)}}"> {{this.questionGenerated.indexOf(value)}}</router-link>
+          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated)}}  "> {{this.questionGenerated.indexOf(value)}}</router-link>
           {{value.question}}  <br>
           {{value.answer}}  <br>
           {{value.multiple_correct_answers}} jij<br>
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     getQuestion:async function(){
-      this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
+      this.$route.params.questionsList ? this.questionGenerated = this.$route.params.questionsList : this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
     }
   },
 }
