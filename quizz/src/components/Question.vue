@@ -39,10 +39,10 @@
           </div>
         </div>
         <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) || this.result === true">
-          <router-link :to="{ name: 'generatedQuizz', param : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList}}" > 🏆 Return to the question's list 🏆</router-link>
+          <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList}}" > 🏆 Return to the question's list 🏆</router-link>
         </div>
         <div v-else-if="this.badAnswers > 0 || this.result === false">
-          <router-link :to="{ name: 'generatedQuizz', param : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList}}" > 💀 Return to the question's list 💀</router-link>
+          <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList}}" > 💀 Return to the question's list 💀</router-link>
         </div>
         
     </div>
