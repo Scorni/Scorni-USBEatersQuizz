@@ -18,14 +18,14 @@
         </p>
         <p>
         </p>
-        <div v-if="$route.params.result === 'success'">success</div>
+        <div v-if="$route.params.result === 'success'" ref="bite">success</div>
         <div v-else-if="$route.params.result === 'failure'">failure</div>
-        <div v-for="value in this.questionGenerated" :key="value.question" v-bind:id="this.questionGenerated.indexOf(value)" ref="question">
-          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated)}}  "> {{this.questionGenerated.indexOf(value)}}</router-link>
-          {{value.question}}  <br>
-          {{value.answer}}  <br>
-          {{value.multiple_correct_answers}} jij<br>
-          {{value.correct_answer}}  <br>
+        <div v-for="value in this.questionGenerated" :key="value.question" v-bind:id="this.questionGenerated.indexOf(value)" ref="question" >
+            <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated)}}  "> {{this.questionGenerated.indexOf(value)}}</router-link>
+            {{value.question}}  <br>
+            {{value.answer}}  <br>
+            {{value.multiple_correct_answers}} jij<br>
+            {{value.correct_answer}}  <br>
         </div>
     </div>
 </template>
@@ -47,19 +47,21 @@ export default {
       this.$route.params.questionsList ? 
       this.questionGenerated = await JSON.parse(this.$route.params.questionsList) :
       this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
+      // this.countSuccessQuestion()
     },
-    // TODO: get refs
+    // TODO: get refs && add optional chaining to all files
     countSuccessQuestion : function (){
-      if(this.$route.params.result === 'success' && this.$route.params.questionNumber){
+      if(this.$route.params.result === 'success' && this.$route.params.questionNumber && this.questionGenerated){
         this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result;
         console.log(this.$refs);
+        console.log(this.$refs.question);
         // this.$refs.question.id === this.$route.params.questionNumber ? console.log("yes") : console.log("no");
       }
     }
   },
   mounted(){
-    this.countSuccessQuestion();
-    
+    //this.countSuccessQuestion();
+    console.log(this.$refs);
   }
 }
 
