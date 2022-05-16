@@ -20,13 +20,13 @@
             </div>
          </div>
         <div class="col-1-1">
-          <div class="content">
+          <div class="content" >
             <div v-if="this.correct_answer">
-              <div v-for="(value,key) in answers" :key="key.answer" >
+              <div v-for="(value,key) in answers" :key="key.answer">
                 <button v-on:click="this.answerPick(key,value)" v-bind:id= "key" ref="key">{{ value }}</button>
               </div>
             </div>
-            <div v-else-if="this.checkCorrectAnswersLength()">
+            <div v-else-if="this.checkCorrectAnswersLength()" >
               <div v-for="(value,key) in answers" :key="key.answer">
                 <button v-on:click="this.answerPick(key,value)" v-bind:id= "key" ref="key">{{ value }}</button>
               </div>
@@ -39,10 +39,16 @@
           </div>
         </div>
         <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) || this.result === true">
-          <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList}}" > 🏆 Return to the question's list 🏆</router-link>
+          <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" > 🏆 Return to the question's list 🏆</router-link>
         </div>
         <div v-else-if="this.badAnswers > 0 || this.result === false">
-          <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList}}" > 💀 Return to the question's list 💀</router-link>
+          <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" > 💀 Return to the question's list 💀</router-link>
+        </div>
+        <div v-if="this.$refs.answers">
+        <!-- TODO: generate this link when no answers availabe -->
+          <!-- <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" > 💀 Return to the question's list 💀</router-link>
+          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated), successQuestion: successQuestion}}  "> {{this.questionGenerated.indexOf(value)}}</router-link> -->
+          <p>ah</p>
         </div>
         
     </div>
@@ -152,9 +158,13 @@ export default {
           }
         }
       }
-    }
+    },
+    
     
   },
+  updated(){
+        
+  }
 }
 
 </script>

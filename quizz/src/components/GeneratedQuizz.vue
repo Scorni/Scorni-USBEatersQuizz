@@ -18,14 +18,29 @@
         </p>
         <p>
         </p>
-        <div v-if="$route.params.result === 'success'">success</div>
+        <div v-if="$route.params.result === 'success'" ref="bite">success</div>
         <div v-else-if="$route.params.result === 'failure'">failure</div>
-        <div v-for="value in this.questionGenerated" :key="value.question" v-bind:id="this.questionGenerated.indexOf(value)" ref="question">
-          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated)}}  "> {{this.questionGenerated.indexOf(value)}}</router-link>
-          {{value.question}}  <br>
-          {{value.answer}}  <br>
-          {{value.multiple_correct_answers}} jij<br>
-          {{value.correct_answer}}  <br>
+        <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" ref="question" >
+            <router-link :to="{ 
+              name: 'question', 
+              params: 
+                { question:JSON.stringify(value), 
+                number: this.questionGenerated.indexOf(value),
+                questionsList: JSON.stringify(this.questionGenerated), 
+                successQuestion: successQuestion
+                }
+              } ">
+              Question n°{{this.questionGenerated.indexOf(value)}}</router-link>
+        </div>
+        <div v-show="showResultLink">
+          <router-link :to="{
+            name : 'result',
+            params: {
+              answers : successQuestion
+            }
+          }">
+          To the result page
+          </router-link>
         </div>
     </div>
 </template>
@@ -39,7 +54,9 @@ export default {
   data() {
     return {
       questionGenerated : this.getQuestion(),
-      successQuestion : new Array()
+      successQuestion : this.$route.params.successQuestion || [],
+      countAnsweredQuestion : 0,
+      showResultLink : true
     };
   },
   methods: {
@@ -48,18 +65,28 @@ export default {
       this.questionGenerated = await JSON.parse(this.$route.params.questionsList) :
       this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
     },
-    // TODO: get refs
     countSuccessQuestion : function (){
-      if(this.$route.params.result === 'success' && this.$route.params.questionNumber){
-        this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result;
-        console.log(this.$refs);
-        // this.$refs.question.id === this.$route.params.questionNumber ? console.log("yes") : console.log("no");
+      this.$route.params.result === 'success' && this.$route.params.questionNumber && this.questionGenerated ? this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result : this.successQuestion
+      this.$route.params.result === 'failure' && this.$route.params.questionNumber && this.questionGenerated ? this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result : this.successQuestion
+    },
+    updateStyle: function(){
+      for(let i in this.successQuestion){
+        this.successQuestion[i] === "success" ? this.$refs.question[i].className = "goodAnswer" : this.$refs.question[i].className = "wrongAnswer"
       }
+    },
+    finalResult: function(){
+      for(let i in this.$refs.question){
+          this.$refs.question[i].className === ( "goodAnswer") || this.$refs.question[i].className === ( "wrongAnswer") ? this.countAnsweredQuestion++ : this.countAnsweredQuestion
+      }   
+      this.countAnsweredQuestion === 10 ?  this.showResultLink = true : this.showResultLink
     }
   },
   mounted(){
+  },
+  updated(){
     this.countSuccessQuestion();
-    
+    this.updateStyle();
+    this.finalResult();
   }
 }
 
@@ -80,5 +107,11 @@ li {
 }
 a {
   color: #926dde;
+}
+.goodAnswer{
+  background-color: rgb(58, 117, 10);
+}
+.wrongAnswer{
+  background-color: rgb(196, 2, 2);
 }
 </style>
