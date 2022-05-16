@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import LeaderboardView from '../views/LeaderboardView.vue'
 import GeneratedQuizzView from '../views/GeneratedQuizzView.vue'
 import QuestionView from '../views/QuestionView.vue'
+import ResultView from '../views/ResultView.vue'
 
 const routes = [
   {
@@ -33,6 +34,12 @@ const routes = [
     path: '/question',
     name: 'question',
     component: QuestionView,
+    props:true
+  },
+  {
+    path: '/result',
+    name: 'result',
+    component: ResultView,
     props:true
   },
 ]
