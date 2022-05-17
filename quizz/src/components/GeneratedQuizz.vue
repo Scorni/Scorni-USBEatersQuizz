@@ -6,31 +6,27 @@
             </div>
          </div>
         <div class="col-1-1">
-            <div class="content" v-if="$route.params.category">
-              <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
-            </div>
-            <div v-else-if="$route.params.tag">
-              <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
-            </div>
+          <div class="content" v-if="$route.params.category">
+            <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
           </div>
-        <p>
-          {{$route.params.category}}
-        </p>
-        <p>
-        </p>
-        <div v-if="$route.params.result === 'success'" ref="bite">success</div>
-        <div v-else-if="$route.params.result === 'failure'">failure</div>
+          <div v-else-if="$route.params.tag">
+            <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
+          </div>
+        </div>
         <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" ref="question" >
             <router-link :to="{ 
               name: 'question', 
               params: 
-                { question:JSON.stringify(value), 
-                number: this.questionGenerated.indexOf(value),
-                questionsList: JSON.stringify(this.questionGenerated), 
-                successQuestion: successQuestion
+                { 
+                  question:JSON.stringify(value), 
+                  number: this.questionGenerated.indexOf(value),
+                  questionsList: JSON.stringify(this.questionGenerated), 
+                  successQuestion: successQuestion
                 }
               } ">
               Question n°{{this.questionGenerated.indexOf(value)}}</router-link>
+                          {{value.multiple_correct_answers}} jij<br>
+
         </div>
         <div v-show="showResultLink">
           <router-link :to="{
@@ -56,7 +52,7 @@ export default {
       questionGenerated : this.getQuestion(),
       successQuestion : this.$route.params.successQuestion || [],
       countAnsweredQuestion : 0,
-      showResultLink : true
+      showResultLink : true,
     };
   },
   methods: {
