@@ -14,11 +14,11 @@
           <div class="col-1-2">
             <div class="content">
                 <h4>Category</h4>
-                <select v-model="categorySelected" id="categorySelected" ref="categorySelected">
-                  <option v-for="value in this.requestOptions.category"  :key="value.category">
+                <el-select v-model="categorySelected" id="categorySelected" ref="categorySelected">
+                  <el-option v-for="value in this.requestOptions.category" class="m-2" :key="value.category">
                     {{value}}
-                  </option>
-                </select>
+                  </el-option>
+                </el-select>
                 <p id="clearCategorySelected" ref="clearCategorySelected" v-on:click="resetTag($event)" hidden>❌</p>
                 <br>    
             </div>
@@ -26,11 +26,11 @@
           <div class="col-1-2">
             <div class="content">
               <h4>Tag</h4>
-              <select v-model="tagSelected" id="tagSelected" ref="tagSelected">
-                <option v-for="value in this.requestOptions.tag" :key="value.tag">
+              <el-select v-model="tagSelected" id="tagSelected" ref="tagSelected" class="m-2">
+                <el-option v-for="value in this.requestOptions.tag" :key="value.tag" :value="value">
                   {{value}}
-                </option>
-              </select>
+                </el-option>
+              </el-select>
               <p id="clearTagSelected" ref="clearTagSelected" v-on:click="resetTag($event)" hidden>❌</p>
               <br>
               </div>
@@ -60,10 +60,12 @@
       </form>
     </div>
   </div>
+   
 </template>
 
 <script>
 import { getOptions } from '../services/getRequestParameters';
+
 export default {
   name: 'MyQuizz',
   props: {
@@ -123,7 +125,6 @@ export default {
     }
   },
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
