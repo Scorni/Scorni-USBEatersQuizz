@@ -10,6 +10,7 @@
     <div class="options">
       <form id="questionOptions">
         <h3>U can either choose per category or per tag(s)</h3>
+
        <div class="grid grid-pad">
           <div class="col-1-2">
             <div class="content">
@@ -64,6 +65,7 @@
 
 <script>
 import { getOptions } from '../services/getRequestParameters';
+
 export default {
   name: 'MyQuizz',
   props: {
@@ -123,7 +125,6 @@ export default {
     }
   },
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
