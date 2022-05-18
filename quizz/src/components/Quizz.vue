@@ -1,22 +1,21 @@
 
 <template>
+  <div>
     <el-row :gutter="20" justify="center">
       <el-col  :span="12" class = "headers">
         <h1>{{ msg }}</h1>
-        
         </el-col>
     </el-row>
     <el-row :gutter="20" justify="center">
       <el-col  :span="12" >
         <h2>Choose your options for the quizz</h2>
-
       </el-col>
     </el-row>
     <el-row :gutter="20" justify="center" >
       <el-col :span="12" class="options">
         <form id="questionOptions">
         <h3>U can either choose per category or per tag(s)</h3>
-          <el-row >
+          <el-row justify="center">
             <el-col :span="8">
               <div class="content">
                 <h4>Category</h4>
@@ -28,8 +27,7 @@
                 <br>    
               </div>
             </el-col>
-          
-            <el-col :offset="8" :span="8">
+            <el-col :span="8">
               <div class="content">
                 <h4>Tag</h4>
                 <el-select v-model="tagSelected" id="tagSelected" ref="tagSelected" class="m-2" :disabled="tagDisabled" clearable>
@@ -41,50 +39,52 @@
               </div>
             </el-col>
           </el-row>
-              
-              
-         <div class="col-1-1">
-            <div class="content">
+          <el-row>
+            <el-col :span="24">
               <h4>Difficulty</h4>
               <el-select v-model="difficultySelected" id="difficultySelected" >
-              <el-option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
-                {{value}}
-              </el-option>
-            </el-select><br>
-            </div>
-         </div>
-        <div class="col-1-1">
-            <div class="content" v-if="categorySelected">
-              <span>Selected: {{ categorySelected}} - {{difficultySelected}}</span>
-            </div>
-            <div v-else>
-              <span>Selected: {{ tagSelected }} - {{ difficultySelected}} </span>
-            </div>
-        </div>
-        <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-          <el-button type="warning" round>
-            <router-link class="link" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz
-            </router-link>
-          </el-button>
-          <!-- <router-link :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz</router-link> -->
-        </div>
+                <el-option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
+                  {{value}}
+                </el-option>
+              </el-select><br>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <br>
+              <div class="content" v-if="categorySelected">
+                <span>Selected: {{ categorySelected}} - {{difficultySelected}}</span>
+              </div>
+              <div v-else>
+                <span>Selected: {{ tagSelected }} - {{ difficultySelected}} </span>
+              </div>
+              <br>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <br>
+              <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
+                <el-button type="warning" round>
+                  <router-link class="link" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz
+                  </router-link>
+                </el-button>
+              </div>
+              <br>
+            </el-col>
+          </el-row>
+        
       </form>
       </el-col>
     </el-row >
-    <el-row :gutter="20" justify="center">
-        <el-col  :span="12" class = "footers">
-          <p>
-            The Questions comes from the <br>
-            <a href="https://quizapi.io" target="_blank" rel="noopener">Quizapi</a>.
-          </p>
-        </el-col>
-      </el-row>
+  </div>
 </template>
 
 <script>
 import { getOptions } from '../services/getRequestParameters';
 
 export default {
+  
   name: 'MyQuizz',
   props: {
     msg: String
@@ -136,10 +136,6 @@ export default {
   border-radius: 4px;
   
 }
-.footers{
-  border-bottom: 1px solid #ebb563;
-  border-bottom-width: 75%
-}
 .link{
   text-decoration: none;
 }
@@ -147,7 +143,7 @@ export default {
   text-decoration: none;
 }
 .link:visited{
-  color: white;
+  color: rgb(0, 0, 0);
 }
 h3 {
   margin: 40px 0 0;
