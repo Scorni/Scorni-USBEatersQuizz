@@ -128,11 +128,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .headers{
-  border: 2px solid #ebb563;
+  border: 2px solid #000000;
   border-radius: 4px
 }
 .options{
-  border: 2px solid #ebb563;
+  border: 2px solid #000000;
   border-radius: 4px;
   
 }

@@ -1,14 +1,16 @@
 <template>
-  <el-footer>
+  <el-footer class="footer">
     <el-row :gutter="20" justify="center">
-        <el-col  :span="6" class = "footers">
+        <el-col  :span="4" class = "gitHubLogo">
+          
           <el-link :underline="false" href="https://github.com/Scorni/Scorni-USBEatersQuizz" target="_blank">
             <el-image  shape="square" :size="100"  :src='url' />
           </el-link>
+          
         </el-col>
     </el-row>
-    <el-row :gutter="20" justify="center">
-        <el-col  :span="12" >
+    <el-row :gutter="20" justify="center" >
+        <el-col :span="12" >
           <p>
             The questions comes from <br>
             <el-link :underline="false" href="https://quizapi.io" target="_blank" rel="noopener">Quizapi</el-link>.
@@ -32,7 +34,10 @@ export default {
 
 </script>
 <style scoped>
-.footers{
+.gitHubLogo{
   border-top: 2px solid #000000;
+  padding:20px;
+  margin: 20px;
 }
+
 </style>

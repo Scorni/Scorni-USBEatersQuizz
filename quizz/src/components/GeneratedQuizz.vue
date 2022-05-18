@@ -1,19 +1,29 @@
 <template>
   <div class="hello">
-    <h1>Your generated Quizz 💾 </h1>
-         <div class="col-1-1">
-            <div class="content">
-            </div>
-         </div>
-        <div class="col-1-1">
+    <el-row :gutter="20" justify="center">
+      <el-col  :span="12" class = "headers">
+          <h1>Your generated Quizz 💾 </h1>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" justify="center">
+      <el-col  :span="12" >
           <div class="content" v-if="$route.params.category">
             <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
           </div>
           <div v-else-if="$route.params.tag">
             <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
           </div>
-        </div>
-        <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" ref="question" >
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" justify="center">    
+      <el-col  :span="12" >
+        <el-card class="box-card">
+          <template #header>
+          <div class="card-header">
+            <span>Card name</span>
+          </div>
+        </template>
+          <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" ref="question" >
             <router-link :to="{ 
               name: 'question', 
               params: 
@@ -25,9 +35,12 @@
                 }
               } ">
               Question n°{{this.questionGenerated.indexOf(value)}}</router-link>
-                          {{value.multiple_correct_answers}} jij<br>
-
-        </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" justify="center">    
+      <el-col  :span="12" >
         <div v-show="showResultLink">
           <router-link :to="{
             name : 'result',
@@ -38,6 +51,9 @@
           To the result page
           </router-link>
         </div>
+      </el-col>
+    </el-row>
+        
     </div>
 </template>
 
