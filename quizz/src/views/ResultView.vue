@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <Result msg="Your Result "/>
+    <Footer />
   </div>
 </template>
 
