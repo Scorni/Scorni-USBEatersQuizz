@@ -30,4 +30,13 @@ nav a {
 nav a.router-link-exact-active {
   color:  #ebb563;
 }
+.routerLink{
+  text-decoration: none;
+}
+.routerLink:hover{
+  text-decoration: none;
+}
+.routerLink:visited{
+  color: rgb(0, 0, 0);
+}
 </style>

@@ -23,19 +23,19 @@
           <div class="content" >
             <div v-if="!this.checkCorrectAnswersLength()">
               <div v-for="(value,key) in answers" :key="key.answer">
-                <button v-on:click="this.answerPick(key,value)" v-bind:id= "key" ref="key">{{ value }}</button>
+                <el-button @click="this.answerPick(key,value)" v-bind:id="key" :type="type" ref="key">{{ value }}</el-button>
               </div>
             </div>
             <div v-else-if="this.checkCorrectAnswersLength()" >
               <div v-for="(value,key) in answers" :key="key.answer">
-                <button v-on:click="this.answerPick(key,value)" v-bind:id= "key" ref="key">{{ value }}</button>
+                <el-button @click="this.answerPick(key,value)" v-bind:id="key" :type="type" ref="key">{{ value }}</el-button>
               </div>
             </div>
           </div>
         </div>
         <div v-if="this.numberOfAnswer > 0">
           <div class="col-1-1" ref="validateAnswers" id="validateAnswers">
-            <button v-on:click="this.getResult()">Confirm answer(s)</button>
+            <el-button @click="this.getResult()">Confirm answer(s)</el-button>
           </div>
         </div>
         <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
@@ -44,13 +44,6 @@
         <div v-else-if="this.badAnswers > 0 || this.result === false">
           <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" > 💀 Return to the question's list 💀</router-link>
         </div>
-        <div v-if="this.$refs.answers">
-        <!-- TODO: generate this link when no answers availabe -->
-          <!-- <router-link :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" > 💀 Return to the question's list 💀</router-link>
-          <router-link :to="{ name: 'question', params: { question:JSON.stringify(value), number: this.questionGenerated.indexOf(value),questionsList: JSON.stringify(this.questionGenerated), successQuestion: successQuestion}}  "> {{this.questionGenerated.indexOf(value)}}</router-link> -->
-          <p>ah</p>
-        </div>
-        
     </div>
 </template>
 
@@ -71,6 +64,7 @@ export default {
         result: null,
         goodAnswers : 0,
         badAnswers: 0,
+        type: "warning",
 
     };
   },
@@ -111,23 +105,34 @@ export default {
         this.badAnswers = 0;
         this.goodAnswers = 0;
         for(const i in this.$refs.key){
-          if(this.$refs.key[i].id === key && this.$refs.key[i].className === "answerPick"){
-            this.$refs.key[i].className = "";
+          if(this.$refs.key[i].ref.id === key && this.$refs.key[i].ref.plain === true){
+            console.log("test");
+            this.$refs.key[i].plain = false
+            
+            // this.$refs.key[i].ref.className = "";
             delete this.answersChoosed[key];
-          }else if(this.$refs.key[i].id === key){
-            this.$refs.key[i].className = 'answerPick';
+          }else if(this.$refs.key[i].ref.id === key){
+            console.log(this.$refs.key[i].type);
+            this.$refs.key[i].type = "warning"
+            this.$refs.key[i].plain = true
+            // this.$refs.key[i].ref.className = 'answerPick';
             this.answersChoosed[key] = value;
           }
         }
       // Single answer case
       }else{
           this.answersChoosed = new Object();
+          console.log(this.$refs.key[0].ref.id);
+          console.log(this.type);
           for(const i in this.$refs.key){
-            if(this.$refs.key[i].id === key){
-              this.$refs.key[i].className = 'answerPick';
+            if(this.$refs.key[i].ref.id === key){
+              // this.$refs.key[i].ref.className = 'answerPick';
+              this.$refs.key[i].plain = true
+
               this.answersChoosed[key] = value;
-            }else if(this.$refs.key[i].className === "answerPick"){
-              this.$refs.key[i].className = "";
+            }else if(this.$refs.key[i].plain === true){
+              // this.$refs.key[i].ref.className = "";
+              this.$refs.key[i].plain = false
             }
           }
       }
