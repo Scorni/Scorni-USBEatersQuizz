@@ -32,11 +32,15 @@ nav a.router-link-exact-active {
 }
 .routerLink{
   text-decoration: none;
+  margin: 5px;
 }
 .routerLink:hover{
   text-decoration: none;
 }
 .routerLink:visited{
   color: rgb(0, 0, 0);
+}
+.box-card{
+  background-color: #ebb563;
 }
 </style>

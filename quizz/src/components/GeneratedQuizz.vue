@@ -129,12 +129,6 @@ li {
 a {
   color: #926dde;
 }
-.goodAnswer{
-  background-color: rgb(58, 117, 10);
-}
-.wrongAnswer{
-  background-color: rgb(196, 2, 2);
-}
 .questionLink{
   margin: 5px;
 }
