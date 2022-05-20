@@ -23,12 +23,12 @@
           <div class="content" >
             <div v-if="!this.checkCorrectAnswersLength()">
               <div v-for="(value,key) in answers" :key="key.answer">
-                <el-button @click="this.answerPick(key,value)" v-bind:id="key" :type="type" ref="key">{{ value }}</el-button>
+                <el-button @click="this.answerPick(key,value)" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button>
               </div>
             </div>
             <div v-else-if="this.checkCorrectAnswersLength()" >
               <div v-for="(value,key) in answers" :key="key.answer">
-                <el-button @click="this.answerPick(key,value)" v-bind:id="key" :type="type" ref="key">{{ value }}</el-button>
+                <el-button @click="this.answerPick(key,value)" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button>
               </div>
             </div>
           </div>
@@ -64,8 +64,7 @@ export default {
         result: null,
         goodAnswers : 0,
         badAnswers: 0,
-        type: "warning",
-
+        type: "",
     };
   },
   methods: {
@@ -83,7 +82,16 @@ export default {
           }
         }
       }
+      this.countAnswersAvailable(this.answers);
       return content;
+    },
+    countAnswersAvailable:function(answers){
+      let content = new Array();
+      for(const i in answers){
+        content[i] = "default";
+      }
+      console.log(content);
+      return content
     },
     // return true if multiple correct answers
     checkCorrectAnswersLength : function(){
@@ -100,43 +108,36 @@ export default {
     },
     //handle single and multiple answer's picking
     answerPick:function(key,value){
+      this.type === "" ? this.type = this.countAnswersAvailable(this.answers) : this.type;
       // Multiple answers case
       if(this.checkCorrectAnswersLength()){
         this.badAnswers = 0;
         this.goodAnswers = 0;
-        for(const i in this.$refs.key){
-          if(this.$refs.key[i].ref.id === key && this.$refs.key[i].ref.plain === true){
-            console.log("test");
-            this.$refs.key[i].plain = false
-            
-            // this.$refs.key[i].ref.className = "";
-            delete this.answersChoosed[key];
-          }else if(this.$refs.key[i].ref.id === key){
-            console.log(this.$refs.key[i].type);
-            this.$refs.key[i].type = "warning"
-            this.$refs.key[i].plain = true
-            // this.$refs.key[i].ref.className = 'answerPick';
+        for( const j in this.answers){
+          if(key === j && this.type[j] !== "primary"){
+            this.type[j] = "primary"
             this.answersChoosed[key] = value;
+          }else if(key === j && this.type[j] === "primary"){
+            this.type[j] = "default"
+            delete this.answersChoosed[key];
           }
         }
       // Single answer case
       }else{
-          this.answersChoosed = new Object();
-          console.log(this.$refs.key[0].ref.id);
-          console.log(this.type);
-          for(const i in this.$refs.key){
-            if(this.$refs.key[i].ref.id === key){
-              // this.$refs.key[i].ref.className = 'answerPick';
-              this.$refs.key[i].plain = true
-
-              this.answersChoosed[key] = value;
-            }else if(this.$refs.key[i].plain === true){
-              // this.$refs.key[i].ref.className = "";
-              this.$refs.key[i].plain = false
-            }
+        this.answersChoosed = new Object()
+        for( const j in this.answers){
+          if(key === j && this.type[j] !== "primary"){
+            this.type[j] = "primary"
+            this.answersChoosed[key] = value;
+          }else if(this.type[j] === "primary"){
+            this.type[j] = "default"
+            delete this.answersChoosed[key];
           }
+          console.log(this.answersChoosed);
+        }
       }
       this.numberOfAnswer = Object.keys(this.answersChoosed).length;
+      console.log(this.numberOfAnswer);
     },
     //check if the answer(s) are the right ones
     getResult : function(){
@@ -177,10 +178,7 @@ export default {
         this.correct_answers[i] === "true" ? count++ :count
       }
       return count === this.goodAnswers ? true: false;
-    }
-
-    
-    
+    },
   },
 }
 
