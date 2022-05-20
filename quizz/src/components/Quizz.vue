@@ -65,8 +65,8 @@
             <el-col :span="24">
               <br>
               <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-                <el-button type="warning" round>
-                  <router-link class="link" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz
+                <el-button type="warning" class="questionLink" round>
+                  <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz
                   </router-link>
                 </el-button>
               </div>
@@ -128,22 +128,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .headers{
-  border: 2px solid #ebb563;
+  border: 2px solid #000000;
   border-radius: 4px
 }
 .options{
-  border: 2px solid #ebb563;
+  border: 2px solid #000000;
   border-radius: 4px;
   
-}
-.link{
-  text-decoration: none;
-}
-.link:hover{
-  text-decoration: none;
-}
-.link:visited{
-  color: rgb(0, 0, 0);
 }
 h3 {
   margin: 40px 0 0;
@@ -158,5 +149,8 @@ li {
 }
 a {
   color: #926dde;
+}
+.questionLink{
+  margin-bottom: 5%;
 }
 </style>

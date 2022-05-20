@@ -15,7 +15,9 @@
   text-align: center;
   color: #2c3e50;
 }
-
+body{
+  background-color:    #6C924C;
+}
 nav {
   padding: 30px;
 }
@@ -27,5 +29,18 @@ nav a {
 
 nav a.router-link-exact-active {
   color:  #ebb563;
+}
+.routerLink{
+  text-decoration: none;
+  margin: 5px;
+}
+.routerLink:hover{
+  text-decoration: none;
+}
+.routerLink:visited{
+  color: rgb(0, 0, 0);
+}
+.box-card{
+  background-color: #ebb563;
 }
 </style>

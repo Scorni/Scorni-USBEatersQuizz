@@ -1,35 +1,53 @@
 <template>
   <div class="hello">
-    <h1>Your generated Quizz 💾 </h1>
-         <div class="col-1-1">
-            <div class="content">
-            </div>
-         </div>
-        <div class="col-1-1">
+    <el-row :gutter="20" justify="center">
+      <el-col  :span="12" class = "headers">
+          <h1>Your generated Quizz 💾 </h1>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" justify="center">
+      <el-col  :span="12" >
           <div class="content" v-if="$route.params.category">
             <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
           </div>
           <div v-else-if="$route.params.tag">
             <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
           </div>
-        </div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" justify="center">    
+      <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="1">
+        <el-card class="box-card">
+          <template #header>
+          <div class="card-header">
+            <span>Question's List</span>
+          </div>
+        </template>
         <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" ref="question" >
-            <router-link :to="{ 
-              name: 'question', 
-              params: 
-                { 
-                  question:JSON.stringify(value), 
-                  number: this.questionGenerated.indexOf(value),
-                  questionsList: JSON.stringify(this.questionGenerated), 
-                  successQuestion: successQuestion
-                }
-              } ">
-              Question n°{{this.questionGenerated.indexOf(value)}}</router-link>
-                          {{value.multiple_correct_answers}} jij<br>
+          <el-button  class="questionLink" round>
+            <router-link class="routerLink" :to="{ 
+            name: 'question', 
+            params: 
+              { 
+                question:JSON.stringify(value), 
+                number: this.questionGenerated.indexOf(value),
+                questionsList: JSON.stringify(this.questionGenerated), 
+                successQuestion: successQuestion
+              }
+            } ">
+            Question n°{{this.questionGenerated.indexOf(value)}}</router-link>
+          </el-button>
+        {{value.multiple_correct_answers}}
 
-        </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20" justify="center">    
+      <el-col  :span="12" >
         <div v-show="showResultLink">
-          <router-link :to="{
+        <el-button class="questionLink" type="warning" round>
+          <router-link class="routerLink" :to="{
             name : 'result',
             params: {
               answers : successQuestion
@@ -37,14 +55,17 @@
           }">
           To the result page
           </router-link>
+        </el-button>
         </div>
+      </el-col>
+    </el-row>
+        
     </div>
 </template>
 
 <script>
 import { getQuestions } from '../services/generateQuestion';
 
-console.log();
 export default {
   name: 'GeneratedQuizz',
   data() {
@@ -60,18 +81,22 @@ export default {
       this.$route.params.questionsList ? 
       this.questionGenerated = await JSON.parse(this.$route.params.questionsList) :
       this.questionGenerated = await getQuestions(10,this.$route.params.category,this.$route.params.tag,this.$route.params.difficulty);
+
     },
     countSuccessQuestion : function (){
+
       this.$route.params.result === 'success' && this.$route.params.questionNumber && this.questionGenerated ? this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result : this.successQuestion
       this.$route.params.result === 'failure' && this.$route.params.questionNumber && this.questionGenerated ? this.successQuestion[this.$route.params.questionNumber] = this.$route.params.result : this.successQuestion
     },
     updateStyle: function(){
+
       for(let i in this.successQuestion){
         this.successQuestion[i] === "success" ? this.$refs.question[i].className = "goodAnswer" : this.$refs.question[i].className = "wrongAnswer"
       }
     },
     finalResult: function(){
       for(let i in this.$refs.question){
+          console.log(this.$refs.question[i]);
           this.$refs.question[i].className === ( "goodAnswer") || this.$refs.question[i].className === ( "wrongAnswer") ? this.countAnsweredQuestion++ : this.countAnsweredQuestion
       }   
       this.countAnsweredQuestion === 10 ?  this.showResultLink = true : this.showResultLink
@@ -104,10 +129,10 @@ li {
 a {
   color: #926dde;
 }
-.goodAnswer{
-  background-color: rgb(58, 117, 10);
+.questionLink{
+  margin: 5px;
 }
-.wrongAnswer{
-  background-color: rgb(196, 2, 2);
+.box-card{
+  background-color: #ebb563;
 }
 </style>

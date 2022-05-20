@@ -8,11 +8,13 @@
 <script>
 // @ is an alias to /src
 import Result from '@/components/Result.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'MyResutl',
   components: {
     Result,
+    Footer
   }
 }
 </script>
