@@ -18,11 +18,53 @@ export default {
     };
   },
   methods: {
+    
   },
   mounted(){
     for(let i in this.$route.params.answers){
       this.$route.params.answers[i] === "success" ?  this.result++ : this.result
     }
+    this.result >= 5 
+    ? this.$confetti.start(
+      {
+        particles: [
+          {
+            type: 'image',
+            size: 20,
+            url: '/emoji-fete.png',
+          },
+          {
+            type: 'heart',
+            size: 20,
+          },
+          {
+            type: 'image',
+            size: 15,
+            url: '/trophy.png',
+          },
+        ],
+        defaultColors: [
+          'Gold',
+          'DodgerBlue',
+        ],
+      }
+    )
+    : this.$confetti.start(
+      {
+        particles: [
+          {
+            type: 'image',
+            size: 20,
+            url: '/sad-pepe-designs-png-261776.png',
+          },
+          {
+            type: 'image',
+            size: 10,
+            url: '/cry-emoji.png',
+          },
+        ],
+      }
+    )
   },
   updated(){
     

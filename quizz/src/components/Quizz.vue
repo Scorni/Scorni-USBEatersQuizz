@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <el-row :gutter="20" justify="center">
@@ -66,15 +65,14 @@
               <br>
               <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
                 <el-button type="warning" class="questionLink" round>
-                  <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >generate Quizz
+                  <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >Generate Quizz
                   </router-link>
                 </el-button>
               </div>
               <br>
             </el-col>
           </el-row>
-        
-      </form>
+        </form>
       </el-col>
     </el-row >
   </div>
@@ -122,6 +120,9 @@ export default {
       this.showButtonGenerateQuizz();
     }
   },
+  mounted(){
+    this.$confetti.stop()
+  }
 }
 </script>
 

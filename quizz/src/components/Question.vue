@@ -14,32 +14,41 @@
           </el-col>
         </el-row>
         <el-row :gutter="20" justify="center">    
-          <el-col :xs="12" :sm="12" :md="12" :lg="8" :xl="8">
-            <el-card class="box-card">
+          <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" >
+            <el-card class="box-card" shadow="hover " >
               <template #header>
                 <div class="card-header">
                   <span>{{question}}</span>
                 </div>
               </template>
               <!-- TODO: fix responsivness -->
-                <div v-if="!this.checkCorrectAnswersLength()">
-                  <div v-for="(value,key) in answers" :key="key.answer">
-                    <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button>
-                  </div>
+              <div v-if="!this.checkCorrectAnswersLength()" justify="start">
+                <div v-for="(value,key) in answers" :key="key.answer">
+                  <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
+                    <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key"></el-button>
+                    <el-divider direction="vertical" />
+                    {{ value }}
+                  <el-divider />
                 </div>
-                <div v-else-if="this.checkCorrectAnswersLength()" >
-                  <div v-for="(value,key) in answers" :key="key.answer">
-                    <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button>
-                  </div>
+                
+              </div>
+              <div v-else-if="this.checkCorrectAnswersLength()" >
+                <div v-for="(value,key) in answers" :key="key.answer">
+                  <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
+                  <p>
+                    <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key"></el-button>
+                  </p>
+                  <el-divider />
+
                 </div>
-              
+              </div>
             </el-card>
           </el-col>
         </el-row>
         <el-row :gutter="20" justify="center">    
           <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="1">
             <div v-if="this.numberOfAnswer > 0">
-              <div class="col-1-1" ref="validateAnswers" id="validateAnswers">
+              <div  ref="validateAnswers" id="validateAnswers">
                 <el-button  class="questionLink" @click="this.getResult()">Confirm answer(s)</el-button>
               </div>
             </div>
@@ -105,7 +114,6 @@ export default {
       for(const i in answers){
         content[i] = "default";
       }
-      console.log(content);
       return content
     },
     // return true if multiple correct answers
@@ -171,15 +179,12 @@ export default {
         this.fillSingleAnswerThroughAnswers();
         this.numberOfAnswer = 0;
         for(const i in this.$refs["key"]){
-          this.$refs["key"][i].className = ""
           if(Object.keys(this.answersChoosed)[0] === this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].ref.id ){
             this.result = true ;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "success"
-            this.$refs["key"][i].className = "goodAnswer";
           }else if(Object.keys(this.answersChoosed)[0] !== this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].ref.id ){
             this.result = false;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "danger"
-            this.$refs["key"][i].className = "wrongAnswer"
           }
         }
       }
@@ -192,6 +197,9 @@ export default {
       return count === this.goodAnswers ? true: false;
     },
   },
+  mounted(){
+    this.$confetti.stop()
+  }
 }
 
 </script>
