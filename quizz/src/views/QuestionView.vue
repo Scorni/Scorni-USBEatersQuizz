@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Question msg="Question ❓❓❓💻 "/>
+    <Question msg="Your Question 💻 "/>
     <Footer />
   </div>
 </template>
