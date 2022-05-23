@@ -4,6 +4,10 @@ This project is currently beeing developed during my free time.
 The idea is simply to create a Quizz about various stuff in the tech world.
 This quizz is developed using the Js's framework Vue in order to learn about it's specialities using an external API.
 
+# LINK 
+
+[Link to the app](https://628b6bd6dbf1cf0008e3d332--snazzy-entremet-ff3f98.netlify.app)
+
 # API
 
 The API being use here is [Quizapi](https://quizapi.io).
