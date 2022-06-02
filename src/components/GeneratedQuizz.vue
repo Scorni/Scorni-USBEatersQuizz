@@ -16,7 +16,7 @@
       </el-col>
     </el-row>
     <el-row :gutter="20" justify="center">    
-      <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="1">
+      <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="5">
         <el-card class="box-card">
             <template #header>
             <div class="card-header">
@@ -65,7 +65,6 @@
 
 <script>
 import { getQuestions } from '../services/generateQuestion';
-
 export default {
   name: 'GeneratedQuizz',
   data() {

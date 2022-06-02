@@ -2,14 +2,16 @@
   <div class="hello">
     <h1>{{ msg }} </h1>
         <el-row :gutter="20" justify="center">    
-          <el-col :xs="12" :sm="6" :md="6" :lg="12" :xl="12">
-            <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion">
+          <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+            <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion" id="result">
               <h2>🏆🏆🏆 Champion ! Vraiment un crack comme on en fait plus .... 🏆🏆🏆</h2>
+              <Svg type="champion"></Svg>
             </div>
-            <div v-else-if="this.result === false || (this.badAnswers)" ref="loser">
-              <h2>💀💀💀 Loser ! Vraiment à chier .... 💀💀💀</h2>
+            <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result">
+              <h2> Loser ! Vraiment à chier .... </h2>
               <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
               <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
+              <Svg type="loser"></Svg>
             </div>
           </el-col>
         </el-row>
@@ -72,11 +74,15 @@
 </template>
 
 <script>
+import Svg from '../components/Svg.vue'
 
 export default {
   name: 'MyQuestion',
   props: { msg :String
   },
+  components : {
+    Svg,
+},
   data() {
     return {
         question: this.fillMe("question"),
@@ -227,5 +233,76 @@ a {
 }
 .box-card{
   background-color: #ebb563;
+}
+#result{
+  border: 2px solid #000000;
+  border-radius: 4px;
+  fill: transparent;
+
+}
+#result {
+    /* animation: animate 1s linear forwards; */
+    animation-name: animate,animates;
+    animation-duration: 1000ms, 1000ms;
+    /* animation-delay: 0ms,1000ms; */
+    animation-timing-function: linear;
+
+}
+ 
+@keyframes animate {
+    0% {
+        width: 0;
+        height: 0;
+        border-top-color: black;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+ 
+    50% {
+        width: 100%;
+        height: 0;
+        border-top-color: black;
+        border-right-color: black;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+ 
+    100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: black;
+        border-right-color: black;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+}
+@keyframes animates {
+    0% {
+        width: 100%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: black;
+    }
+ 
+    50% {
+        width: 100%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: black;
+        border-left-color: black;
+    }
+ 
+    100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: black;
+        border-left-color: black;
+    }
 }
 </style>
