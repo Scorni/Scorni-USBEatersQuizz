@@ -13,10 +13,18 @@
   text-align: center;
   color: #2c3e50;
 }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
 body{
   background-color:    #6C924C;
+  margin: 0%;
 }
 nav {
+  margin: 0%;
   padding: 30px;
 }
 
@@ -27,6 +35,7 @@ nav a {
 
 nav a.router-link-exact-active {
   color:  #ebb563;
+  text-decoration: none;
 }
 .routerLink{
   text-decoration: none;

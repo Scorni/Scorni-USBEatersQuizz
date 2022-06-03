@@ -4,14 +4,14 @@
         <el-row :gutter="20" justify="center">    
           <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
             <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion" id="result">
-              <h2>🏆🏆🏆 Champion ! Vraiment un crack comme on en fait plus .... 🏆🏆🏆</h2>
-              <Svg type="champion"></Svg>
+              <h2> Champion ! Vraiment un mâle alpha celui-ci </h2>
+              <Svg id="svg" type="champion"></Svg>
             </div>
             <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result">
-              <h2> Loser ! Vraiment à chier .... </h2>
+              <h2> Loser ! Ta réponse dégoute</h2>
               <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
               <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
-              <Svg type="loser"></Svg>
+              <Svg id="svg" type="loser"></Svg>
             </div>
           </el-col>
         </el-row>
@@ -48,10 +48,10 @@
           </el-col>
         </el-row>
         <el-row :gutter="20" justify="center">    
-          <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="1">
+          <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="5">
             <div v-if="this.numberOfAnswer > 0">
               <div  ref="validateAnswers" id="validateAnswers">
-                <el-button  class="questionLink" @click="this.getResult()">Confirm answer(s)</el-button>
+                <el-button class="confirmAnswer" @click="this.getResult()">Confirm answer(s)</el-button>
               </div>
             </div>
           </el-col>
@@ -231,78 +231,58 @@ a {
 .questionLink{
   margin: 5px;
 }
+.confirmAnswer{
+  margin: 5px;
+  animation: glowing 3s infinite;
+}
+
+@keyframes glowing {
+  0% { background-color: #c7c7c7 }
+  50% { background-color: #ffffff }
+  100% { background-color: #c7c7c7 }
+}
 .box-card{
   background-color: #ebb563;
 }
 #result{
-  border: 2px solid #000000;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#result h2, #result #svg{
+  position: relative;
+  z-index: 10;
+  margin-left: 5%;
+
+}
+#result::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(90deg,#ebb563,#67c23a);
+  animation: animate 4s linear infinite;
+}
+
+#result::after{
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #ebb563;
   border-radius: 4px;
-  fill: transparent;
-
 }
-#result {
-    /* animation: animate 1s linear forwards; */
-    animation-name: animate,animates;
-    animation-duration: 1000ms, 1000ms;
-    /* animation-delay: 0ms,1000ms; */
-    animation-timing-function: linear;
 
-}
- 
 @keyframes animate {
-    0% {
-        width: 0;
-        height: 0;
-        border-top-color: black;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-    }
- 
-    50% {
-        width: 100%;
-        height: 0;
-        border-top-color: black;
-        border-right-color: black;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-    }
- 
-    100% {
-        width: 100%;
-        height: 100%;
-        border-top-color: black;
-        border-right-color: black;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-    }
-}
-@keyframes animates {
-    0% {
-        width: 100%;
-        height: 100%;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        border-left-color: black;
-    }
- 
-    50% {
-        width: 100%;
-        height: 100%;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: black;
-        border-left-color: black;
-    }
- 
-    100% {
-        width: 100%;
-        height: 100%;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        border-bottom-color: black;
-        border-left-color: black;
-    }
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+
 }
 </style>

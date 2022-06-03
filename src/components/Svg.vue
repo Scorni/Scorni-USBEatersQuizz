@@ -1,7 +1,7 @@
 <template>
     <div class="svg">
         <div v-if="type === 'champion'">
-            <svg width="100" height="100" viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="100" height="60" viewBox="0 -120 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="Trophy">
                     <g id="Trophy_2">
                         <g id="XMLID_110_">
@@ -33,7 +33,7 @@
             </svg>
         </div>
         <div v-else-if="type === 'loser'">
-           <svg width="100" height="100" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <svg width="100" height="50" viewBox="0 -50 612 612" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="Skull">
                     <g id="skull_2">
                         <path id="Vector" d="M479.373 353.103C494.627 320.995 503.172 285.085 503.172 247.172C503.172 110.664 392.51 0 256 0C119.49 0 8.828 110.664 8.828 247.172C8.828 285.085 17.375 320.995 32.627 353.103L114.759 388.413L167.724 512H344.276L397.242 388.414L479.373 353.103Z" fill="#C9E3F7"/>
