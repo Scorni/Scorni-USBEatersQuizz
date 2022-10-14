@@ -4,8 +4,9 @@
   </nav>
   <router-view/>
 </template>
-
 <style>
+@import './assets/style/app.css';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,10 +20,10 @@
   box-sizing: border-box;
 
 }
-body{
+/* body{
   background-color:    #6C924C;
   margin: 0%;
-}
+} */
 nav {
   margin: 0%;
   padding: 30px;

@@ -271,7 +271,7 @@ a {
 #result::after{
   content: "";
   position: absolute;
-  inset: 2px;
+  inset: 5px;
   background: #ebb563;
   border-radius: 4px;
 }

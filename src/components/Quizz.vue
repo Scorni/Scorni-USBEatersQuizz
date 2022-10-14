@@ -80,7 +80,7 @@
 
 <script>
 import { getOptions } from '../services/getRequestParameters';
-
+import '../assets/style/Home/Home.css'
 export default {
   
   name: 'MyQuizz',
