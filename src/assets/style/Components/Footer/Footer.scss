@@ -3,18 +3,22 @@
 @import  '../../Helpers/ceaser' ;
 @import  '../../Helpers/font';
 
-body{
-    margin: 0;
-    padding: 0;
-    background-color: #3F5C40;
-    overflow-x: hidden;
-    background:    #3F5C40  ;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    line-height: 1.4;
-    letter-spacing: 0.005em;
-    position: relative;
+.footer{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 15vh;
+    right: 0vw;
+    font-family: 'Mirage_Bold';
+    transform: rotate(-90deg);
+    
 }
+a{
+    text-decoration: underline solid transparent;
+    color: #2C3E50; 
+    transition: text-decoration 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+ }
+ a:visited, a:hover{
+     color: #2C3E50;
+     text-decoration: underline;
+     
+ }

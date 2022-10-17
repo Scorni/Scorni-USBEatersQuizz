@@ -2,7 +2,7 @@
     <div class="headers">
       <h1>Welcome</h1>
       <h1>On this</h1>
-      <h1>Quizz</h1>
+      <h1>Quizz.</h1>
     </div>
     <div class="ghostBordersRight"></div>
     <div class="ghostBordersBottom"></div>
@@ -12,7 +12,11 @@
         <h1>Your time</h1>
         <h1>Here.</h1>
       </div>
-      
+      <div class="groupedHeadersAlternate">
+        <h1>Generate</h1>
+        <h1>Your</h1>
+        <h1>Question.</h1>
+      </div>
     </div>
     <div class="ghostBordersSecondRight"></div>
     <div class="ghostBordersSecondTop"></div>

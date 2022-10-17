@@ -261,19 +261,28 @@
   src: URL("../../font/Mirage_Bold.otf") format("truetype");
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #3F5C40;
-  overflow-x: hidden;
-  background: #3F5C40;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  line-height: 1.4;
-  letter-spacing: 0.005em;
-  position: relative;
+.footer {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 15vh;
+  right: 0vw;
+  font-family: 'Mirage_Bold';
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+a {
+  -webkit-text-decoration: underline solid transparent;
+          text-decoration: underline solid transparent;
+  color: #2C3E50;
+  -webkit-transition: -webkit-text-decoration 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: -webkit-text-decoration 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: text-decoration 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: text-decoration 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), -webkit-text-decoration 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+a:visited, a:hover {
+  color: #2C3E50;
+  text-decoration: underline;
 }
 /*# sourceMappingURL=Footer.css.map */

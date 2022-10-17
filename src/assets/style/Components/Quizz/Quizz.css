@@ -263,6 +263,7 @@
 
 .headers {
   position: absolute;
+  top: 7vh;
   left: 10%;
   height: 55vh;
   width: 25%;
@@ -275,6 +276,7 @@
 }
 
 .headersDynamics {
+  overflow: hidden;
   position: absolute;
   left: 70%;
   top: 40%;
@@ -291,6 +293,74 @@
 .groupedHeaders {
   vertical-align: bottom;
   margin-top: 15vh;
+  -webkit-animation: textSwitch 5s ease-in forwards;
+          animation: textSwitch 5s ease-in forwards;
+  display: none;
+}
+
+@-webkit-keyframes textSwitch {
+  0% {
+    opacity: 1;
+    margin-top: 15vh;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    margin-top: 100vh;
+    display: none;
+  }
+}
+
+@keyframes textSwitch {
+  0% {
+    opacity: 1;
+    margin-top: 15vh;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    margin-top: 100vh;
+    display: none;
+  }
+}
+
+.groupedHeadersAlternate {
+  vertical-align: bottom;
+  margin-top: 15vh;
+  -webkit-animation: textSwitchAlternate 5s ease-in;
+          animation: textSwitchAlternate 5s ease-in;
+}
+
+@-webkit-keyframes textSwitchAlternate {
+  0% {
+    opacity: 0;
+    margin-top: 100vh;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 15vh;
+  }
+}
+
+@keyframes textSwitchAlternate {
+  0% {
+    opacity: 0;
+    margin-top: 100vh;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 15vh;
+  }
 }
 
 /**
@@ -307,8 +377,8 @@
   font-size: 2.5rem;
   white-space: break-spaces;
   padding: 2%;
-  -webkit-animation: borderRight 5s ease-in infinite;
-          animation: borderRight 5s ease-in infinite;
+  -webkit-animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderRight {
@@ -345,8 +415,8 @@
   font-size: 2.5rem;
   white-space: break-spaces;
   padding: 2%;
-  -webkit-animation: borderBottom 5s ease-in infinite;
-          animation: borderBottom 5s ease-in infinite;
+  -webkit-animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderBottom {
@@ -387,8 +457,8 @@
   font-size: 2.5rem;
   white-space: break-spaces;
   padding: 2%;
-  -webkit-animation: borderSecondRight 5s ease-in infinite;
-          animation: borderSecondRight 5s ease-in infinite;
+  -webkit-animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderSecondRight {
@@ -426,8 +496,8 @@
   font-size: 2.5rem;
   white-space: break-spaces;
   padding: 2%;
-  -webkit-animation: borderSecondTop 5s ease-in infinite;
-          animation: borderSecondTop 5s ease-in infinite;
+  -webkit-animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderSecondTop {
@@ -479,8 +549,8 @@
   font-size: 2.5rem;
   white-space: break-spaces;
   padding: 2%;
-  -webkit-animation: borderOptionsLeft 5s ease-in infinite;
-          animation: borderOptionsLeft 5s ease-in infinite;
+  -webkit-animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderOptionsLeft {
@@ -518,8 +588,8 @@
   font-size: 2.5rem;
   white-space: break-spaces;
   padding: 2%;
-  -webkit-animation: bordersOptionsBottom 5s ease-in infinite;
-          animation: bordersOptionsBottom 5s ease-in infinite;
+  -webkit-animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes bordersOptionsBottom {
