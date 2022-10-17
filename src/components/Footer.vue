@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <span>Made by </span><br/>
-    <a href="https://github.com/Scorni/Scorni-USBEatersQuizz">MAXENCE SCORNICIEL </a>
+    <a href="https://github.com/Scorni" target="blank">MAXENCE SCORNICIEL </a>
   </div>
 
 </template>

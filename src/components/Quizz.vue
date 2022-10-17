@@ -1,13 +1,16 @@
 <template>
     <div class="headers">
-      <h1>Welcome</h1>
-      <h1>On this</h1>
-      <h1>Quizz.</h1>
+      <div class="groupedHeaders">
+        <h1>Welcome</h1>
+        <h1>On this</h1>
+        <h1>Quizz.</h1>
+      </div>
+      
     </div>
     <div class="ghostBordersRight"></div>
     <div class="ghostBordersBottom"></div>
     <div class="headersDynamics">
-      <div class="groupedHeaders">
+      <div class="groupedHeadersDynamics">
         <h1 >Enjoy</h1>
         <h1>Your time</h1>
         <h1>Here.</h1>
@@ -23,41 +26,38 @@
     <div class="options">
         <form id="questionOptions">
               <div class="content category">
-                <h4>Category</h4>
                 <select v-model="categorySelected" id="categorySelected" ref="categorySelected" :disabled="categoryDisabled" placeholder="Category" clearable>
-                  <option v-for="value in this.requestOptions.category" class="m-2" :key="value.category" :value="value" >
+                  <option value="" selected disabled data-default>Category</option>
+                  <option v-for="value in this.requestOptions.category" :key="value.category" :value="value" >
                     {{value}}
                   </option>
                 </select>
               </div>
               <div class="content tag">
-                <h4>Tag</h4>
-                <select v-model="tagSelected" id="tagSelected" ref="tagSelected" class="m-2" :disabled="tagDisabled" clearable>
+                <select v-model="tagSelected" id="tagSelected" ref="tagSelected"  :disabled="tagDisabled" clearable>
+                  <option value="" selected disabled data-default>Tag</option>
                   <option v-for="value in this.requestOptions.tag" :key="value.tag" :value="value">
                     {{value}}
                   </option>
                 </select>
               </div>
               <div class="content difficulty">
-                <h4>Difficulty</h4>
                 <select v-model="difficultySelected" id="difficultySelected" >
-                <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
-                  {{value}}
-                </option>
+                  <option value="" selected disabled data-default>Difficulty</option>
+                  <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
+                    {{value}}
+                  </option>
               </select>
               </div>
-              <div class="content" v-if="categorySelected">
-                <span>Selected: {{ categorySelected}} - {{difficultySelected}}</span>
+              <div>
+                <div class="generateQuizz" ref="generateQuizz" id="generateQuizz" hidden>
+                  <button  class="questionLink" round>
+                    <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >Generate Quizz
+                    </router-link>
+                  </button>
+                </div>
               </div>
-              <div v-else>
-                <span>Selected: {{ tagSelected }} - {{ difficultySelected}} </span>
-              </div>
-              <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-                <button type="warning" class="questionLink" round>
-                  <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >Generate Quizz
-                  </router-link>
-                </button>
-              </div>
+              
         </form>
   </div>
   <div class="ghostBordersOptionsLeft"></div>
@@ -85,8 +85,10 @@ export default {
     showButtonGenerateQuizz: async function(){
       if((this.tagSelected !== "" && this.difficultySelected !== "") || (this.categorySelected !== "" && this.difficultySelected !== "")){
         this.$refs.generateQuizz.removeAttribute("hidden");
+
       }else{
         this.$refs.generateQuizz.setAttribute("hidden","hidden");
+        this.$refs.generateQuizz.classList.add("fadeIn")
       }
     },
   },

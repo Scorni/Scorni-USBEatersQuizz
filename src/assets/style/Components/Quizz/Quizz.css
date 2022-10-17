@@ -261,7 +261,13 @@
   src: URL("../../font/Mirage_Bold.otf") format("truetype");
 }
 
+/**
+*   Style
+**/
 .headers {
+  overflow: hidden;
+  line-height: 1.4;
+  letter-spacing: 0.005em;
   position: absolute;
   top: 7vh;
   left: 10%;
@@ -277,6 +283,8 @@
 
 .headersDynamics {
   overflow: hidden;
+  line-height: 1.4;
+  letter-spacing: 0.005em;
   position: absolute;
   left: 70%;
   top: 40%;
@@ -291,11 +299,243 @@
 }
 
 .groupedHeaders {
+  -webkit-animation: textAppears 2s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+          animation: textAppears 2s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+.groupedHeadersDynamics {
   vertical-align: bottom;
   margin-top: 15vh;
-  -webkit-animation: textSwitch 5s ease-in forwards;
-          animation: textSwitch 5s ease-in forwards;
-  display: none;
+  -webkit-animation: textAppears 2.75s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+          animation: textAppears 2.75s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+.groupedHeadersAlternate {
+  vertical-align: bottom;
+  margin-top: 15vh;
+  -webkit-animation: textSwitchAlternate 5s ease-in;
+          animation: textSwitchAlternate 5s ease-in;
+}
+
+/**
+*   Static headers borders
+**/
+.ghostBordersRight {
+  border-right: 1px black solid;
+  position: absolute;
+  left: 12%;
+  top: 43%;
+  height: 15vh;
+  width: 25%;
+  text-align: left;
+  font-size: 2.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+  -webkit-animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+.ghostBordersBottom {
+  border-bottom: 1px black solid;
+  position: absolute;
+  top: 39%;
+  height: 27.5vh;
+  width: 8vw;
+  text-align: left;
+  font-size: 2.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+  -webkit-animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+/**
+*   Dynamics headers borders
+**/
+.ghostBordersSecondRight {
+  border-right: 1px black solid;
+  position: absolute;
+  left: 43%;
+  top: 43%;
+  height: 15vh;
+  width: 25%;
+  text-align: left;
+  font-size: 2.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+  -webkit-animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+.ghostBordersSecondTop {
+  border-top: 1px black solid;
+  position: absolute;
+  left: 72%;
+  top: 37%;
+  height: 15vh;
+  width: 8vw;
+  text-align: left;
+  font-size: 2.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+  -webkit-animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+.options {
+  position: absolute;
+  left: 10%;
+  top: 70%;
+  height: 25vh;
+  width: 40%;
+  text-align: right;
+  font-family: 'Mirage_Bold';
+  background-color: #DDFEC6;
+  font-size: 1.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+}
+
+.ghostBordersOptionsLeft {
+  border-left: 1px black solid;
+  position: absolute;
+  left: 8.5%;
+  top: 82%;
+  height: 10vh;
+  width: 8vw;
+  text-align: left;
+  font-size: 2.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+  -webkit-animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+.ghostBordersOptionsBottom {
+  border-top: 1px black solid;
+  position: absolute;
+  left: 11.5%;
+  top: 98%;
+  height: 15vh;
+  width: 6vw;
+  text-align: left;
+  font-size: 2.5rem;
+  white-space: break-spaces;
+  padding: 2%;
+  -webkit-animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+          animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+.category {
+  position: absolute;
+  left: 2vw;
+  text-align: left;
+}
+
+.tag {
+  position: absolute;
+  left: 27vw;
+  text-align: left;
+}
+
+.difficulty {
+  position: absolute;
+  left: 15vw;
+  top: 15vh;
+  text-align: rigth;
+}
+
+select {
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+  margin-top: 2vh;
+  background-color: #859D75;
+  border-color: #859D75;
+  font-family: 'Mirage_Bold';
+  width: 10vw;
+  font-size: 1.45rem;
+  -webkit-transition: background-color 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: background-color 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC");
+  background-repeat: no-repeat;
+  background-position: 9vw center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 0.5vw;
+}
+
+select option {
+  border-color: #859D75;
+}
+
+select:hover {
+  background-color: #6c815e;
+}
+
+select:active, select:focus {
+  border-color: #859D75;
+  outline: none;
+}
+
+a {
+  color: #926dde;
+}
+
+.questionLink {
+  position: absolute;
+  right: 1.5vw;
+  margin-top: 13.5vh;
+  border: none;
+  background-color: #859D75;
+  padding: 1.5vh;
+  font-family: 'Mirage_Bold';
+  font-size: 1rem;
+  -webkit-transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.questionLink:hover {
+  background-color: #5f7253;
+}
+
+.fadeIn {
+  -webkit-animation: fadeIn 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+          animation: fadeIn 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+/*
+**  Animations Keyframes
+*/
+@-webkit-keyframes textAppears {
+  0% {
+    opacity: 0;
+    margin-top: 100vh;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes textAppears {
+  0% {
+    opacity: 0;
+    margin-top: 100vh;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes textSwitch {
@@ -328,13 +568,6 @@
   }
 }
 
-.groupedHeadersAlternate {
-  vertical-align: bottom;
-  margin-top: 15vh;
-  -webkit-animation: textSwitchAlternate 5s ease-in;
-          animation: textSwitchAlternate 5s ease-in;
-}
-
 @-webkit-keyframes textSwitchAlternate {
   0% {
     opacity: 0;
@@ -363,24 +596,6 @@
   }
 }
 
-/**
-*   Static headers borders
-**/
-.ghostBordersRight {
-  border-right: 1px black solid;
-  position: absolute;
-  left: 12%;
-  top: 43%;
-  height: 15vh;
-  width: 25%;
-  text-align: left;
-  font-size: 2.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-  -webkit-animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-          animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-}
-
 @-webkit-keyframes borderRight {
   0% {
     top: 48%;
@@ -403,20 +618,6 @@
   100% {
     top: 48%;
   }
-}
-
-.ghostBordersBottom {
-  border-bottom: 1px black solid;
-  position: absolute;
-  top: 39%;
-  height: 27.5vh;
-  width: 8vw;
-  text-align: left;
-  font-size: 2.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-  -webkit-animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-          animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderBottom {
@@ -443,24 +644,6 @@
   }
 }
 
-/**
-*   Dynamics headers borders
-**/
-.ghostBordersSecondRight {
-  border-right: 1px black solid;
-  position: absolute;
-  left: 43%;
-  top: 43%;
-  height: 15vh;
-  width: 25%;
-  text-align: left;
-  font-size: 2.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-  -webkit-animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-          animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-}
-
 @-webkit-keyframes borderSecondRight {
   0% {
     top: 40%;
@@ -483,21 +666,6 @@
   100% {
     top: 40%;
   }
-}
-
-.ghostBordersSecondTop {
-  border-top: 1px black solid;
-  position: absolute;
-  left: 72%;
-  top: 37%;
-  height: 15vh;
-  width: 8vw;
-  text-align: left;
-  font-size: 2.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-  -webkit-animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-          animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes borderSecondTop {
@@ -524,35 +692,6 @@
   }
 }
 
-.options {
-  position: absolute;
-  left: 10%;
-  top: 70%;
-  height: 25vh;
-  width: 40%;
-  text-align: right;
-  font-family: 'Mirage_Bold';
-  background-color: #DDFEC6;
-  font-size: 1.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-}
-
-.ghostBordersOptionsLeft {
-  border-left: 1px black solid;
-  position: absolute;
-  left: 8.5%;
-  top: 82%;
-  height: 10vh;
-  width: 8vw;
-  text-align: left;
-  font-size: 2.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-  -webkit-animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-          animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-}
-
 @-webkit-keyframes borderOptionsLeft {
   0% {
     top: 86%;
@@ -575,21 +714,6 @@
   100% {
     top: 86%;
   }
-}
-
-.ghostBordersOptionsBottom {
-  border-top: 1px black solid;
-  position: absolute;
-  left: 11.5%;
-  top: 98%;
-  height: 15vh;
-  width: 6vw;
-  text-align: left;
-  font-size: 2.5rem;
-  white-space: break-spaces;
-  padding: 2%;
-  -webkit-animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
-          animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
 @-webkit-keyframes bordersOptionsBottom {
@@ -616,40 +740,27 @@
   }
 }
 
-.category {
-  position: absolute;
-  left: 2vw;
-  text-align: left;
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.tag {
-  position: absolute;
-  left: 25vw;
-  text-align: left;
-}
-
-.difficulty {
-  position: absolute;
-  left: 15vw;
-  top: 15vh;
-  text-align: rigth;
-}
-
-select {
-  background-color: #859D75;
-  border-color: #859D75;
-  font-family: 'Mirage_Bold';
-}
-
-select option {
-  border: none;
-}
-
-a {
-  color: #926dde;
-}
-
-.questionLink {
-  margin-bottom: 5%;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=Quizz.css.map */

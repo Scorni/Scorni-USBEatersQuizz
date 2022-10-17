@@ -3,8 +3,13 @@
 @import  '../../Helpers/ceaser' ;
 @import  '../../Helpers/font';
 
-
+/**
+*   Style
+**/ 
 .headers{
+    overflow: hidden;
+    line-height: 1.4;
+    letter-spacing: 0.005em;
     position: absolute;
     top: 7vh;
     left: 10%;
@@ -19,7 +24,8 @@
 }
 .headersDynamics{
     overflow: hidden;
-
+    line-height: 1.4;
+    letter-spacing: 0.005em;
     position: absolute;
     left: 70%;
     top: 40%;
@@ -33,43 +39,21 @@
     vertical-align: bottom;
 }
 .groupedHeaders{
+    animation:  textAppears 2s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards ;
+}
+
+.groupedHeadersDynamics{
     vertical-align: bottom;
     margin-top: 15vh;
-    animation: textSwitch 5s ease-in forwards ;
-    display: none;
+    animation: textAppears 2.75s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards ;
 }
-@keyframes textSwitch {
-    0%{
-        opacity: 1;
-        margin-top: 15vh;
-    }
-    25%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 0;
-        margin-top: 100vh;
-        display: none;
-    }
-}
+
 .groupedHeadersAlternate{
     vertical-align: bottom;
     margin-top: 15vh;
     animation: textSwitchAlternate 5s ease-in;
 }
-@keyframes textSwitchAlternate {
-    0%{
-        opacity: 0;
-        margin-top: 100vh;
-    }
-    85%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-        margin-top: 15vh;
-    }
-}
+
 /**
 *   Static headers borders
 **/
@@ -86,17 +70,7 @@
     padding: 2%;
     animation: borderRight 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite ;
 }
-@keyframes borderRight {
-    0%{
-        top: 48%;
-    }
-    50%{
-        top: 51.5%;
-    }
-    100%{
-        top: 48%;
-    }
-}
+
 .ghostBordersBottom{
     border-bottom: 1px black solid ;
     position: absolute;
@@ -110,18 +84,7 @@
     animation: borderBottom 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite;
 
 }
-@keyframes borderBottom {
-    0%{
-        right: 64%;
-    }
-    50%{
-        right: 63%;
 
-    }
-    100%{
-        right: 64%;
-    }
-}
 /**
 *   Dynamics headers borders
 **/
@@ -139,18 +102,7 @@
     animation: borderSecondRight 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite;
 
 }
-@keyframes borderSecondRight {
-    0%{
-        top: 40%;
-    }
-    50%{
-        top: 37%;
 
-    }
-    100%{
-        top: 40%;
-    }
-}
 .ghostBordersSecondTop{
     border-top: 1px black solid ;
     position: absolute;
@@ -165,18 +117,7 @@
     animation: borderSecondTop 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite;
 
 }
-@keyframes borderSecondTop {
-    0%{
-        left: 70%;
-    }
-    50%{
-        left: 68%;
 
-    }
-    100%{
-        left: 70%;
-    }
-}
 .options{
     position: absolute;
     left: 10%;
@@ -205,17 +146,7 @@
     animation: borderOptionsLeft 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite;
 
 }
-@keyframes borderOptionsLeft {
-    0%{
-        top: 86%;
-    }
-    50%{
-        top: 88%;
-    }
-    100%{
-        top: 86%;
-    }
-}
+
 .ghostBordersOptionsBottom{
     border-top: 1px black solid ;
     position: absolute;
@@ -230,6 +161,177 @@
     animation: bordersOptionsBottom 5s cubic-bezier(0.550, 0.085, 0.680, 0.530) infinite;
 
 }
+
+.category{
+    position: absolute;
+    left: 2vw;
+    text-align: left;
+}
+.tag{
+    position: absolute;
+    left: 27vw;
+    text-align: left;
+}
+.difficulty{
+    position: absolute;
+    left: 15vw;
+    top: 15vh;
+    text-align: rigth;
+}
+select{
+    line-height: 1.4;
+    letter-spacing: 0.005em;
+    margin-top: 2vh;
+    background-color: #859D75;
+    border-color: #859D75;
+    font-family: 'Mirage_Bold';
+    width: 10vw;
+    font-size: 1.45rem;
+    transition: background-color 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC');
+    background-repeat: no-repeat;
+    background-position: 9vw center;
+    appearance: none;
+    padding-left: 0.5vw;
+    option{
+        border-color: #859D75;
+        
+    }
+}
+select:hover{
+    background-color: #6c815e;
+
+}
+select:active, select:focus{
+    border-color: #859D75;
+    outline:none;
+}
+
+a {
+color: #926dde;
+}
+.questionLink{
+    position: absolute;
+    right: 1.5vw;
+    margin-top: 13.5vh;
+    border: none;
+    background-color: #859D75;
+    padding: 1.5vh;
+    font-family: 'Mirage_Bold';
+    font-size: 1rem;
+    transition: background-color 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+}
+.questionLink:hover{
+    background-color: #5f7253;
+}
+.fadeIn{
+    animation: fadeIn 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) ;
+}
+
+/*
+**  Animations Keyframes
+*/
+
+@keyframes textAppears {
+    0%{
+        opacity: 0;
+        margin-top: 100vh;
+    }
+    70%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes textSwitch {
+    0%{
+        opacity: 1;
+        margin-top: 15vh;
+    }
+    25%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+        margin-top: 100vh;
+        display: none;
+    }
+}
+@keyframes textSwitchAlternate {
+    0%{
+        opacity: 0;
+        margin-top: 100vh;
+    }
+    85%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 15vh;
+    }
+}
+@keyframes borderRight {
+    0%{
+        top: 48%;
+    }
+    50%{
+        top: 51.5%;
+    }
+    100%{
+        top: 48%;
+    }
+}
+@keyframes borderBottom {
+    0%{
+        right: 64%;
+    }
+    50%{
+        right: 63%;
+
+    }
+    100%{
+        right: 64%;
+    }
+}
+@keyframes borderSecondRight {
+    0%{
+        top: 40%;
+    }
+    50%{
+        top: 37%;
+
+    }
+    100%{
+        top: 40%;
+    }
+}
+@keyframes borderSecondTop {
+    0%{
+        left: 70%;
+    }
+    50%{
+        left: 68%;
+
+    }
+    100%{
+        left: 70%;
+    }
+}
+@keyframes borderOptionsLeft {
+    0%{
+        top: 86%;
+    }
+    50%{
+        top: 88%;
+    }
+    100%{
+        top: 86%;
+    }
+}
 @keyframes bordersOptionsBottom {
     0%{
         left: 10.5%;
@@ -241,35 +343,14 @@
         left: 10.5%;
     }
 }
-.category{
-    position: absolute;
-    left: 2vw;
-    text-align: left;
-}
-.tag{
-    position: absolute;
-    left: 25vw;
-    text-align: left;
-}
-.difficulty{
-    position: absolute;
-    left: 15vw;
-    top: 15vh;
-    text-align: rigth;
-}
-select{
-    background-color: #859D75;
-    border-color: #859D75;
-    font-family: 'Mirage_Bold';
-
-    option{
-        border: none;
+@keyframes fadeIn{
+    0% {
+        opacity: 0;
     }
-}
-
-a {
-color: #926dde;
-}
-.questionLink{
-margin-bottom: 5%;
+    50%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
