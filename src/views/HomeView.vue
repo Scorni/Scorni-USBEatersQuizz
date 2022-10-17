@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <Quizz msg="Welcome on this Quizz for USB Eaters 💻 "/>
-    <Footer />
+    <Quizz/>
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   name: 'HomeView',
   components: {
     Quizz,
-    Footer,
+    // Footer,
 }
 }
 </script>

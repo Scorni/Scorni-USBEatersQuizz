@@ -1,88 +1,68 @@
 <template>
-  <div>
-    <el-row :gutter="20" justify="center">
-      <el-col  :span="12" class = "headers">
-        <h1>{{ msg }}</h1>
-        </el-col>
-    </el-row>
-    <el-row :gutter="20" justify="center">
-      <el-col  :span="12" >
-        <h2>Choose your options for the quizz</h2>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20" justify="center" >
-      <el-col :span="12" class="options">
+    <div class="headers">
+      <h1>Welcome</h1>
+      <h1>On this</h1>
+      <h1>Quizz</h1>
+    </div>
+    <div class="ghostBordersRight"></div>
+    <div class="ghostBordersBottom"></div>
+    <div class="headersDynamics">
+      <div class="groupedHeaders">
+        <h1 >Enjoy</h1>
+        <h1>Your time</h1>
+        <h1>Here.</h1>
+      </div>
+      
+    </div>
+    <div class="ghostBordersSecondRight"></div>
+    <div class="ghostBordersSecondTop"></div>
+    <div class="options">
         <form id="questionOptions">
-        <h3>U can either choose per category or per tag(s)</h3>
-          <el-row justify="center">
-            <el-col :span="8">
-              <div class="content">
+              <div class="content category">
                 <h4>Category</h4>
-                <el-select v-model="categorySelected" id="categorySelected" ref="categorySelected" :disabled="categoryDisabled" clearable>
-                  <el-option v-for="value in this.requestOptions.category" class="m-2" :key="value.category" :value="value">
+                <select v-model="categorySelected" id="categorySelected" ref="categorySelected" :disabled="categoryDisabled" placeholder="Category" clearable>
+                  <option v-for="value in this.requestOptions.category" class="m-2" :key="value.category" :value="value" >
                     {{value}}
-                  </el-option>
-                </el-select>
-                <br>    
+                  </option>
+                </select>
               </div>
-            </el-col>
-            <el-col :span="8">
-              <div class="content">
+              <div class="content tag">
                 <h4>Tag</h4>
-                <el-select v-model="tagSelected" id="tagSelected" ref="tagSelected" class="m-2" :disabled="tagDisabled" clearable>
-                  <el-option v-for="value in this.requestOptions.tag" :key="value.tag" :value="value">
+                <select v-model="tagSelected" id="tagSelected" ref="tagSelected" class="m-2" :disabled="tagDisabled" clearable>
+                  <option v-for="value in this.requestOptions.tag" :key="value.tag" :value="value">
                     {{value}}
-                  </el-option>
-                </el-select>
-                <br>
+                  </option>
+                </select>
               </div>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <h4>Difficulty</h4>
-              <el-select v-model="difficultySelected" id="difficultySelected" >
-                <el-option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
+              <div class="content difficulty">
+                <h4>Difficulty</h4>
+                <select v-model="difficultySelected" id="difficultySelected" >
+                <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
                   {{value}}
-                </el-option>
-              </el-select><br>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <br>
+                </option>
+              </select>
+              </div>
               <div class="content" v-if="categorySelected">
                 <span>Selected: {{ categorySelected}} - {{difficultySelected}}</span>
               </div>
               <div v-else>
                 <span>Selected: {{ tagSelected }} - {{ difficultySelected}} </span>
               </div>
-              <br>
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="24">
-              <br>
               <div class="col-1-1" ref="generateQuizz" id="generateQuizz" hidden>
-                <el-button type="warning" class="questionLink" round>
+                <button type="warning" class="questionLink" round>
                   <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >Generate Quizz
                   </router-link>
-                </el-button>
+                </button>
               </div>
-              <br>
-            </el-col>
-          </el-row>
         </form>
-      </el-col>
-    </el-row >
   </div>
+  <div class="ghostBordersOptionsLeft"></div>
+  <div class="ghostBordersOptionsBottom"></div>
 </template>
 
 <script>
 import { getOptions } from '../services/getRequestParameters';
-import '../assets/style/Home/Home.css'
 export default {
-  
   name: 'MyQuizz',
   props: {
     msg: String
@@ -128,30 +108,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.headers{
-  border: 2px solid #000000;
-  border-radius: 4px
-}
-.options{
-  border: 2px solid #000000;
-  border-radius: 4px;
-  
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #926dde;
-}
-.questionLink{
-  margin-bottom: 5%;
-}
+@import '../assets/style/Components/Quizz/Quizz.scss';
 </style>

@@ -34,10 +34,5 @@ export default {
 
 </script>
 <style scoped>
-.gitHubLogo{
-  border-top: 2px solid #000000;
-  padding:20px;
-  margin: 20px;
-}
-
+/* @import '../assets/style/Components/Footer'; */
 </style>

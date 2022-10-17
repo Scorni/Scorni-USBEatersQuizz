@@ -1,0 +1,238 @@
+@import  '../../Helpers/flexboxLayout' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+@import  '../../Helpers/font';
+
+.headers{
+    position: absolute;
+    left: 10%;
+    height: 55vh;
+    width: 25%;
+    text-align: left;
+    font-family: 'Mirage_Bold';
+    background-color: #FFECC7;
+    font-size: 4.5vh;
+    white-space: break-spaces;
+    padding: 2%;
+}
+.headersDynamics{
+    position: absolute;
+    left: 70%;
+    top: 40%;
+    height: 55vh;
+    width: 25%;
+    text-align: right;
+    font-family: 'Mirage_Bold';
+    background-color: #EAFCFF;
+    font-size: 4vh;
+    padding: 2%;
+    vertical-align: bottom;
+}
+.groupedHeaders{
+    vertical-align: bottom;
+    margin-top: 15vh;
+}
+
+/**
+*   Static headers borders
+**/
+.ghostBordersRight{
+    border-right: 1px black solid ;
+    position: absolute;
+    left: 12%;
+    top: 43%;
+    height: 15vh;
+    width: 25%;
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+    animation: borderRight 5s ease-in infinite;
+}
+@keyframes borderRight {
+    0%{
+        top: 48%;
+    }
+    50%{
+        top: 51.5%;
+    }
+    100%{
+        top: 48%;
+    }
+}
+.ghostBordersBottom{
+    border-bottom: 1px black solid ;
+    position: absolute;
+    top: 39%;
+    height: 27.5vh;
+    width: 8vw;
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+    animation: borderBottom 5s ease-in infinite;
+
+}
+@keyframes borderBottom {
+    0%{
+        right: 64%;
+    }
+    50%{
+        right: 63%;
+
+    }
+    100%{
+        right: 64%;
+    }
+}
+/**
+*   Dynamics headers borders
+**/
+.ghostBordersSecondRight{
+    border-right: 1px black solid ;
+    position: absolute;
+    left: 43%;
+    top: 43%;
+    height: 15vh;
+    width: 25%;
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+    animation: borderSecondRight 5s ease-in infinite;
+
+}
+@keyframes borderSecondRight {
+    0%{
+        top: 40%;
+    }
+    50%{
+        top: 37%;
+
+    }
+    100%{
+        top: 40%;
+    }
+}
+.ghostBordersSecondTop{
+    border-top: 1px black solid ;
+    position: absolute;
+    left: 72%;
+    top: 37%;
+    height: 15vh;
+    width: 8vw;
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+    animation: borderSecondTop 5s ease-in infinite;
+
+}
+@keyframes borderSecondTop {
+    0%{
+        left: 70%;
+    }
+    50%{
+        left: 68%;
+
+    }
+    100%{
+        left: 70%;
+    }
+}
+.options{
+    position: absolute;
+    left: 10%;
+    top: 70%;
+    height: 25vh;
+    width: 40%;
+    text-align: right;
+
+    font-family: 'Mirage_Bold';
+    background-color: #DDFEC6;
+    font-size: 1.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+}
+.ghostBordersOptionsLeft{
+    border-left: 1px black solid ;
+    position: absolute;
+    left: 8.5%;
+    top: 82%;
+    height: 10vh;
+    width: 8vw;
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+    animation: borderOptionsLeft 5s ease-in infinite;
+
+}
+@keyframes borderOptionsLeft {
+    0%{
+        top: 86%;
+    }
+    50%{
+        top: 88%;
+    }
+    100%{
+        top: 86%;
+    }
+}
+.ghostBordersOptionsBottom{
+    border-top: 1px black solid ;
+    position: absolute;
+    left: 11.5%;
+    top:98%;
+    height: 15vh;
+    width: 6vw;
+    text-align: left;
+    font-size: 2.5rem;
+    white-space: break-spaces;
+    padding: 2%;
+    animation: bordersOptionsBottom 5s ease-in infinite;
+
+}
+@keyframes bordersOptionsBottom {
+    0%{
+        left: 10.5%;
+    }
+    50%{
+        left: 8.5%;
+    }
+    100%{
+        left: 10.5%;
+    }
+}
+.category{
+    position: absolute;
+    left: 2vw;
+    text-align: left;
+}
+.tag{
+    position: absolute;
+    left: 25vw;
+    text-align: left;
+}
+.difficulty{
+    position: absolute;
+    left: 15vw;
+    top: 15vh;
+    text-align: rigth;
+}
+select{
+    background-color: #859D75;
+    border-color: #859D75;
+    font-family: 'Mirage_Bold';
+
+    option{
+        border: none;
+    }
+}
+
+a {
+color: #926dde;
+}
+.questionLink{
+margin-bottom: 5%;
+}

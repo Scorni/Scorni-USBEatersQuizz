@@ -1,12 +1,7 @@
-@import  './Helpers/mediaQueries' ;
-@import  './Helpers/ceaser.scss' ;
-@import './Helpers/font.scss';
-
-
-* {
-    margin-top: 0;
-    box-sizing: border-box;
-  }
+@import  '../../Helpers/flexboxLayout' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+@import  '../../Helpers/font';
 
 body{
     margin: 0;
