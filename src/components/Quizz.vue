@@ -10,15 +10,10 @@
     <div class="ghostBordersRight"></div>
     <div class="ghostBordersBottom"></div>
     <div class="headersDynamics">
-      <div class="groupedHeadersDynamics">
-        <h1 >Enjoy</h1>
-        <h1>Your time</h1>
-        <h1>Here.</h1>
-      </div>
-      <div class="groupedHeadersAlternate">
-        <h1>Generate</h1>
-        <h1>Your</h1>
-        <h1>Question.</h1>
+      <div class="groupedHeadersDynamics" ref="groupedHeadersDynamics">
+        <h1> {{headers[0][0]}} </h1>
+        <h1> {{headers[0][1]}} </h1>
+        <h1> {{headers[0][2]}} </h1>
       </div>
     </div>
     <div class="ghostBordersSecondRight"></div>
@@ -78,7 +73,8 @@ export default {
       difficultySelected :"",
       tagSelected :"",
       categoryDisabled :false,
-      tagDisabled: false
+      tagDisabled: false,
+      headers: [['Enjoy','Your time','Here.'],['Generate','Your','Question.']],
     };
   },
   methods: {
@@ -91,6 +87,18 @@ export default {
         this.$refs.generateQuizz.classList.add("fadeIn")
       }
     },
+    swipeHeaders(){
+      this.$refs.groupedHeadersDynamics.classList.add('textSwitch')
+
+      setInterval(() => {
+
+        // let spliceHeaders = this.headers.splice(0,1);
+        // this.headers.push(spliceHeaders[0])
+        this.$refs.groupedHeadersDynamics.classList.remove('textSwitch')
+        this.$refs.groupedHeadersDynamics.classList.add('textAppears')
+
+      }, 5000);
+    }
   },
   watch: {
     categorySelected: function() {
@@ -108,6 +116,8 @@ export default {
   },
   mounted(){
     this.$confetti.stop()
+    this.swipeHeaders()
+    
   }
 }
 </script>
