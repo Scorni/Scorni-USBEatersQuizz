@@ -299,15 +299,20 @@
 }
 
 .groupedHeaders {
-  -webkit-animation: textAppears 2s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-          animation: textAppears 2s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  -webkit-animation: textAppears 1.75s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+          animation: textAppears 1.75s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+.textAppears {
+  -webkit-animation: textAppears 1.75s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+          animation: textAppears 1.75s cubic-bezier(0.86, 0, 0.07, 1) infinite;
 }
 
 .groupedHeadersDynamics {
   vertical-align: bottom;
   margin-top: 15vh;
-  -webkit-animation: textAppears 2.75s cubic-bezier(0.86, 0, 0.07, 1) forwards;
-          animation: textAppears 2.75s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  -webkit-animation: textAppears 2.25s cubic-bezier(0.86, 0, 0.07, 1);
+          animation: textAppears 2.25s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
 .groupedHeadersAlternate {
@@ -384,6 +389,7 @@
 
 .options {
   position: absolute;
+  overflow: hidden;
   left: 10%;
   top: 70%;
   height: 25vh;
@@ -458,11 +464,13 @@ select {
   transition: background-color 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC");
   background-repeat: no-repeat;
-  background-position: 9vw center;
+  background-position: 8.5vw center;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  padding-left: 0.5vw;
+  padding-inline: 0.5vw;
+  -webkit-animation: fadeIn 3.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+          animation: fadeIn 3.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
 }
 
 select option {
@@ -509,11 +517,11 @@ a {
 */
 @-webkit-keyframes textAppears {
   0% {
-    opacity: 0;
+    opacity: 1;
     margin-top: 100vh;
   }
-  70% {
-    opacity: 0;
+  50% {
+    opacity: 1;
   }
   80% {
     opacity: 1;
@@ -524,11 +532,11 @@ a {
 }
 @keyframes textAppears {
   0% {
-    opacity: 0;
+    opacity: 1;
     margin-top: 100vh;
   }
-  70% {
-    opacity: 0;
+  50% {
+    opacity: 1;
   }
   80% {
     opacity: 1;

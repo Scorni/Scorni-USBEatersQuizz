@@ -88,16 +88,14 @@ export default {
       }
     },
     swipeHeaders(){
-      this.$refs.groupedHeadersDynamics.classList.add('textSwitch')
-
       setInterval(() => {
-
-        // let spliceHeaders = this.headers.splice(0,1);
-        // this.headers.push(spliceHeaders[0])
-        this.$refs.groupedHeadersDynamics.classList.remove('textSwitch')
-        this.$refs.groupedHeadersDynamics.classList.add('textAppears')
-
-      }, 5000);
+        let spliceHeaders = this.headers.splice(0,1);
+        this.headers.push(spliceHeaders[0])
+        this.$refs.groupedHeadersDynamics.style.animationDirection = "reverse";
+        this.$refs.groupedHeadersDynamics.style.animation = 'none';
+        this.$refs.groupedHeadersDynamics.offsetHeight; /* trigger reflow */
+        this.$refs.groupedHeadersDynamics.style.animation = null; 
+      }, 3000);
     }
   },
   watch: {

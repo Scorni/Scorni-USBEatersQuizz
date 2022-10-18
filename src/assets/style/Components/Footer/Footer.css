@@ -263,15 +263,26 @@
 
 .footer {
   position: absolute;
-  font-size: 1.5rem;
+  font-size: 3vh;
   top: 15vh;
-  right: 0vw;
   font-family: 'Mirage_Bold';
+  -webkit-animation: fadeInRight 3s 4.25s forwards;
+          animation: fadeInRight 3s 4.25s forwards;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.footer p {
+  padding: 0;
+  margin: 0;
 }
 
 a {
+  padding: 0;
+  margin: 0;
   -webkit-text-decoration: underline solid transparent;
           text-decoration: underline solid transparent;
   color: #2C3E50;
@@ -284,5 +295,37 @@ a {
 a:visited, a:hover {
   color: #2C3E50;
   text-decoration: underline;
+}
+
+/**
+ ** Animations
+ */
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    right: -2%;
+  }
+  75% {
+    opacity: 1;
+    right: -2%;
+  }
+  100% {
+    opacity: 1;
+    right: -2%;
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    right: -2%;
+  }
+  75% {
+    opacity: 1;
+    right: -2%;
+  }
+  100% {
+    opacity: 1;
+    right: -2%;
+  }
 }
 /*# sourceMappingURL=Footer.css.map */

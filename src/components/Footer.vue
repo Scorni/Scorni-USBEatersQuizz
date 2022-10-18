@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <span>Made by </span><br/>
+    <p>Made by <br/></p>
     <a href="https://github.com/Scorni" target="blank">MAXENCE SCORNICIEL </a>
   </div>
 

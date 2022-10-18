@@ -41,11 +41,14 @@
 .groupedHeaders{
     animation:  textAppears 1.75s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards ;
 }
+.textAppears{
+    animation:  textAppears 1.75s cubic-bezier(0.860, 0.000, 0.070, 1.000) infinite ;
 
+}
 .groupedHeadersDynamics{
     vertical-align: bottom;
     margin-top: 15vh;
-    animation: textAppears 2.25s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards ;
+    animation: textAppears 2.25s cubic-bezier(0.860, 0.000, 0.070, 1.000) ;
 }
 
 .groupedHeadersAlternate{
@@ -120,6 +123,7 @@
 
 .options{
     position: absolute;
+    overflow: hidden;
     left: 10%;
     top: 70%;
     height: 25vh;
@@ -190,12 +194,12 @@ select{
     transition: background-color 0.25s cubic-bezier(0.550, 0.085, 0.680, 0.530);
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC');
     background-repeat: no-repeat;
-    background-position: 9vw center;
+    background-position: 8.5vw center;
     appearance: none;
-    padding-left: 0.5vw;
+    padding-inline: 0.5vw;
+    animation: fadeIn 3.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
     option{
         border-color: #859D75;
-        
     }
 }
 select:hover{
@@ -234,11 +238,11 @@ color: #926dde;
 
 @keyframes textAppears {
     0%{
-        opacity: 0;
-        margin-top: 100vh;
+        opacity: 1;
+        margin-top: 100vh
     }
-    70%{
-        opacity: 0;
+    50%{
+        opacity: 1;
     }
     80%{
         opacity: 1;
