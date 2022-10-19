@@ -1,4 +1,4 @@
-@import  '../../Helpers/flexboxLayout' ;
+@import  '../../Helpers/flexboxLayout.scss' ;
 @import  '../../Helpers/mediaQueries' ;
 @import  '../../Helpers/ceaser' ;
 @import  '../../Helpers/font';
@@ -18,10 +18,11 @@
     text-align: left;
     font-family: 'Mirage_Bold';
     background-color: #FFECC7;
-    font-size: 4.5vh;
+    font-size: 2vw;
     white-space: break-spaces;
     padding: 2%;
 }
+
 .headersDynamics{
     overflow: hidden;
     line-height: 1.4;
@@ -34,27 +35,16 @@
     text-align: right;
     font-family: 'Mirage_Bold';
     background-color: #EAFCFF;
-    font-size: 4vh;
+    font-size: 2vw;
     padding: 2%;
     vertical-align: bottom;
 }
 .groupedHeaders{
-    animation:  textAppears 1.75s cubic-bezier(0.860, 0.000, 0.070, 1.000) forwards ;
-}
-.textAppears{
-    animation:  textAppears 1.75s cubic-bezier(0.860, 0.000, 0.070, 1.000) infinite ;
-
+    animation:  textAppears 2.5s cubic-bezier(0.860, 0.000, 0.070, 1.000) ;
 }
 .groupedHeadersDynamics{
     vertical-align: bottom;
-    margin-top: 15vh;
-    animation: textAppears 2.25s cubic-bezier(0.860, 0.000, 0.070, 1.000) ;
-}
-
-.groupedHeadersAlternate{
-    vertical-align: bottom;
-    margin-top: 15vh;
-    animation: textSwitchAlternate 5s ease-in;
+    animation: textAppearsLoop 6.5s cubic-bezier(0.860, 0.000, 0.070, 1.000) infinite ;
 }
 
 /**
@@ -197,7 +187,7 @@ select{
     background-position: 8.5vw center;
     appearance: none;
     padding-inline: 0.5vw;
-    animation: fadeIn 3.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+    animation: fadeIn 3.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) normal;
     option{
         border-color: #859D75;
     }
@@ -238,17 +228,34 @@ color: #926dde;
 
 @keyframes textAppears {
     0%{
+        opacity: 0;
+        margin-top: 100vh
+    }
+    80%{
         opacity: 1;
+        margin-top: 0vh
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0vh
+    }
+}
+@keyframes textAppearsLoop {
+    0%{
+        opacity: 0;
         margin-top: 100vh
     }
     50%{
         opacity: 1;
+        margin-top: 15vh
     }
     80%{
         opacity: 1;
+        margin-top: 15vh
     }
     100%{
-        opacity: 1;
+        opacity: 0;
+        margin-top: 100vh
     }
 }
 @keyframes textSwitch {
