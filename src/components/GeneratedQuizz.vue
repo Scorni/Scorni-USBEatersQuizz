@@ -1,15 +1,8 @@
 <template>
-  <div >
-    <div class="content" v-if="$route.params.category">
-      <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
-    </div>
-    <div v-else-if="$route.params.tag">
-      <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
-    </div>
-    
+  <div>
     <div class="questionList">
       <div class="questionHeader">
-        <span>Questions</span>
+        <span>Questions.</span>
       </div>
       <div class="allQuestions">
         <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" class="question"  ref="question" >
@@ -28,12 +21,17 @@
               } ">
             {{this.questionGenerated.indexOf(value)}}</router-link>
           </div>
-    </div>
+        </div>
       </div>
-      
     </div>
-      
-    
+    <div class="content" v-if="this.params.tag">
+      <span class="categoryBanner">{{this.params.tag}}</span>
+      <span class="difficultyBanner">{{this.params.difficulty}}</span>
+    </div>
+    <div v-else-if="this.params.category">
+      <span class="tagBanner">{{ this.params.category }}</span>
+      <span class="difficultyBanner">{{ this.params.difficulty}}</span>
+    </div>
     <div v-show="showResultLink">
     <button class="questionLink" type="warning" round>
       <router-link class="routerLink" :to="{
@@ -46,7 +44,7 @@
       </router-link>
     </button>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -60,6 +58,7 @@ export default {
       countAnsweredQuestion : 0,
       showResultLink : false,
       type: "",
+      params: localStorage
     };
   },
   methods: {
@@ -85,9 +84,24 @@ export default {
           (this.type[i] === ( "success") || this.type[i] === ( "danger")) ? this.countAnsweredQuestion++ : this.countAnsweredQuestion
       }   
       this.countAnsweredQuestion === 10 ?  this.showResultLink = true : this.showResultLink
+    },
+    setInStorage: function(){
+      if(!localStorage.tag || !localStorage.category){
+        if(this.$route.params.category){
+          localStorage.clear()
+          localStorage.setItem('category',this.$route.params.category)
+          localStorage.setItem('difficulty',this.$route.params.difficulty)
+          
+        }else if( this.$route.params.tag){
+          localStorage.clear()
+          localStorage.setItem('tag',this.$route.params.tag)
+          localStorage.setItem('difficulty',this.$route.params.difficulty)
+        }
+      }
     }
   },
   mounted(){
+    this.setInStorage()
     this.countSuccessQuestion();
     this.updateStyle();
     this.finalResult();
@@ -96,11 +110,8 @@ export default {
   updated(){
   }
 }
-
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import '../assets/style/Components/GeneratedQuizz/GeneratedQuizz';
-
 </style>

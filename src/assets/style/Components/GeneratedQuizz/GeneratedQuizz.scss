@@ -1,36 +1,176 @@
+@import  '../../Helpers/flexboxLayout.scss' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+
 .questionList{
+    @include devices(TV) {
+        top: 7vh;
+        left: 40vw;
+        width: 22.5vw;
+        padding-bottom: 20px;
+        height: auto;
+        font-size:2.5rem;
+    }
+    @include devices(desktop) {
+        top: 25%;
+        left: 35vw;
+        width: 30vw;        
+        padding-bottom: 20px;
+        height: auto;
+        font-size:2.5rem;
+    }
+    @include devices(laptops) {
+        top: 10vh;
+        left: 33vw;
+        width: 35vw;
+        height: auto;
+        font-size:2.5rem;
+    }
+    @include devices(ipad) {
+        top: 10vh;
+        left: 30vw;
+        width: 45vw;
+        height: auto;
+        font-size:1.5rem;
+    }
+    @include devices(mobile) {
+        top: 5vh;
+        left: 25vw;
+        width: 50vw;
+        height: auto;
+        padding-bottom: 0px;
+
+        font-size:1.5rem;
+    }
     background-color: #FFECC7 !important;
 
     font-family: 'Mirage_Bold';
     position: absolute;
     background-color: FFECC7;
     border: none;
-    top: 10vh;
-    left: 40vw;
+    
     line-height: 1.4;
     letter-spacing: 0.005em;
-    width: 25vw;
-    height: 85%;
-    font-size:2.5rem;
+    
 
     .questionHeader{
         font-family: 'Mirage_Bold';
-        margin-block: 5vh;
+        margin: 5vh;
     }
     
     .question{
-        padding-inline: 25%;
-        margin-bottom: 4vh;
-        height: 85%;
-        font-size:1.5rem;
+        @include devices(TV) {
+            margin-bottom: 2.5vh;
+            height: 85%;
+            font-size:2rem;
+            margin-inline: 15%;
+        }
+        @include devices(desktop) {
+            padding-inline: 25%;
+            margin-bottom: 2vh;
+            height: 85%;
+            font-size:1.5rem;
+            margin-inline: 15%;
+        }
+        @include devices(laptops) {
+            padding-inline: 25%;
+            margin-bottom: 2.5vh;
+            height: 85%;
+            font-size:1.5rem;
+            margin-inline: 15%;
+        }
+        @include devices(ipad) {
+            padding-inline: 25%;
+            margin-bottom: 2vh;
+            height: 85%;
+            font-size:1.5rem;
+            margin-inline: 10%;
+        }
+        @include devices(mobile) {
+            padding-inline: 25%;
+            margin-bottom: 2vh;
+            height: 85%;
+            font-size:1.5rem;
+            margin-inline: 10%;
+        }
+        border: #111111 1px solid;
         background-color: #EAFCFF;
-        margin-inline: 10%;
+        
 
     }
     .questionsLink{
     }
     
 }
-#9{
-    background-color: aliceblue;
+.tagBanner, .categoryBanner{
+    position: absolute;
+    font-family: 'Mirage_Bold';
+    color: #314832;
+    transform: rotate(-90deg);
+
+    @include devices(TV) {
+        font-size: 17vh;
+        top: 40%;
+        left: 17vw;
+    }
+    @include devices(desktop) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 10vw;
+    }
+    @include devices(laptops) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 10vw;
+
+    }
+    @include devices(ipad) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 10vw;
+
+    }
+    @include devices(mobile) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 10vw;
+
+    }
+}
+.difficultyBanner{
+    position: absolute;
+
+    transform: rotate(90deg);
+    font-family: 'Mirage_Bold';
+    font-size: 2rem;
+    color: #314832;
+
+    @include devices(TV) {
+        font-size: 20vh;
+        top: 36vh;
+        left: 60vw;
+    }
+    @include devices(desktop) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 60vw;
+    }
+    @include devices(laptops) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 60vw;
+
+    }
+    @include devices(ipad) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 60vw;
+
+    }
+    @include devices(mobile) {
+        font-size: 15rem;
+        top: 30vh;
+        left: 60vw;
+
+    }
 }

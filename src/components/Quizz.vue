@@ -109,7 +109,6 @@ export default {
   mounted(){
     this.$confetti.stop()
     this.swipeHeaders()
-    
   }
 }
 </script>

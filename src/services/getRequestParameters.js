@@ -2,11 +2,7 @@ const options = {
     "category" : [
         "Linux",
         "DevOps",
-        "Networking",
-        "Programming (PHP, JS, Pythong and etc.)",
-        "Cloud",
         "Docker",
-        "Kubernetes",
     ],
     "difficulty" : [
         "Easy",
