@@ -1,3 +1,4 @@
+
 .questionVue{
     text-align: justify;
     font-family: 'Mirage_Bold';
@@ -9,20 +10,67 @@
     background-color: #DDFEC6;
     text-align: center;
     width: 30%;
-    height: 40%;
     top: 10%;
     left: 10%;
+    padding-block: 5%;
+}
+.borderQuestionLeft{
+    position: absolute;
+    left: 8%;
+    padding-block: 5%;
+    width: 30vw;
+    height: 7vh;
+    border-left: 1px solid black;
+    animation: borderQuestionLeftMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+}
+.borderQuestionBottom{
+    position: absolute;
+    top: 39%;
+    left: 8%;
+    padding-block: 5%;
+
+    width: 10%;
+    height: 15vh;
+    border-top: 1px solid black;
+    animation: borderQuestionBottomMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
 }
 .answers{
     position: absolute;
     right: 10%;
-    bottom: 10%;
+    bottom: 6%;
+    z-index: 1;
+    font-size: 1.1vw;
 
     background-color: #EAFCFF;
     width: 30vw;
-    height: 45vh;
+    height: 50vh;
     
 }
+.borderAnswerTop{
+    position: absolute;
+    z-index: 0;
+    right: 30%;
+    bottom: 15%;
+
+    width: 12vw;
+    height: 45vh;
+    border-top: 1px solid black;
+    animation: borderTopAnswerMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+
+}
+.borderAnswerLeft{
+    position: absolute;
+    z-index: 0;
+
+    border-left: 1px solid black;
+    right: 30%;
+    bottom: 35%;
+
+    width: 12vw;
+    height: 25vh;
+    animation: borderLeftAnswerMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+}
+
 .default, .primary, .success, .danger{
     margin-left: 10%;
     width: 50px;
@@ -50,12 +98,122 @@
 p{
     margin-top: -40px;
     margin-left: 25%;
-    max-width: 250px;
+    max-width: 20vw;
     white-space: normal;
 
 }
+.confirmAnswer{
+    color: #2C3E50;
+    position: absolute;
+    z-index: 2;
+    right: 4%;
+    bottom: 2%;
+    padding: 3vh;
+    background-color: #859D75;
+    border: none;
+    font-family: 'Mirage_Bold';
+    font-size: 1.5rem;
+    transition: 2s;
+}
+.confirmAnswer:hover{
+    background-color: #55644b;
+    cursor: pointer;
+}
+.resultContainer{
+    position: absolute;
+    overflow: hidden;
+    font-size: 2rem;
+    width: 30vw;
+    height: 10vh;
+    top: 60%;
+    left: 10%;
+}
 .resultLink{
+    font-family: 'Mirage_Bold';
+    font-size: 3rem;
+    position: absolute;
     background-color: #D9C6A1;
-    width: 100px;
+    overflow: hidden;
+    width: 30vw;
+    left: 85%;
+    padding: 1vw;
+    height: 10vh;
+    border: 1px solid black;
+    transition: 2s;
+}
+.resultLink:hover Svg{
+    transform: rotate(-360deg);
+
+}
+.resultLink:hover{
+    left: 0%;
+
+}
+.result{
+
+    position: absolute;
+    text-align: center;
+    background-color:#FFECC7 ;
+    width: 30vw;
+    padding: 1vw;
+    height: 10vh;
+    border: 1px solid black;
+}
+.arrow{
+    position: absolute;
+    left: 3%;
+    top: 25%;
+    width: 2.5vw;
+    transition: 2s;
+    transform: rotate(-180deg);
+
 }
 
+/**
+*       Animation
+**/
+@keyframes borderLeftAnswerMoving {
+    0%{
+        bottom: 33%;
+    }
+    50%{
+        bottom: 35%;
+    }
+    100%{
+        bottom: 33%;
+    }
+}
+
+@keyframes borderTopAnswerMoving {
+    0%{
+        right: 28%;
+    }
+    50%{
+        right: 30%;
+    }
+    100%{
+        right: 28%;
+    }
+}
+@keyframes borderQuestionLeftMoving {
+    0%{
+        top: 18%;
+    }
+    50%{
+        top: 20%;
+    }
+    100%{
+        top: 18%;
+    }
+}
+@keyframes borderQuestionBottomMoving {
+    0%{
+        left: 10%;
+    }
+    50%{
+        left: 8%;
+    }
+    100%{
+        left: 10%;
+    }
+}

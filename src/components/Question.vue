@@ -1,17 +1,10 @@
 <template>
   <div class="questionVue">
-    <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion" id="result">
-      <h2> Champion ! Vraiment un mâle alpha celui-ci </h2>
-    </div>
-    <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result">
-      <h2> Loser ! Ta réponse dégoute</h2>
-      <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
-      <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
-    </div>
-
-        <div class="headerQuestion">
-          <span>{{question}}</span>
-        </div>
+      <div class="headerQuestion">
+        <span>{{question}}</span>
+      </div>
+      <div class="borderQuestionLeft"></div>
+      <div class="borderQuestionBottom"></div>
       <!-- TODO: fix responsivness -->
       <div v-if="!this.checkCorrectAnswersLength()" justify="start" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
@@ -31,32 +24,50 @@
 
         </div>
       </div>
+      <div class="borderAnswerLeft"></div>
+      <div class="borderAnswerTop"></div>
 
     <div v-if="this.numberOfAnswer > 0">
       <div  ref="validateAnswers" id="validateAnswers">
-        <button class="confirmAnswer" @click="this.getResult()">Confirm answer(s)</button>
+        <button class="confirmAnswer" @click="this.getResult()">Confirm</button>
       </div>
     </div>
-    <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
-      <button class="resultLink" type="warning" round>
-        <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
-      </button>
+    <div class="resultContainer">
+      <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion" id="result" class="result">
+        <h2>Right.</h2>
+      </div>
+      <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result" class="result">
+        <h2>Wrong.</h2>
+        <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
+        <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
+      </div>
+
+      <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
+        <button class="resultLink" type="warning" round>
+          <Svg></Svg>
+          <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
+        </button>
+      </div>
+      <div v-else-if="this.badAnswers > 0 || this.result === false">
+        <button class="resultLink" type="warning" round>
+          <Svg></Svg>
+
+          <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
+        </button>
+      </div>
     </div>
-    <div v-else-if="this.badAnswers > 0 || this.result === false">
-      <button class="resultLink" type="warning" round>
-        <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
-      </button>
-    </div>
+    
   </div>
 </template>
 
 <script>
-
+import Svg from '../components/SVG/Arrow.vue'
 export default {
   name: 'MyQuestion',
   props: { msg :String
   },
   components : {
+    Svg,
 },
   data() {
     return {

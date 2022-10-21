@@ -6,8 +6,8 @@
       </div>
       <div class="allQuestions">
         <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" class="question"  ref="question" >
-          <div class="questionsLink" :type="this.type[questionGenerated.indexOf(value)]" >
-            <router-link class="routerLink"
+          <div :class="('questionsLink' + this.type[questionGenerated.indexOf(value)])" :type="this.type[questionGenerated.indexOf(value)]" >
+            <router-link class="'routerLink'"
             v-bind:type="type[questionGenerated.indexOf(value)]"
             :to="{ 
               name: 'question', 
@@ -33,7 +33,8 @@
       <span class="difficultyBanner">{{ this.params.difficulty}}</span>
     </div>
     <div v-show="showResultLink">
-    <button class="questionLink" type="warning" round>
+    <button class="finalResultLink" type="warning" round>
+      <Svg></Svg>
       <router-link class="routerLink" :to="{
         name : 'result',
         params: {
@@ -49,6 +50,8 @@
 
 <script>
 import { getQuestions } from '../services/generateQuestion';
+import Svg from '../components/SVG/Arrow.vue'
+
 export default {
   name: 'GeneratedQuizz',
   data() {
@@ -60,6 +63,9 @@ export default {
       type: "",
       params: localStorage
     };
+  },
+  components : {
+    Svg,
   },
   methods: {
     getQuestion:async function(){
@@ -76,6 +82,8 @@ export default {
       this.type = new Array();
       for(let i in this.successQuestion){
         this.successQuestion[i] === "success" ? this.type[i] = "success" : this.type[i] = "danger"
+        console.log(this.type[i]);
+
       }
     },
     

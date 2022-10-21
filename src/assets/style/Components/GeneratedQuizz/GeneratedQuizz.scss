@@ -174,3 +174,22 @@
 
     }
 }
+.questionsLinksuccess{
+    background-color:#C8FCB0;
+}
+.questionsLinkdanger{
+    background-color:#FFD1D1;
+}
+.finalResultLink{
+    position: absolute;
+    right: 37.5vw;
+    bottom: 2vh;
+    border: none;
+    background-color: #859D75;
+    padding: 5vh;
+    width: 22.5vw;
+
+    font-family: 'Mirage_Bold';
+    font-size: 1.5rem;
+    transition: background-color 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+}
