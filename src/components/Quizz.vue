@@ -44,15 +44,16 @@
       </select>
       </div>
       <div>
-        <div class="generateQuizz" ref="generateQuizz" id="generateQuizz" hidden>
+        
+      </div>
+    </form>
+  </div>
+  <div class="generateQuizz" ref="generateQuizz" id="generateQuizz" hidden>
           <button  class="questionLink" round>
             <router-link class="routerLink" :to="{ name: 'generatedQuizz', params: { category : this.categorySelected, difficulty: this.difficultySelected, tag: this.tagSelected}}" >Generate Quizz
             </router-link>
           </button>
         </div>
-      </div>
-    </form>
-  </div>
   <div class="ghostBordersOptionsLeft"></div>
   <div class="ghostBordersOptionsBottom"></div>
 </template>

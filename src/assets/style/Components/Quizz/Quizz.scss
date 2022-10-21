@@ -201,23 +201,37 @@ select:active, select:focus{
     outline:none;
 }
 
-a {
-color: #926dde;
-}
+
 .questionLink{
     position: absolute;
-    right: 1.5vw;
-    margin-top: 13.5vh;
+    right: 40vw;
+    margin-top: 43.5vh;
     border: none;
     background-color: #859D75;
-    padding: 1.5vh;
+    padding: 5vh;
     font-family: 'Mirage_Bold';
-    font-size: 1rem;
+    font-size: 1.5rem;
     transition: background-color 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530);
 }
 .questionLink:hover{
     background-color: #5f7253;
 }
+.questionLink a:active{
+    animation: beat 1s ease-in-out backwards;
+
+}
+.test a:active{
+    animation: beat 1s ease-in-out backwards;
+
+}
+@keyframes beat {
+    0% {
+              transform: scale(1, 1);
+    }
+    100% {
+              transform: scale(0.5, 0.5);
+    }
+  }
 .fadeIn{
     animation: fadeIn 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) ;
 }

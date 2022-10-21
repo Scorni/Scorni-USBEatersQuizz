@@ -1,87 +1,62 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }} </h1>
-        <el-row :gutter="20" justify="center">    
-          <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-            <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion" id="result">
-              <h2> Champion ! Vraiment un mâle alpha celui-ci </h2>
-              <Svg id="svg" type="champion"></Svg>
-            </div>
-            <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result">
-              <h2> Loser ! Ta réponse dégoute</h2>
-              <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
-              <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
-              <Svg id="svg" type="loser"></Svg>
-            </div>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" justify="center">    
-          <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8" >
-            <el-card class="box-card" shadow="hover " >
-              <template #header>
-                <div class="card-header">
-                  <span>{{question}}</span>
-                </div>
-              </template>
-              <!-- TODO: fix responsivness -->
-              <div v-if="!this.checkCorrectAnswersLength()" justify="start">
-                <div v-for="(value,key) in answers" :key="key.answer">
-                  <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
-                    <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key"></el-button>
-                    <el-divider direction="vertical" />
-                    {{ value }}
-                  <el-divider />
-                </div>
-                
-              </div>
-              <div v-else-if="this.checkCorrectAnswersLength()" >
-                <div v-for="(value,key) in answers" :key="key.answer">
-                  <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
-                  <p>
-                    <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key"></el-button>
-                  </p>
-                  <el-divider />
-
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" justify="center">    
-          <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="5">
-            <div v-if="this.numberOfAnswer > 0">
-              <div  ref="validateAnswers" id="validateAnswers">
-                <el-button class="confirmAnswer" @click="this.getResult()">Confirm answer(s)</el-button>
-              </div>
-            </div>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col>
-            <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
-              <el-button class="questionLink" type="warning" round>
-                <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" > 🏆 Return to the question's list 🏆</router-link>
-              </el-button>
-            </div>
-            <div v-else-if="this.badAnswers > 0 || this.result === false">
-              <el-button class="questionLink" type="warning" round>
-                <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" > 💀 Return to the question's list 💀</router-link>
-              </el-button>
-            </div>
-          </el-col>
-        </el-row>
+  <div class="questionVue">
+    <div v-if="this.result || ((this.goodAnswers && !this.badAnswers) && this.compareGoodAnswers())" ref="champion" id="result">
+      <h2> Champion ! Vraiment un mâle alpha celui-ci </h2>
     </div>
+    <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result">
+      <h2> Loser ! Ta réponse dégoute</h2>
+      <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
+      <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
+    </div>
+
+        <div class="headerQuestion">
+          <span>{{question}}</span>
+        </div>
+      <!-- TODO: fix responsivness -->
+      <div v-if="!this.checkCorrectAnswersLength()" justify="start" class="answers">
+        <div v-for="(value,key) in answers" :key="key.answer">
+          <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
+            <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]"  ref="key"></button>
+            <p>{{ value }}</p>
+        </div>
+        
+      </div>
+      <div v-else-if="this.checkCorrectAnswersLength()" class="answers">
+        <div v-for="(value,key) in answers" :key="key.answer">
+          <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
+            <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]" ref="key"></button>
+          <p>
+            {{ value }}
+          </p>
+
+        </div>
+      </div>
+
+    <div v-if="this.numberOfAnswer > 0">
+      <div  ref="validateAnswers" id="validateAnswers">
+        <button class="confirmAnswer" @click="this.getResult()">Confirm answer(s)</button>
+      </div>
+    </div>
+    <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
+      <button class="resultLink" type="warning" round>
+        <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
+      </button>
+    </div>
+    <div v-else-if="this.badAnswers > 0 || this.result === false">
+      <button class="resultLink" type="warning" round>
+        <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
-import Svg from '../components/Svg.vue'
 
 export default {
   name: 'MyQuestion',
   props: { msg :String
   },
   components : {
-    Svg,
 },
   data() {
     return {
@@ -184,11 +159,13 @@ export default {
       }else{
         this.fillSingleAnswerThroughAnswers();
         this.numberOfAnswer = 0;
+        
         for(const i in this.$refs["key"]){
-          if(Object.keys(this.answersChoosed)[0] === this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].ref.id ){
+          console.log(this.$refs["key"][i].id);
+          if(Object.keys(this.answersChoosed)[0] === this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
             this.result = true ;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "success"
-          }else if(Object.keys(this.answersChoosed)[0] !== this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].ref.id ){
+          }else if(Object.keys(this.answersChoosed)[0] !== this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
             this.result = false;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "danger"
           }
@@ -211,78 +188,6 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #926dde;
-}
-.answerPick{
-  color: aqua;
-}
-.questionLink{
-  margin: 5px;
-}
-.confirmAnswer{
-  margin: 5px;
-  animation: glowing 3s infinite;
-}
+@import '../assets/style/Components/Question/Question.scss';
 
-@keyframes glowing {
-  0% { background-color: #c7c7c7 }
-  50% { background-color: #ffffff }
-  100% { background-color: #c7c7c7 }
-}
-.box-card{
-  background-color: #ebb563;
-}
-#result{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-#result h2, #result #svg{
-  position: relative;
-  z-index: 10;
-  margin-left: 5%;
-
-}
-#result::before{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(90deg,#ebb563,#67c23a);
-  animation: animate 4s linear infinite;
-}
-
-#result::after{
-  content: "";
-  position: absolute;
-  inset: 5px;
-  background: #ebb563;
-  border-radius: 4px;
-}
-
-@keyframes animate {
-  0%{
-    transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-
-}
 </style>
