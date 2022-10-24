@@ -1,11 +1,29 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }} </h1>
-      <h3>Vous obtenez le résultat de {{result}}/10</h3>
+    <div class="HeaderResult">
+      <h3>{{this.fault.length}} fault(s) on 10</h3>
+      <div v-if="this.fault.length === 0"><p class="textResult">What a killer.</p>></div>
+      <div v-else-if="this.fault.length <= 5"><p class="textResult">You need to practice a little bit more.</p></div>
+      <div v-else-if="this.fault.length >= 5"><p class="textResult">You need to learn your basics.</p></div>
+      <div v-else-if="this.fault.length === 10 "><p class="textResult">Come on.</p></div>
+    </div>
+    <div class="review">
+      <div class="headerReview">
+        <p>What you did wrong</p>
+      </div>
+      <div class="contentReview">
+        <div v-for="(value,key) in fault" v-bind:key="key.answer" class="questionReviewed">
+          <p v-bind:id="key">Question {{key +1}} </p>
+          <Svg></Svg>
+        </div>
+        
+      </div>
+    </div>
     </div>
 </template>
 
 <script>
+import Svg from '../components/SVG/Arrow.vue'
 
 export default {
   name: 'MyResult',
@@ -13,18 +31,25 @@ export default {
   },
   data() {
     return {
-      result : 0
-
+      result : 0,
+      fault : [],
+      results : []
     };
   },
   methods: {
     
   },
+  components : {
+    Svg,
+  },
   mounted(){
-    for(let i in this.$route.params.answers){
-      this.$route.params.answers[i] === "success" ?  this.result++ : this.result
+    this.results = localStorage.result.split(",");
+    for(let i in this.results){
+      if(this.results[i] == "failure") this.fault.push(this.results[i])
     }
-    this.result >= 5 
+
+    
+    this.fault.length <= 5 
     ? this.$confetti.start(
       {
         particles: [
@@ -70,31 +95,8 @@ export default {
     
   }
 }
-
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #926dde;
-}
-.answerPick{
-  color: aqua;
-}
-.goodAnswer{
-  background-color: rgb(58, 117, 10);
-}
-.wrongAnswer{
-  background-color: rgb(196, 2, 2);
-}
+@import '../assets/style/Components/Result/Result.scss';
+
 </style>

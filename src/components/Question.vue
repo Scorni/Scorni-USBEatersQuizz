@@ -5,23 +5,26 @@
       </div>
       <div class="borderQuestionLeft"></div>
       <div class="borderQuestionBottom"></div>
-      <!-- TODO: fix responsivness -->
+      <div v-if="!this.checkCorrectAnswersLength()" class="tips">
+        Pick an answer.
+      </div>
+      <div v-else-if="this.checkCorrectAnswersLength()" class="tips">
+        Pick at least 2 answers.
+      </div>
       <div v-if="!this.checkCorrectAnswersLength()" justify="start" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
-          <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
             <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]"  ref="key"></button>
-            <p>{{ value }}</p>
+            <p>{{ value }}.</p>
         </div>
         
       </div>
+      
       <div v-else-if="this.checkCorrectAnswersLength()" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
-          <!-- <el-button @click="this.answerPick(key,value)" class="questionLink" v-bind:id="key" v-bind:type="type[key]" ref="key">{{ value }}</el-button> -->
             <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]" ref="key"></button>
           <p>
-            {{ value }}
+            {{ value }}.
           </p>
-
         </div>
       </div>
       <div class="borderAnswerLeft"></div>

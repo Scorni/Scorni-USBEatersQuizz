@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Result msg="Your Result "/>
+    <Result />
   </div>
 </template>
 

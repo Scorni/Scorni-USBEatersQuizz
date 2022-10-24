@@ -1,0 +1,70 @@
+@import  '../../Helpers/flexboxLayout.scss' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+
+.HeaderResult{
+    position: absolute;
+    margin-top: 5vw;
+    padding: 2%;
+    width: 50%;
+    left: 30%;
+    text-align: center;
+    font-family: 'Mirage_Bold';
+    font-size: 3vw;
+    background-color: #FFECC7;
+
+}
+.textResult{
+    margin: auto;
+    padding-top: 2%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Mirage_Bold';
+    font-size: 1.5vw;
+}
+.review{
+    position: absolute;
+    top: 30%;
+    height: auto;
+    width: 40vw;
+    left: 30%;
+    background-color: #DDFEC6;
+    margin-top: 5vw;
+
+}
+.headerReview{
+    margin-top: 7vh;
+    padding: 2.5%;
+    width: 100%;
+    left: 30%;
+    text-align: center;
+    font-family: 'Mirage_Bold';
+    font-size: 2vw;
+}
+
+.questionReviewed{
+    width: 22.5vw;
+    height: auto;
+    margin-top: 3%;
+    margin-left: -15%;
+    padding-bottom: 5%;
+    font-size:2rem;
+}
+.svg{
+    position: absolute;
+    margin-top: -5%;
+    left: 50%;
+
+
+}
+.arrow{
+    width: 1.5vw;
+    transform: rotate(90deg);
+    transition: 2s;
+}
+
+.contentReview:hover{
+    .arrow{
+        transform: rotate(-90deg);
+    }
+}

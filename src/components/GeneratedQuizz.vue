@@ -23,6 +23,19 @@
           </div>
         </div>
       </div>
+      <div v-show="showResultLink">
+        <button class="finalResultLink" type="warning" round>
+          <Svg></Svg>
+          <router-link class="routerLink" :to="{
+            name : 'result',
+            params: {
+              answers : successQuestion
+            }
+          }">
+          Final Results.
+          </router-link>
+        </button>
+      </div>
     </div>
     <div class="content" v-if="this.params.tag">
       <span class="categoryBanner">{{this.params.tag}}</span>
@@ -32,19 +45,7 @@
       <span class="tagBanner">{{ this.params.category }}</span>
       <span class="difficultyBanner">{{ this.params.difficulty}}</span>
     </div>
-    <div v-show="showResultLink">
-    <button class="finalResultLink" type="warning" round>
-      <Svg></Svg>
-      <router-link class="routerLink" :to="{
-        name : 'result',
-        params: {
-          answers : successQuestion
-        }
-      }">
-      To the result page
-      </router-link>
-    </button>
-    </div>
+    
   </div>
 </template>
 
@@ -82,8 +83,6 @@ export default {
       this.type = new Array();
       for(let i in this.successQuestion){
         this.successQuestion[i] === "success" ? this.type[i] = "success" : this.type[i] = "danger"
-        console.log(this.type[i]);
-
       }
     },
     
@@ -91,7 +90,13 @@ export default {
       for(let i in this.type){
           (this.type[i] === ( "success") || this.type[i] === ( "danger")) ? this.countAnsweredQuestion++ : this.countAnsweredQuestion
       }   
-      this.countAnsweredQuestion === 10 ?  this.showResultLink = true : this.showResultLink
+
+      if(this.countAnsweredQuestion === 10){
+        this.showResultLink = true;
+        localStorage.setItem('result',this.$route.params.successQuestion) ;
+
+      }
+      else this.showResultLink
     },
     setInStorage: function(){
       if(!localStorage.tag || !localStorage.category){

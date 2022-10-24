@@ -318,7 +318,7 @@
 *   Static headers borders
 **/
 .ghostBordersRight {
-  border-right: 1px black solid;
+  border-right: 1px #2C3E50 solid;
   position: absolute;
   left: 12%;
   top: 43%;
@@ -333,7 +333,7 @@
 }
 
 .ghostBordersBottom {
-  border-bottom: 1px black solid;
+  border-bottom: 1px #2C3E50 solid;
   position: absolute;
   top: 39%;
   height: 27.5vh;
@@ -350,7 +350,7 @@
 *   Dynamics headers borders
 **/
 .ghostBordersSecondRight {
-  border-right: 1px black solid;
+  border-right: 1px #2C3E50 solid;
   position: absolute;
   left: 43%;
   top: 43%;
@@ -365,7 +365,7 @@
 }
 
 .ghostBordersSecondTop {
-  border-top: 1px black solid;
+  border-top: 1px #2C3E50 solid;
   position: absolute;
   left: 72%;
   top: 37%;
@@ -395,7 +395,7 @@
 }
 
 .ghostBordersOptionsLeft {
-  border-left: 1px black solid;
+  border-left: 1px #2C3E50 solid;
   position: absolute;
   left: 8.5%;
   top: 82%;

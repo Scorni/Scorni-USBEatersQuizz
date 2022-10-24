@@ -256,264 +256,72 @@
       align-self: stretch;
 }
 
-.questionList {
-  overflow: hidden;
-  background-color: #FFECC7 !important;
-  font-family: 'Mirage_Bold';
+.HeaderResult {
   position: absolute;
-  background-color: FFECC7;
-  line-height: 1.4;
-  letter-spacing: 0.005em;
-}
-
-@media only screen and (min-width: 1201px) {
-  .questionList {
-    top: 7vh;
-    left: 40vw;
-    width: 22.5vw;
-    padding-bottom: 20px;
-    height: auto;
-    font-size: 2.5rem;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .questionList {
-    top: 25%;
-    left: 35vw;
-    width: 30vw;
-    padding-bottom: 20px;
-    height: auto;
-    font-size: 2.5rem;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .questionList {
-    top: 10vh;
-    left: 33vw;
-    width: 35vw;
-    height: auto;
-    font-size: 2.5rem;
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  .questionList {
-    top: 10vh;
-    left: 30vw;
-    width: 45vw;
-    height: auto;
-    font-size: 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 481px) {
-  .questionList {
-    top: 5vh;
-    left: 25vw;
-    width: 50vw;
-    height: auto;
-    padding-bottom: 0px;
-    font-size: 1.5rem;
-  }
-}
-
-.questionList .questionHeader {
+  margin-top: 5vw;
+  padding: 2%;
+  width: 50%;
+  left: 30%;
+  text-align: center;
   font-family: 'Mirage_Bold';
-  margin: 5vh;
+  font-size: 3vw;
+  background-color: #FFECC7;
 }
 
-.questionList .question {
-  border: #2C3E50 1px solid;
-  background-color: #EAFCFF;
-}
-
-@media only screen and (min-width: 1201px) {
-  .questionList .question {
-    margin-bottom: 2.5vh;
-    height: 85%;
-    font-size: 2rem;
-    margin-inline: 15%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .questionList .question {
-    padding-inline: 25%;
-    margin-bottom: 2vh;
-    height: 85%;
-    font-size: 1.5rem;
-    margin-inline: 15%;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .questionList .question {
-    padding-inline: 25%;
-    margin-bottom: 2.5vh;
-    height: 85%;
-    font-size: 1.5rem;
-    margin-inline: 15%;
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  .questionList .question {
-    padding-inline: 25%;
-    margin-bottom: 2vh;
-    height: 85%;
-    font-size: 1.5rem;
-    margin-inline: 10%;
-  }
-}
-
-@media only screen and (max-width: 481px) {
-  .questionList .question {
-    padding-inline: 25%;
-    margin-bottom: 2vh;
-    height: 85%;
-    font-size: 1.5rem;
-    margin-inline: 10%;
-  }
-}
-
-.tagBanner, .categoryBanner {
-  position: absolute;
+.textResult {
+  margin: auto;
+  padding-top: 2%;
+  width: 100%;
+  text-align: center;
   font-family: 'Mirage_Bold';
-  color: #314832;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  font-size: 1.5vw;
 }
 
-@media only screen and (min-width: 1201px) {
-  .tagBanner, .categoryBanner {
-    font-size: 17vh;
-    top: 40%;
-    left: 17vw;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .tagBanner, .categoryBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 10vw;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .tagBanner, .categoryBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 10vw;
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  .tagBanner, .categoryBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 10vw;
-  }
-}
-
-@media only screen and (max-width: 481px) {
-  .tagBanner, .categoryBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 10vw;
-  }
-}
-
-.difficultyBanner {
+.review {
   position: absolute;
+  top: 30%;
+  height: auto;
+  width: 40vw;
+  left: 30%;
+  background-color: #DDFEC6;
+  margin-top: 5vw;
+}
+
+.headerReview {
+  margin-top: 7vh;
+  padding: 2.5%;
+  width: 100%;
+  left: 30%;
+  text-align: center;
+  font-family: 'Mirage_Bold';
+  font-size: 2vw;
+}
+
+.questionReviewed {
+  width: 22.5vw;
+  height: auto;
+  margin-top: 3%;
+  margin-left: -15%;
+  padding-bottom: 5%;
+  font-size: 2rem;
+}
+
+.svg {
+  position: absolute;
+  margin-top: -5%;
+  left: 50%;
+}
+
+.arrow {
+  width: 1.5vw;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
-  font-family: 'Mirage_Bold';
-  font-size: 2rem;
-  color: #314832;
-}
-
-@media only screen and (min-width: 1201px) {
-  .difficultyBanner {
-    font-size: 20vh;
-    top: 36vh;
-    left: 60vw;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .difficultyBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 60vw;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .difficultyBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 60vw;
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  .difficultyBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 60vw;
-  }
-}
-
-@media only screen and (max-width: 481px) {
-  .difficultyBanner {
-    font-size: 15rem;
-    top: 30vh;
-    left: 60vw;
-  }
-}
-
-.questionsLinksuccess {
-  background-color: #C8FCB0;
-}
-
-.questionsLinkdanger {
-  background-color: #FFD1D1;
-}
-
-.finalResultLink {
-  position: absolute;
-  right: 0vw;
-  bottom: -5vh;
-  border: none;
-  background-color: #859D75;
-  padding: 5vh;
-  width: 22.5vw;
-  height: 10vh;
-  font-family: 'Mirage_Bold';
-  font-size: 1.5rem;
   -webkit-transition: 2s;
   transition: 2s;
-  border-top: #2C3E50 1px solid;
 }
 
-.finalResultLink Svg {
-  width: 1.75vw;
-  position: absolute;
-  top: 7%;
-  left: 46%;
+.contentReview:hover .arrow {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
-
-.finalResultLink:hover {
-  bottom: -0px;
-}
-
-.finalResultLink:hover Svg {
-  -webkit-transform: rotate(-270deg);
-          transform: rotate(-270deg);
-}
-/*# sourceMappingURL=GeneratedQuizz.css.map */
+/*# sourceMappingURL=Result.css.map */

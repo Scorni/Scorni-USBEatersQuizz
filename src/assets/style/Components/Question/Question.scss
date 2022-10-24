@@ -1,4 +1,21 @@
-
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
 .questionVue{
     text-align: justify;
     font-family: 'Mirage_Bold';
@@ -8,31 +25,43 @@
     position: absolute;
     font-size: 1.2vw;
     background-color: #DDFEC6;
-    text-align: center;
-    width: 30%;
+    text-align: left;
+    width: 40%;
     top: 10%;
     left: 10%;
     padding-block: 5%;
+    padding-left: 2%;
 }
 .borderQuestionLeft{
     position: absolute;
-    left: 8%;
+    left: 52%;
     padding-block: 5%;
     width: 30vw;
     height: 7vh;
-    border-left: 1px solid black;
+    border-left: 1px solid #2C3E50;
     animation: borderQuestionLeftMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
 }
 .borderQuestionBottom{
     position: absolute;
-    top: 39%;
+    top: 7%;
     left: 8%;
     padding-block: 5%;
 
     width: 10%;
     height: 15vh;
-    border-top: 1px solid black;
+    border-top: 1px solid #2C3E50;
     animation: borderQuestionBottomMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+}
+.tips{
+    position: absolute;
+    background-color: #D9C6A1;
+    text-align: center;
+    right: 10%;
+    top: 22%;
+    padding-block: 2% ;
+    font-size: 1.1vw;
+
+    width: 30vw;
 }
 .answers{
     position: absolute;
@@ -44,6 +73,7 @@
     background-color: #EAFCFF;
     width: 30vw;
     height: 50vh;
+    overflow-y: auto;
     
 }
 .borderAnswerTop{
@@ -54,7 +84,7 @@
 
     width: 12vw;
     height: 45vh;
-    border-top: 1px solid black;
+    border-top: 1px solid #2C3E50;
     animation: borderTopAnswerMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
 
 }
@@ -62,7 +92,7 @@
     position: absolute;
     z-index: 0;
 
-    border-left: 1px solid black;
+    border-left: 1px solid #2C3E50;
     right: 30%;
     bottom: 35%;
 
@@ -75,7 +105,7 @@
     margin-left: 10%;
     width: 50px;
     height: 50px;
-    border: 1px solid #000000;
+    border: 1px solid #2C3E50;
     margin-top: 50px;
     border-collapse: collapse;
 }
@@ -96,7 +126,7 @@
 
 }
 p{
-    margin-top: -40px;
+    margin-top: -10%;
     margin-left: 25%;
     max-width: 20vw;
     white-space: normal;
@@ -123,7 +153,7 @@ p{
     position: absolute;
     overflow: hidden;
     font-size: 2rem;
-    width: 30vw;
+    width: 40vw;
     height: 10vh;
     top: 60%;
     left: 10%;
@@ -134,11 +164,12 @@ p{
     position: absolute;
     background-color: #D9C6A1;
     overflow: hidden;
-    width: 30vw;
+    width: 40vw;
     left: 85%;
     padding: 1vw;
     height: 10vh;
-    border: 1px solid black;
+    border: none;
+    border-left: 1px solid #2C3E50;
     transition: 2s;
 }
 .resultLink:hover Svg{
@@ -154,10 +185,9 @@ p{
     position: absolute;
     text-align: center;
     background-color:#FFECC7 ;
-    width: 30vw;
+    width: 40vw;
     padding: 1vw;
     height: 10vh;
-    border: 1px solid black;
 }
 .arrow{
     position: absolute;
@@ -166,7 +196,7 @@ p{
     width: 2.5vw;
     transition: 2s;
     transform: rotate(-180deg);
-
+    fill: #2C3E50;
 }
 
 /**
@@ -197,23 +227,23 @@ p{
 }
 @keyframes borderQuestionLeftMoving {
     0%{
-        top: 18%;
+        top: 7%;
     }
     50%{
-        top: 20%;
+        top: 9%;
     }
     100%{
-        top: 18%;
+        top: 7%;
     }
 }
 @keyframes borderQuestionBottomMoving {
     0%{
-        left: 10%;
+        left: 42%;
     }
     50%{
-        left: 8%;
+        left: 40%;
     }
     100%{
-        left: 10%;
+        left: 42%;
     }
 }
