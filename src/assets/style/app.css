@@ -16,9 +16,9 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #3F5C40;
   overflow-x: hidden;
-  background-color: #68855a;
-background-image: url("https://www.transparenttextures.com/patterns/white-wall-3-2.png");
+  background: #3F5C40;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
   height: 100vh;

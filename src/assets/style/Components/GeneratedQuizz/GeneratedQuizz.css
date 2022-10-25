@@ -502,10 +502,13 @@
 .finalResultLink Svg {
   width: 1.75vw;
   position: absolute;
-  top: 7%;
+  top: -25%;
   left: 46%;
+  -webkit-transition: 2s;
+  transition: 2s;
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
+  fill: #2C3E50;
 }
 
 .finalResultLink:hover {

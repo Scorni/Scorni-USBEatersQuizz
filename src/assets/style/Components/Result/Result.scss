@@ -24,13 +24,12 @@
 }
 .review{
     position: absolute;
-    top: 30%;
-    height: auto;
+    top: 45%;
+    height: 45vh;
     width: 40vw;
     left: 30%;
     background-color: #DDFEC6;
-    margin-top: 5vw;
-
+    overflow-y: auto;
 }
 .headerReview{
     margin-top: 7vh;
@@ -45,26 +44,43 @@
 .questionReviewed{
     width: 22.5vw;
     height: auto;
-    margin-top: 3%;
-    margin-left: -15%;
-    padding-bottom: 5%;
     font-size:2rem;
 }
-.svg{
-    position: absolute;
-    margin-top: -5%;
-    left: 50%;
-
+.questionNumber{
+    margin-left: -15%;
 
 }
-.arrow{
-    width: 1.5vw;
+.svgResult{
+    margin-left: 100%; 
+    margin-top: -10%;   
+    fill: #2C3E50;
+    
+    width: 2vw;
+    height: auto;
+}
+.svgResult .arrow{
     transform: rotate(90deg);
     transition: 2s;
 }
+.questionReviewed:hover .svgResult .arrow{
+    transform: rotate(-90deg);
+}
 
-.contentReview:hover{
-    .arrow{
-        transform: rotate(-90deg);
-    }
+.restart{
+    position: absolute;
+    right: 20%;
+    top: 45%;
+    width : 9.5vw;
+    height: 45vh;
+    background-color: #EAFCFF;
+    font-family: 'Mirage_Bold';
+    font-size: 1.5vw;
+    text-align: center;
+    transition: 2s;
+}
+.restart:hover{
+    background-color: #9dd5df;
+}
+.textRestart{
+    margin-top: 100%;
 }

@@ -13,13 +13,20 @@
       </div>
       <div class="contentReview">
         <div v-for="(value,key) in fault" v-bind:key="key.answer" class="questionReviewed">
-          <p v-bind:id="key">Question {{key +1}} </p>
-          <Svg></Svg>
+          <p class="questionNumber" v-bind:id="key">Question {{key +1}} </p>
+          <Svg class="svgResult"></Svg>
         </div>
-        
       </div>
     </div>
+    <div class="restart">
+      
+      <router-link class="routerLink textRestart" :to="{ name: 'home'}" ><p class="textRestart">
+        Restart.
+
+      </p></router-link>
+
     </div>
+  </div>
 </template>
 
 <script>
@@ -49,54 +56,54 @@ export default {
     }
 
     
-    this.fault.length <= 5 
-    ? this.$confetti.start(
-      {
-        particles: [
-          {
-            type: 'image',
-            size: 20,
-            url: '/emoji-fete.png',
-          },
-          {
-            type: 'heart',
-            size: 20,
-          },
-          {
-            type: 'image',
-            size: 15,
-            url: '/trophy.png',
-          },
-        ],
-        defaultColors: [
-          'Gold',
-          'DodgerBlue',
-        ],
-      }
-    )
-    : this.$confetti.start(
-      {
-        particles: [
-          {
-            type: 'image',
-            size: 20,
-            url: '/sad-pepe-designs-png-261776.png',
-          },
-          {
-            type: 'image',
-            size: 10,
-            url: '/cry-emoji.png',
-          },
-        ],
-      }
-    )
+    // this.fault.length <= 5 
+    // ? this.$confetti.start(
+    //   {
+    //     particles: [
+    //       {
+    //         type: 'image',
+    //         size: 20,
+    //         url: '/emoji-fete.png',
+    //       },
+    //       {
+    //         type: 'heart',
+    //         size: 20,
+    //       },
+    //       {
+    //         type: 'image',
+    //         size: 15,
+    //         url: '/trophy.png',
+    //       },
+    //     ],
+    //     defaultColors: [
+    //       'Gold',
+    //       'DodgerBlue',
+    //     ],
+    //   }
+    // )
+    // : this.$confetti.start(
+  //     {
+  //       particles: [
+  //         {
+  //           type: 'image',
+  //           size: 20,
+  //           url: '/sad-pepe-designs-png-261776.png',
+  //         },
+  //         {
+  //           type: 'image',
+  //           size: 10,
+  //           url: '/cry-emoji.png',
+  //         },
+  //       ],
+  //     }
+  //   )
   },
   updated(){
     
   }
 }
 </script>
-<style scoped>
+<style >
 @import '../assets/style/Components/Result/Result.scss';
 
 </style>

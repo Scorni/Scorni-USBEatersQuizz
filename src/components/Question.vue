@@ -14,7 +14,9 @@
       <div v-if="!this.checkCorrectAnswersLength()" justify="start" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
             <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]"  ref="key"></button>
-            <p>{{ value }}.</p>
+            <p class="answerText">
+              {{ value }}.
+            </p>
         </div>
         
       </div>
@@ -22,7 +24,7 @@
       <div v-else-if="this.checkCorrectAnswersLength()" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
             <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]" ref="key"></button>
-          <p>
+          <p class="answerText">
             {{ value }}.
           </p>
         </div>
@@ -47,13 +49,13 @@
 
       <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
         <button class="resultLink" type="warning" round>
-          <Svg></Svg>
+          <Svg class="svgQuestion"></Svg>
           <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
         </button>
       </div>
       <div v-else-if="this.badAnswers > 0 || this.result === false">
         <button class="resultLink" type="warning" round>
-          <Svg></Svg>
+          <Svg class="svgQuestion"></Svg>
 
           <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
         </button>
@@ -201,7 +203,7 @@ export default {
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
 @import '../assets/style/Components/Question/Question.scss';
 
 </style>

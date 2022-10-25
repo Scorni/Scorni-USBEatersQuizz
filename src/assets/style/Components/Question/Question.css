@@ -129,7 +129,7 @@
   background-color: #FFD1D1;
 }
 
-p {
+.answerText {
   margin-top: -10%;
   margin-left: 25%;
   max-width: 20vw;
@@ -182,9 +182,10 @@ p {
   transition: 2s;
 }
 
-.resultLink:hover Svg {
-  -webkit-transform: rotate(-360deg);
-          transform: rotate(-360deg);
+.resultLink:hover .svgQuestion {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  top: 0%;
 }
 
 .resultLink:hover {
@@ -201,14 +202,20 @@ p {
 }
 
 .arrow {
+  width: 100%;
+  height: 100%;
+}
+
+.svgQuestion {
   position: absolute;
   left: 3%;
-  top: 25%;
+  top: 0%;
   width: 2.5vw;
+  height: 100%;
   -webkit-transition: 2s;
   transition: 2s;
-  -webkit-transform: rotate(-180deg);
-          transform: rotate(-180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
   fill: #2C3E50;
 }
 
