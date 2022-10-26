@@ -258,7 +258,8 @@
 
 .HeaderResult {
   position: absolute;
-  margin-top: 5vw;
+  top: 10%;
+  margin-bottom: 2%;
   padding: 2%;
   width: 50%;
   left: 30%;
@@ -347,5 +348,11 @@
 
 .textRestart {
   margin-top: 100%;
+}
+
+.contentText {
+  margin-top: 5%;
+  font-family: 'Mirage_Bold';
+  font-size: 4.5vw;
 }
 /*# sourceMappingURL=Result.css.map */

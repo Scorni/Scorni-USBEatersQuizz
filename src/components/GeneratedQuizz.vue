@@ -16,7 +16,8 @@
                   question:JSON.stringify(value), 
                   number: this.questionGenerated.indexOf(value),
                   questionsList: JSON.stringify(this.questionGenerated), 
-                  successQuestion: successQuestion
+                  successQuestion: successQuestion,
+                  finalResultAnswerAndQuestion: this.$route.params.finalResultAnswerAndQuestion,
                 }
               } ">
             {{this.questionGenerated.indexOf(value)}}</router-link>
@@ -29,7 +30,8 @@
           <router-link class="routerLink" :to="{
             name : 'result',
             params: {
-              answers : successQuestion
+              answers : successQuestion,
+              finalResultAnswerAndQuestion: this.$route.params.finalResultAnswerAndQuestion,
             }
           }">
           Final Results.
@@ -62,7 +64,8 @@ export default {
       countAnsweredQuestion : 0,
       showResultLink : false,
       type: "",
-      params: localStorage
+      params: localStorage,
+      finalResultAnswerAndQuestion : this.$route.params.finalResultAnswerAndQuestion
     };
   },
   components : {
@@ -119,8 +122,12 @@ export default {
     this.updateStyle();
     this.finalResult();
     this.$confetti.stop()
+    
   },
+  
   updated(){
+    console.log(this.$route);
+
   }
 }
 </script>

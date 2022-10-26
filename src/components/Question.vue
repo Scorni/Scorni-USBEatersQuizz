@@ -43,21 +43,21 @@
       </div>
       <div v-else-if="this.result === false || (this.badAnswers)" ref="loser" id="result" class="result">
         <h2>Wrong.</h2>
-        <h3 v-if="this.goodAnswers"> Parmis les réponses il y a {{this.goodAnswers}} bonnes réponses.</h3>
-        <h3 v-if="this.badAnswers"> Il y a {{this.badAnswers}} mauvaises réponses </h3>
       </div>
 
       <div v-if="(this.goodAnswers > 0 && this.badAnswers == 0) && this.compareGoodAnswers() || this.result === true">
         <button class="resultLink" type="warning" round>
           <Svg class="svgQuestion"></Svg>
-          <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
+          <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'success', questionsList: this.$route.params.questionsList,successQuestion : this.$route.params.successQuestion, finalResultAnswerAndQuestion  : this.finalResultAnswerAndQuestion}}" >Results.</router-link>
         </button>
       </div>
       <div v-else-if="this.badAnswers > 0 || this.result === false">
         <button class="resultLink" type="warning" round>
           <Svg class="svgQuestion"></Svg>
 
-          <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion}}" >Results.</router-link>
+          <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion, finalResultAnswerAndQuestion  : this.finalResultAnswerAndQuestion}}" >Results.</router-link>
+          <p>{{this.finalResultAnswerAndQuestion}}</p>
+          <p>{{this.result}}</p>
         </button>
       </div>
     </div>
@@ -86,6 +86,8 @@ export default {
         goodAnswers : 0,
         badAnswers: 0,
         type: "",
+        finalResultAnswerAndQuestion : (this.$route.params.finalResultAnswerAndQuestion || []),
+        questionNumber : this.$route.params.number,
     };
   },
   methods: {
@@ -177,13 +179,20 @@ export default {
         this.numberOfAnswer = 0;
         
         for(const i in this.$refs["key"]){
-          console.log(this.$refs["key"][i].id);
           if(Object.keys(this.answersChoosed)[0] === this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
             this.result = true ;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "success"
           }else if(Object.keys(this.answersChoosed)[0] !== this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
             this.result = false;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "danger"
+            console.log(this.questionNumber);
+            this.finalResultAnswerAndQuestion[this.questionNumber] = []
+            this.finalResultAnswerAndQuestion[this.questionNumber][0] = this.answers[this.correct_answer];
+            this.finalResultAnswerAndQuestion[this.questionNumber][1] = Object.values(this.answersChoosed)[0];
+            this.finalResultAnswerAndQuestion[this.questionNumber][2] = this.question;
+
+            console.log(this.finalResultAnswerAndQuestion);
+
           }
         }
       }
@@ -198,6 +207,10 @@ export default {
   },
   mounted(){
     this.$confetti.stop()
+
+  },
+  watch(){
+    this.finalResultAnswerAndQuestion ? console.log("yesy") : console.log("non");
   }
 }
 
