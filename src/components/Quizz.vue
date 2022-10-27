@@ -19,14 +19,14 @@
   <div class="ghostBordersSecondTop"></div>
   <div class="options">
     <form id="questionOptions">
-      <div class="content category">
+      <!-- <div class="content category">
         <select v-model="categorySelected" id="categorySelected" ref="categorySelected" :disabled="categoryDisabled" placeholder="Category" clearable>
           <option value="" selected disabled data-default>Category</option>
           <option v-for="value in this.requestOptions.category" :key="value.category" :value="value" >
             {{value}}
           </option>
         </select>
-      </div>
+      </div> -->
       <div class="content tag">
         <select v-model="tagSelected" id="tagSelected" ref="tagSelected"  :disabled="tagDisabled" clearable>
           <option value="" selected disabled data-default>Tag</option>

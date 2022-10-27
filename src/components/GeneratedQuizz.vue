@@ -20,7 +20,7 @@
                   finalResultAnswerAndQuestion: this.$route.params.finalResultAnswerAndQuestion,
                 }
               } ">
-            {{this.questionGenerated.indexOf(value)}}</router-link>
+            {{this.questionGenerated.indexOf(value) + 1}}</router-link>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="content" v-if="this.params.tag">
-      <span class="categoryBanner">{{this.params.tag}}</span>
+        <span class="categoryBanner">{{this.params.tag}}</span>
       <span class="difficultyBanner">{{this.params.difficulty}}</span>
     </div>
     <div v-else-if="this.params.category">
@@ -62,7 +62,7 @@ export default {
       questionGenerated : this.getQuestion(),
       successQuestion : this.$route.params.successQuestion || [],
       countAnsweredQuestion : 0,
-      showResultLink : false,
+      showResultLink : true,
       type: "",
       params: localStorage,
       finalResultAnswerAndQuestion : this.$route.params.finalResultAnswerAndQuestion

@@ -286,10 +286,12 @@
   left: 30%;
   background-color: #DDFEC6;
   overflow-y: auto;
+  -webkit-transition: 2s;
+  transition: 2s;
 }
 
 .headerReview {
-  margin-top: 7vh;
+  margin-block: 1.5vh;
   padding: 2.5%;
   width: 100%;
   left: 30%;
@@ -299,7 +301,7 @@
 }
 
 .questionReviewed {
-  width: 22.5vw;
+  width: 28vw;
   height: auto;
   font-size: 2rem;
 }
@@ -310,7 +312,7 @@
 
 .svgResult {
   margin-left: 100%;
-  margin-top: -10%;
+  margin-top: -8%;
   fill: #2C3E50;
   width: 2vw;
   height: auto;
@@ -326,6 +328,10 @@
 .questionReviewed:hover .svgResult .arrow {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
+}
+
+.questionReviewed:hover .QHeader {
+  margin-top: 2%;
 }
 
 .restart {
@@ -347,12 +353,47 @@
 }
 
 .textRestart {
-  margin-top: 100%;
+  position: absolute;
+  top: 50%;
+  left: 25%;
 }
 
 .contentText {
   margin-top: 5%;
   font-family: 'Mirage_Bold';
   font-size: 4.5vw;
+}
+
+.questionAnswer {
+  margin-top: 0%;
+  padding: 2%;
+  border-top: 1px solid #2C3E50;
+  margin-left: 17%;
+  width: 110%;
+  overflow: hidden;
+}
+
+.QHeader {
+  margin-top: -100%;
+  font-size: 1.25vw;
+  text-align: center;
+  font-family: 'Mirage_Bold';
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+
+.QChoosedAnswer {
+  font-size: 1.25vw;
+  text-align: left;
+  margin-bottom: 1%;
+  width: 100%;
+  color: #d46363;
+}
+
+.QTrueAnswer {
+  font-size: 1.25vw;
+  text-align: left;
+  width: 100%;
+  color: #6dad4f;
 }
 /*# sourceMappingURL=Result.css.map */

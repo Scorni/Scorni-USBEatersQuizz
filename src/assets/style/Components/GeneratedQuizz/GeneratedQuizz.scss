@@ -106,11 +106,10 @@
     font-family: 'Mirage_Bold';
     color: #314832;
     transform: rotate(-90deg);
-
     @include devices(TV) {
-        font-size: 17vh;
-        top: 40%;
-        left: 17vw;
+        font-size: 10rem;
+        left: 10vw;
+        top: 40vh;
     }
     @include devices(desktop) {
         font-size: 15rem;

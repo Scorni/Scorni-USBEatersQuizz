@@ -388,9 +388,9 @@
 
 @media only screen and (min-width: 1201px) {
   .tagBanner, .categoryBanner {
-    font-size: 17vh;
-    top: 40%;
-    left: 17vw;
+    font-size: 10rem;
+    left: 10vw;
+    top: 40vh;
   }
 }
 

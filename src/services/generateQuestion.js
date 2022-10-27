@@ -1,8 +1,7 @@
 const axios = require('axios');
-
 export async function getQuestions(number,category,tag,difficulty) {
   
-  let request = "https://quizapi.io/api/v1/questions?apiKey=m3ge9S2ruYaWdXQT5w8wxx1LAL29iyT5ZsaljYSO";
+  let request = "https://quizapi.io/api/v1/questions?apiKey="+ process.env.VUE_APP_API_KEY;
   if(category){
     request += "&category=" + category;
   }

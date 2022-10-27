@@ -15,11 +15,13 @@
         <div v-if="fault > 0">
           <div v-for="(value,key) in Object.keys(this.questionAndWrongAnswers)" v-bind:key="key.answer" class="questionReviewed">
             <div>
-              <p class="questionNumber" v-bind:id="key">Question {{value}} </p>
+              <p class="questionNumber" v-bind:id="key">Question {{parseInt(value) + 1 }} </p>
               <Svg class="svgResult"></Svg>
             </div>
             <div class="questionAnswer">
-              {{this.questionAndWrongAnswers[key]}}
+              <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).substring(1)}}</div>
+              <div class="QChoosedAnswer">{{this.questionAndWrongAnswers[value][1].substring(1)}}</div>
+              <div class="QTrueAnswer">{{this.questionAndWrongAnswers[value][0]}}</div>
             </div>
           </div>
         </div>
@@ -27,11 +29,9 @@
       </div>
     </div>
     <div class="restart">
-      //TODO: wrong redirect ?
-      <router-link class="routerLink textRestart" :to="{ name: 'home'}" ><p class="textRestart">
+      <router-link class="routerLink textRestart" :to="{ name: 'home'}" >
         Restart.
-
-      </p></router-link>
+</router-link>
 
     </div>
   </div>
@@ -39,7 +39,6 @@
 
 <script>
 import Svg from '../components/SVG/Arrow.vue'
-
 export default {
   name: 'MyResult',
   props: { msg :String
@@ -52,6 +51,7 @@ export default {
       questionAndWrongAnswers: this.$route.params.finalResultAnswerAndQuestion
     };
   },
+  
   methods: {
     
   },
@@ -59,16 +59,11 @@ export default {
     Svg,
   },
   mounted(){
-    console.log(this.questionAndWrongAnswers);
-
-    this.results = localStorage.result.split(",");
-    this.fault = Object.keys(this.questionAndWrongAnswers).length
-    //TODO: La boucle va pas pcq j'ai index en fonction de la question mais la boucle considère toutes les valeurs du tableau,même vide
-    for(let i in this.questionAndWrongAnswers){
-      if(Object.keys(this.questionAndWrongAnswers)[i]) console.log(Object.keys(this.questionAndWrongAnswers)[i]);
-      // this.fault.push(this.results[i])
-    }
     
+    this.fault = (Object.keys(this.questionAndWrongAnswers).length || 0);
+    for(let i in this.questionAndWrongAnswers){
+      this.questionAndWrongAnswers[i] = (this.questionAndWrongAnswers[i]).split("#️⃣");
+    }
     // this.fault.length <= 5 
     // ? this.$confetti.start(
     //   {

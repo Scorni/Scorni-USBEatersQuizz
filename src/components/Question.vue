@@ -13,7 +13,7 @@
       </div>
       <div v-if="!this.checkCorrectAnswersLength()" justify="start" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
-            <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]"  ref="key"></button>
+            <button @click="this.answerPick(key,value)" v-bind:class="(type[key] || 'default') + ' answerButton'" v-bind:id="key" v-bind:type="type[key]"  ref="key"></button>
             <p class="answerText">
               {{ value }}.
             </p>
@@ -23,7 +23,7 @@
       
       <div v-else-if="this.checkCorrectAnswersLength()" class="answers">
         <div v-for="(value,key) in answers" :key="key.answer">
-            <button @click="this.answerPick(key,value)" v-bind:class="type[key] || 'default'" v-bind:id="key" v-bind:type="type[key]" ref="key"></button>
+            <button @click="this.answerPick(key,value)" v-bind:class="(type[key] || 'default') + ' answerButton'" v-bind:id="key " v-bind:type="type[key]" ref="key"></button>
           <p class="answerText">
             {{ value }}.
           </p>
@@ -54,10 +54,7 @@
       <div v-else-if="this.badAnswers > 0 || this.result === false">
         <button class="resultLink" type="warning" round>
           <Svg class="svgQuestion"></Svg>
-
           <router-link class="routerLink" :to="{ name: 'generatedQuizz', params : {questionNumber : this.$route.params.number, result : 'failure', questionsList: this.$route.params.questionsList, successQuestion : this.$route.params.successQuestion, finalResultAnswerAndQuestion  : this.finalResultAnswerAndQuestion}}" >Results.</router-link>
-          <p>{{this.finalResultAnswerAndQuestion}}</p>
-          <p>{{this.result}}</p>
         </button>
       </div>
     </div>
@@ -160,6 +157,7 @@ export default {
     },
     //check if the answer(s) are the right ones
     getResult : function(){
+      this.finalResultAnswerAndQuestion[this.questionNumber] = []
       if(this.checkCorrectAnswersLength()){
         this.badAnswers = 0;
         this.goodAnswers = 0;
@@ -185,15 +183,15 @@ export default {
           }else if(Object.keys(this.answersChoosed)[0] !== this.correct_answer &&  Object.keys(this.answersChoosed)[0] === this.$refs["key"][i].id ){
             this.result = false;
             this.type[Object.keys(this.correct_answers)[i].slice(0,8)] = "danger"
-            console.log(this.questionNumber);
-            this.finalResultAnswerAndQuestion[this.questionNumber] = []
-            this.finalResultAnswerAndQuestion[this.questionNumber][0] = this.answers[this.correct_answer];
-            this.finalResultAnswerAndQuestion[this.questionNumber][1] = Object.values(this.answersChoosed)[0];
-            this.finalResultAnswerAndQuestion[this.questionNumber][2] = this.question;
-
-            console.log(this.finalResultAnswerAndQuestion);
-
+            this.finalResultAnswerAndQuestion[this.questionNumber][0] =  this.answers[this.correct_answer] + "#️⃣";
+            this.finalResultAnswerAndQuestion[this.questionNumber][1] =  Object.values(this.answersChoosed)[0] + "#️⃣";
+            this.finalResultAnswerAndQuestion[this.questionNumber][2] =  this.question + "#️⃣";
           }
+
+        }
+        for(let i in document.getElementsByClassName("answerButton")){
+          
+          if(document.getElementsByClassName("answerButton")[i] instanceof Element) (document.getElementsByClassName("answerButton")[i]).setAttribute('disabled', "")
         }
       }
     },

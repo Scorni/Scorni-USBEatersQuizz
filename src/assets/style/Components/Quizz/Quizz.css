@@ -432,14 +432,15 @@
 
 .tag {
   position: absolute;
-  left: 27vw;
+  top: 35%;
+  left: 5vw;
   text-align: left;
 }
 
 .difficulty {
   position: absolute;
-  left: 15vw;
-  top: 15vh;
+  top: 35%;
+  left: 25vw;
   text-align: rigth;
 }
 
