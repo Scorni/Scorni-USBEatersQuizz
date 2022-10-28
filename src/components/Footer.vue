@@ -1,7 +1,6 @@
 <template>
   <div class="footer">
-    <p>Made by <br/></p>
-    <a href="https://github.com/Scorni" target="blank">MAXENCE SCORNICIEL </a>
+    <a href="https://github.com/Scorni" target="blank">@MAXENCE SCORNICIEL </a>
   </div>
 
 </template>
@@ -17,6 +16,7 @@ export default {
 }
 
 </script>
-<style scoped>
+<style >
 @import '../assets/style/Components/Footer/Footer.scss';
+
 </style>

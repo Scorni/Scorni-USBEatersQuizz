@@ -22,27 +22,28 @@
         font-size:2.5rem;
     }
     @include devices(laptops) {
-        top: 10vh;
-        left: 33vw;
-        width: 35vw;
+        top: 25%;
+        left: 35vw;
+        width: 30vw;        
+        padding-bottom: 20px;
         height: auto;
         font-size:2.5rem;
     }
     @include devices(ipad) {
-        top: 10vh;
-        left: 30vw;
-        width: 45vw;
+        top: 5vh;
+        left: 22vw;
+        width: 60vw;        
+        padding-bottom: 20px;
         height: auto;
-        font-size:1.5rem;
+        font-size:2.5rem;
     }
     @include devices(mobile) {
         top: 5vh;
-        left: 25vw;
-        width: 50vw;
+        left: 20vw;
+        width: 65vw;        
+        padding-bottom: 20px;
         height: auto;
-        padding-bottom: 0px;
-
-        font-size:1.5rem;
+        font-size:2.5rem;
     }
     background-color: #FFECC7 !important;
 
@@ -56,13 +57,13 @@
 
     .questionHeader{
         font-family: 'Mirage_Bold';
-        margin: 5vh;
+        margin-block: 5vh;
     }
     
     .question{
         @include devices(TV) {
             margin-bottom: 2.5vh;
-            height: 85%;
+            height: 95%;
             font-size:2rem;
             margin-inline: 15%;
         }
@@ -75,7 +76,7 @@
         }
         @include devices(laptops) {
             padding-inline: 25%;
-            margin-bottom: 2.5vh;
+            margin-bottom: 2vh;
             height: 85%;
             font-size:1.5rem;
             margin-inline: 15%;
@@ -85,14 +86,14 @@
             margin-bottom: 2vh;
             height: 85%;
             font-size:1.5rem;
-            margin-inline: 10%;
+            margin-inline: 15%;
         }
         @include devices(mobile) {
             padding-inline: 25%;
             margin-bottom: 2vh;
             height: 85%;
             font-size:1.5rem;
-            margin-inline: 10%;
+            margin-inline: 15%;
         }
         border: #2C3E50 1px solid;
         background-color: #EAFCFF;
@@ -108,30 +109,31 @@
     transform: rotate(-90deg);
     @include devices(TV) {
         font-size: 10rem;
-        left: 10vw;
+        right: 45vw;
         top: 40vh;
     }
     @include devices(desktop) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 10vw;
+        font-size: 8rem;
+        top: 50vh;
+        right: 50vw;
     }
     @include devices(laptops) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 10vw;
+        font-size: 8rem;
+        top: 50vh;
+        right: 50vw;
 
     }
     @include devices(ipad) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 10vw;
+        font-size: 4rem;
+        top: 40vh;
+        right: 65vw;
+
 
     }
     @include devices(mobile) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 10vw;
+        font-size: 3rem;
+        top: 40vh;
+        right: 60vw;
 
     }
 }
@@ -144,31 +146,31 @@
     color: #314832;
 
     @include devices(TV) {
-        font-size: 20vh;
+        font-size: 10rem;
         top: 36vh;
         left: 60vw;
     }
     @include devices(desktop) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 60vw;
+        font-size: 8rem;
+        top: 50vh;
+        left: 65vw;
     }
     @include devices(laptops) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 60vw;
+        font-size: 8rem;
+        top: 50vh;
+        left: 65vw;
 
     }
     @include devices(ipad) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 60vw;
+        font-size: 4rem;
+        top: 40vh;
+        left: 80vw;
 
     }
     @include devices(mobile) {
-        font-size: 15rem;
-        top: 30vh;
-        left: 60vw;
+        font-size: 3rem;
+        top: 40vh;
+        left: 80vw;
 
     }
 }
@@ -180,23 +182,76 @@
 }
 .finalResultLink{
     position: absolute;
-    right: 0vw;
-    bottom: -5vh;
+    
     border: none;
     background-color: #859D75;
-    padding: 5vh;
-    width: 22.5vw;
-    height: 10vh;
+    
     font-family: 'Mirage_Bold';
     font-size: 1.5rem;
     transition: 2s;
     border-top: #2C3E50 1px solid;
-
+    @include devices(TV) {
+        right: 0vw;
+        bottom: -5vh;
+        padding: 5vh;
+        width: 22.5vw;
+        height: 10vh;
+    }
+    @include devices(desktop) {
+        right: 0vw;
+        bottom: -5vh;
+        padding: 5vh;
+        width: 30vw;        
+        height: 10vh;
+    }
+    @include devices(laptops) {
+        right: 0vw;
+        bottom: -5vh;
+        padding: 5vh;
+        width: 30vw;        
+        height: 10vh;
+    }
+    @include devices(ipad) {
+        right: 0vw;
+        bottom: -5vh;   
+        padding: 5vh;
+        width: 60vw;
+        height: 10vh;
+    }
+    @include devices(mobile) {
+        right: 0vw;
+        bottom: -5vh;   
+        padding: 5vh;
+        width: 65vw;
+        height: 10vh;
+    }
     Svg{
-        width: 1.75vw;
+        @include devices(TV) {
+            width: 1.75vw;
+            top: -25%;
+            left: 46%;
+        }
+        @include devices(desktop) {
+            width: 3.75vw;
+            top: -25%;
+            left: 43%;
+        }
+        @include devices(laptops) {
+            width: 4.5vw;
+            top: -25%;
+            left: 43%;
+        }
+        @include devices(ipad) {
+            width: 5.75vw;
+            top: -25%;
+            left: 46%;
+        }
+        @include devices(mobile) {
+            width: 5.75vw;
+            top: -25%;
+            left: 46%;
+        }
         position: absolute;
-        top: -25%;
-        left: 46%;
         transition: 2s;
         transform: rotate(-90deg);
         fill: #2C3E50;

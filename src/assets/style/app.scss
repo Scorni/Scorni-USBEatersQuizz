@@ -1,5 +1,7 @@
-@import  './Helpers/mediaQueries' ;
-@import  './Helpers/ceaser.scss' ;
+@import  '../../Helpers/flexboxLayout.scss' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+@import  '../../Helpers/font';
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

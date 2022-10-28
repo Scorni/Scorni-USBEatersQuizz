@@ -256,51 +256,139 @@
       align-self: stretch;
 }
 
-@font-face {
-  font-family: 'Mirage_Bold';
-  src: URL("../../font/Mirage_Bold.otf") format("truetype");
-}
-
-@font-face {
-  font-family: 'Mirage_Regular';
-  src: URL("../../font/Mirage_Regular.otf") format("truetype");
-}
-
 /**
 *   Style
 **/
 .headers {
+  position: absolute;
   overflow: hidden;
   line-height: 1.4;
   letter-spacing: 0.005em;
-  position: absolute;
-  top: 7vh;
-  left: 10%;
-  height: 55vh;
-  width: 25%;
   text-align: left;
   font-family: 'Mirage_Bold';
   background-color: #FFECC7;
-  font-size: 2vw;
   white-space: break-spaces;
-  padding: 2%;
+}
+
+@media only screen and (min-width: 1201px) {
+  .headers {
+    top: 7vh;
+    left: 10%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .headers {
+    top: 7vh;
+    left: 10%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .headers {
+    top: 7vh;
+    left: 10%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .headers {
+    top: 7vh;
+    left: 10%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .headers {
+    top: 7vh;
+    left: 10%;
+    height: 25vh;
+    width: 60vw;
+    font-size: 2vw;
+    padding: 2%;
+  }
 }
 
 .headersDynamics {
+  position: absolute;
   overflow: hidden;
   line-height: 1.4;
   letter-spacing: 0.005em;
-  position: absolute;
-  left: 70%;
-  top: 40%;
-  height: 55vh;
-  width: 25%;
   text-align: right;
   font-family: 'Mirage_Bold';
   background-color: #EAFCFF;
-  font-size: 2vw;
-  padding: 2%;
   vertical-align: bottom;
+}
+
+@media only screen and (min-width: 1201px) {
+  .headersDynamics {
+    left: 70%;
+    top: 40%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .headersDynamics {
+    left: 70%;
+    top: 40%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .headersDynamics {
+    left: 70%;
+    top: 40%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .headersDynamics {
+    left: 70%;
+    top: 40%;
+    height: 55vh;
+    width: 25%;
+    font-size: 2vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .headersDynamics {
+    left: 30%;
+    top: 40%;
+    height: 25vh;
+    width: 60vw;
+    font-size: 2vw;
+    padding: 2%;
+  }
 }
 
 .groupedHeaders {
@@ -320,30 +408,114 @@
 .ghostBordersRight {
   border-right: 1px #2C3E50 solid;
   position: absolute;
-  left: 12%;
-  top: 43%;
-  height: 15vh;
-  width: 25%;
   text-align: left;
-  font-size: 2.5rem;
   white-space: break-spaces;
-  padding: 2%;
   -webkit-animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
           animation: borderRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .ghostBordersRight {
+    left: 12%;
+    top: 43%;
+    height: 15vh;
+    width: 25%;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .ghostBordersRight {
+    left: 12%;
+    top: 43%;
+    height: 15vh;
+    width: 25%;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ghostBordersRight {
+    left: 12%;
+    top: 43%;
+    height: 15vh;
+    width: 25%;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .ghostBordersRight {
+    left: 12%;
+    top: 43%;
+    height: 15vh;
+    width: 25%;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .ghostBordersRight {
+    left: 50%;
+    top: 13%;
+    height: 15vh;
+    width: 25%;
+    padding: 2%;
+  }
 }
 
 .ghostBordersBottom {
   border-bottom: 1px #2C3E50 solid;
   position: absolute;
-  top: 39%;
-  height: 27.5vh;
-  width: 8vw;
   text-align: left;
-  font-size: 2.5rem;
   white-space: break-spaces;
-  padding: 2%;
   -webkit-animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
           animation: borderBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .ghostBordersBottom {
+    top: 39%;
+    height: 27.5vh;
+    width: 8vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .ghostBordersBottom {
+    top: 39%;
+    height: 27.5vh;
+    width: 8vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ghostBordersBottom {
+    top: 39%;
+    height: 27.5vh;
+    width: 8vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .ghostBordersBottom {
+    top: 39%;
+    height: 27.5vh;
+    width: 8vw;
+    padding: 2%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .ghostBordersBottom {
+    top: 7%;
+    height: 27.5vh;
+    width: 8vw;
+    padding: 2%;
+  }
 }
 
 /**
@@ -352,118 +524,478 @@
 .ghostBordersSecondRight {
   border-right: 1px #2C3E50 solid;
   position: absolute;
-  left: 43%;
-  top: 43%;
-  height: 15vh;
-  width: 25%;
   text-align: left;
-  font-size: 2.5rem;
   white-space: break-spaces;
-  padding: 2%;
   -webkit-animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
           animation: borderSecondRight 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .ghostBordersSecondRight {
+    left: 43%;
+    top: 43%;
+    height: 15vh;
+    padding: 2%;
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .ghostBordersSecondRight {
+    left: 43%;
+    top: 43%;
+    height: 15vh;
+    padding: 2%;
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ghostBordersSecondRight {
+    left: 43%;
+    top: 43%;
+    height: 15vh;
+    padding: 2%;
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .ghostBordersSecondRight {
+    left: 43%;
+    top: 43%;
+    height: 15vh;
+    padding: 2%;
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .ghostBordersSecondRight {
+    left: 0%;
+    top: 43%;
+    height: 15vh;
+    padding: 2%;
+    width: 25%;
+  }
 }
 
 .ghostBordersSecondTop {
   border-top: 1px #2C3E50 solid;
   position: absolute;
-  left: 72%;
-  top: 37%;
-  height: 15vh;
-  width: 8vw;
   text-align: left;
-  font-size: 2.5rem;
   white-space: break-spaces;
-  padding: 2%;
   -webkit-animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
           animation: borderSecondTop 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .ghostBordersSecondTop {
+    left: 72%;
+    top: 37%;
+    height: 15vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .ghostBordersSecondTop {
+    left: 72%;
+    top: 37%;
+    height: 15vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ghostBordersSecondTop {
+    left: 72%;
+    top: 37%;
+    height: 15vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .ghostBordersSecondTop {
+    left: 72%;
+    top: 37%;
+    height: 15vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .ghostBordersSecondTop {
+    left: 72%;
+    top: 37%;
+    height: 15vh;
+    padding: 2%;
+    width: 8vw;
+  }
 }
 
 .options {
   position: absolute;
   overflow: hidden;
-  left: 10%;
-  top: 70%;
-  height: 25vh;
-  width: 40%;
   text-align: right;
   font-family: 'Mirage_Bold';
   background-color: #DDFEC6;
-  font-size: 1.5rem;
   white-space: break-spaces;
-  padding: 2%;
+}
+
+@media only screen and (min-width: 1201px) {
+  .options {
+    left: 10%;
+    top: 70%;
+    height: 25vh;
+    padding: 2%;
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .options {
+    left: 10%;
+    top: 70%;
+    height: 25vh;
+    padding: 2%;
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .options {
+    left: 10%;
+    top: 70%;
+    height: 25vh;
+    padding: 2%;
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .options {
+    left: 10%;
+    top: 70%;
+    height: 25vh;
+    padding: 2%;
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .options {
+    left: 10%;
+    top: 70%;
+    height: 25vh;
+    padding: 2%;
+    width: 60%;
+  }
 }
 
 .ghostBordersOptionsLeft {
   border-left: 1px #2C3E50 solid;
   position: absolute;
-  left: 8.5%;
-  top: 82%;
-  height: 10vh;
-  width: 8vw;
   text-align: left;
-  font-size: 2.5rem;
   white-space: break-spaces;
-  padding: 2%;
   -webkit-animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
           animation: borderOptionsLeft 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .ghostBordersOptionsLeft {
+    left: 8.5%;
+    top: 82%;
+    height: 10vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .ghostBordersOptionsLeft {
+    left: 8.5%;
+    top: 82%;
+    height: 10vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ghostBordersOptionsLeft {
+    left: 8.5%;
+    top: 82%;
+    height: 10vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .ghostBordersOptionsLeft {
+    left: 8.5%;
+    top: 82%;
+    height: 10vh;
+    padding: 2%;
+    width: 8vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .ghostBordersOptionsLeft {
+    left: 6.5%;
+    top: 82%;
+    height: 10vh;
+    padding: 2%;
+    width: 8vw;
+  }
 }
 
 .ghostBordersOptionsBottom {
   border-top: 1px #2C3E50 solid;
   position: absolute;
-  left: 11.5%;
-  top: 98%;
-  height: 15vh;
-  width: 6vw;
   text-align: left;
-  font-size: 2.5rem;
   white-space: break-spaces;
-  padding: 2%;
   -webkit-animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
           animation: bordersOptionsBottom 5s cubic-bezier(0.55, 0.085, 0.68, 0.53) infinite;
 }
 
+@media only screen and (min-width: 1201px) {
+  .ghostBordersOptionsBottom {
+    left: 11.5%;
+    top: 98%;
+    height: 15vh;
+    padding: 2%;
+    width: 6vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .ghostBordersOptionsBottom {
+    left: 11.5%;
+    top: 98%;
+    height: 15vh;
+    padding: 2%;
+    width: 6vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .ghostBordersOptionsBottom {
+    left: 11.5%;
+    top: 98%;
+    height: 15vh;
+    padding: 2%;
+    width: 6vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .ghostBordersOptionsBottom {
+    left: 11.5%;
+    top: 98%;
+    height: 15vh;
+    padding: 2%;
+    width: 6vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .ghostBordersOptionsBottom {
+    left: 11.5%;
+    top: 98%;
+    height: 15vh;
+    padding: 2%;
+    width: 6vw;
+  }
+}
+
 .category {
   position: absolute;
-  left: 2vw;
   text-align: left;
+}
+
+@media only screen and (min-width: 1201px) {
+  .category {
+    left: 2vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .category {
+    left: 2vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .category {
+    left: 15vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .category {
+    left: 2vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .category {
+    left: 2vw;
+  }
 }
 
 .tag {
   position: absolute;
-  top: 35%;
-  left: 5vw;
   text-align: left;
+}
+
+@media only screen and (min-width: 1201px) {
+  .tag {
+    top: 35%;
+    left: 5vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .tag {
+    top: 35%;
+    left: 5vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .tag {
+    top: 20%;
+    left: 11vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .tag {
+    top: 20%;
+    left: 11vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .tag {
+    top: 15%;
+    left: 9vw;
+  }
 }
 
 .difficulty {
   position: absolute;
-  top: 35%;
-  left: 25vw;
-  text-align: rigth;
+  text-align: right;
+}
+
+@media only screen and (min-width: 1201px) {
+  .difficulty {
+    top: 35%;
+    left: 22vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .difficulty {
+    top: 35%;
+    left: 23vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .difficulty {
+    top: 55%;
+    left: 11vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .difficulty {
+    top: 55%;
+    left: 11vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .difficulty {
+    top: 55%;
+    left: 9vw;
+  }
 }
 
 select {
   line-height: 1.4;
   letter-spacing: 0.005em;
-  margin-top: 2vh;
   background-color: #859D75;
   border-color: #859D75;
   font-family: 'Mirage_Bold';
-  width: 10vw;
-  font-size: 1.45rem;
   -webkit-transition: background-color 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   transition: background-color 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC");
   background-repeat: no-repeat;
-  background-position: 8.5vw center;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  padding-inline: 0.5vw;
   -webkit-animation: fadeIn 3.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) normal;
           animation: fadeIn 3.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) normal;
+}
+
+@media only screen and (min-width: 1201px) {
+  select {
+    background-position: 11vw center;
+    margin-top: 2vh;
+    width: 13vw;
+    padding-inline: 0.5vw;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  select {
+    margin-top: 2vh;
+    width: 13vw;
+    background-position: 11vw center;
+    padding-inline: 0.5vw;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  select {
+    margin-top: 2vh;
+    width: 19vw;
+    background-position: 16vw center;
+    padding-inline: 0.5vw;
+    font-size: 1.35rem;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  select {
+    margin-top: 2vh;
+    width: 19vw;
+    background-position: 15vw center;
+    padding-inline: 0.5vw;
+    font-size: 1.35rem;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  select {
+    margin-top: 2vh;
+    width: 40vw;
+    background-position: 35vw center;
+    padding-inline: 0.5vw;
+    font-size: 1.45rem;
+  }
 }
 
 select option {
@@ -481,15 +1013,58 @@ select:active, select:focus {
 
 .questionLink {
   position: absolute;
-  right: 40vw;
-  margin-top: 43.5vh;
   border: none;
   background-color: #859D75;
-  padding: 5vh;
   font-family: 'Mirage_Bold';
-  font-size: 1.5rem;
   -webkit-transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+@media only screen and (min-width: 1201px) {
+  .questionLink {
+    right: 38vw;
+    margin-top: 43.5vh;
+    padding: 5vh;
+    font-size: 1.5rem;
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .questionLink {
+    right: 38vw;
+    margin-top: 43.5vh;
+    padding: 5vh;
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .questionLink {
+    right: 35vw;
+    margin-top: 43.5vh;
+    padding: 4vh;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .questionLink {
+    right: 30vw;
+    margin-top: 17.5vh;
+    padding: 1.5vh;
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .questionLink {
+    right: 10vw;
+    margin-top: 70vh;
+    font-size: 1rem;
+    height: 25vh;
+    width: 80px;
+  }
 }
 
 .questionLink:hover {
@@ -565,41 +1140,159 @@ select:active, select:focus {
   }
 }
 
-@-webkit-keyframes textAppearsLoop {
-  0% {
-    opacity: 0;
-    margin-top: 100vh;
+@media only screen and (max-width: 481px) {
+  @-webkit-keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 10vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 10vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
   }
-  50% {
-    opacity: 1;
-    margin-top: 15vh;
-  }
-  80% {
-    opacity: 1;
-    margin-top: 15vh;
-  }
-  100% {
-    opacity: 0;
-    margin-top: 100vh;
+  @keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 10vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 10vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
   }
 }
 
-@keyframes textAppearsLoop {
-  0% {
-    opacity: 0;
-    margin-top: 100vh;
+@media only screen and (max-width: 820px) {
+  @-webkit-keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 30vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 30vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
   }
-  50% {
-    opacity: 1;
-    margin-top: 15vh;
+  @keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 30vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 30vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
   }
-  80% {
-    opacity: 1;
-    margin-top: 15vh;
+}
+
+@media only screen and (max-width: 1024px) {
+  @-webkit-keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 32vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 32vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
   }
-  100% {
-    opacity: 0;
-    margin-top: 100vh;
+  @keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 32vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 32vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  @-webkit-keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 15vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 15vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+  }
+  @keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 15vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 15vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
   }
 }
 
@@ -661,147 +1354,291 @@ select:active, select:focus {
   }
 }
 
-@-webkit-keyframes borderRight {
-  0% {
-    top: 48%;
+@media only screen and (max-width: 481px) {
+  /**
+    *   Static Header Border
+    **/
+  @-webkit-keyframes borderRight {
+    0% {
+      top: 19.5%;
+    }
+    50% {
+      top: 17%;
+    }
+    100% {
+      top: 19.5%;
+    }
   }
-  50% {
-    top: 51.5%;
+  @keyframes borderRight {
+    0% {
+      top: 19.5%;
+    }
+    50% {
+      top: 17%;
+    }
+    100% {
+      top: 19.5%;
+    }
   }
-  100% {
-    top: 48%;
+  @-webkit-keyframes borderBottom {
+    0% {
+      right: 25%;
+    }
+    50% {
+      right: 27%;
+    }
+    100% {
+      right: 25%;
+    }
+  }
+  @keyframes borderBottom {
+    0% {
+      right: 25%;
+    }
+    50% {
+      right: 27%;
+    }
+    100% {
+      right: 25%;
+    }
+  }
+  /**
+    *   Dynamic Header Border
+    **/
+  @-webkit-keyframes borderSecondRight {
+    0% {
+      top: 40%;
+    }
+    50% {
+      top: 37%;
+    }
+    100% {
+      top: 40%;
+    }
+  }
+  @keyframes borderSecondRight {
+    0% {
+      top: 40%;
+    }
+    50% {
+      top: 37%;
+    }
+    100% {
+      top: 40%;
+    }
+  }
+  @-webkit-keyframes borderSecondTop {
+    0% {
+      left: 27%;
+    }
+    50% {
+      left: 25%;
+    }
+    100% {
+      left: 27%;
+    }
+  }
+  @keyframes borderSecondTop {
+    0% {
+      left: 27%;
+    }
+    50% {
+      left: 25%;
+    }
+    100% {
+      left: 27%;
+    }
+  }
+  /**
+    * Option Borders
+    **/
+  @-webkit-keyframes borderOptionsLeft {
+    0% {
+      top: 86%;
+    }
+    50% {
+      top: 88%;
+    }
+    100% {
+      top: 86%;
+    }
+  }
+  @keyframes borderOptionsLeft {
+    0% {
+      top: 86%;
+    }
+    50% {
+      top: 88%;
+    }
+    100% {
+      top: 86%;
+    }
+  }
+  @-webkit-keyframes bordersOptionsBottom {
+    0% {
+      left: 8.5%;
+    }
+    50% {
+      left: 6.5%;
+    }
+    100% {
+      left: 8.5%;
+    }
+  }
+  @keyframes bordersOptionsBottom {
+    0% {
+      left: 8.5%;
+    }
+    50% {
+      left: 6.5%;
+    }
+    100% {
+      left: 8.5%;
+    }
   }
 }
 
-@keyframes borderRight {
-  0% {
-    top: 48%;
+@media only screen and (min-width: 482px) {
+  /**
+    *   Static Header Border
+    **/
+  @-webkit-keyframes borderRight {
+    0% {
+      top: 48%;
+    }
+    50% {
+      top: 51.5%;
+    }
+    100% {
+      top: 48%;
+    }
   }
-  50% {
-    top: 51.5%;
+  @keyframes borderRight {
+    0% {
+      top: 48%;
+    }
+    50% {
+      top: 51.5%;
+    }
+    100% {
+      top: 48%;
+    }
   }
-  100% {
-    top: 48%;
+  @-webkit-keyframes borderBottom {
+    0% {
+      right: 64%;
+    }
+    50% {
+      right: 63%;
+    }
+    100% {
+      right: 64%;
+    }
   }
-}
-
-@-webkit-keyframes borderBottom {
-  0% {
-    right: 64%;
+  @keyframes borderBottom {
+    0% {
+      right: 64%;
+    }
+    50% {
+      right: 63%;
+    }
+    100% {
+      right: 64%;
+    }
   }
-  50% {
-    right: 63%;
+  /**
+    *   Dynamic Header Border
+    **/
+  @-webkit-keyframes borderSecondRight {
+    0% {
+      top: 40%;
+    }
+    50% {
+      top: 37%;
+    }
+    100% {
+      top: 40%;
+    }
   }
-  100% {
-    right: 64%;
+  @keyframes borderSecondRight {
+    0% {
+      top: 40%;
+    }
+    50% {
+      top: 37%;
+    }
+    100% {
+      top: 40%;
+    }
   }
-}
-
-@keyframes borderBottom {
-  0% {
-    right: 64%;
+  @-webkit-keyframes borderSecondTop {
+    0% {
+      left: 70%;
+    }
+    50% {
+      left: 68%;
+    }
+    100% {
+      left: 70%;
+    }
   }
-  50% {
-    right: 63%;
+  @keyframes borderSecondTop {
+    0% {
+      left: 70%;
+    }
+    50% {
+      left: 68%;
+    }
+    100% {
+      left: 70%;
+    }
   }
-  100% {
-    right: 64%;
+  /**
+    * Option Borders
+    **/
+  @-webkit-keyframes borderOptionsLeft {
+    0% {
+      top: 86%;
+    }
+    50% {
+      top: 88%;
+    }
+    100% {
+      top: 86%;
+    }
   }
-}
-
-@-webkit-keyframes borderSecondRight {
-  0% {
-    top: 40%;
+  @keyframes borderOptionsLeft {
+    0% {
+      top: 86%;
+    }
+    50% {
+      top: 88%;
+    }
+    100% {
+      top: 86%;
+    }
   }
-  50% {
-    top: 37%;
+  @-webkit-keyframes bordersOptionsBottom {
+    0% {
+      left: 10.5%;
+    }
+    50% {
+      left: 8.5%;
+    }
+    100% {
+      left: 10.5%;
+    }
   }
-  100% {
-    top: 40%;
-  }
-}
-
-@keyframes borderSecondRight {
-  0% {
-    top: 40%;
-  }
-  50% {
-    top: 37%;
-  }
-  100% {
-    top: 40%;
-  }
-}
-
-@-webkit-keyframes borderSecondTop {
-  0% {
-    left: 70%;
-  }
-  50% {
-    left: 68%;
-  }
-  100% {
-    left: 70%;
-  }
-}
-
-@keyframes borderSecondTop {
-  0% {
-    left: 70%;
-  }
-  50% {
-    left: 68%;
-  }
-  100% {
-    left: 70%;
-  }
-}
-
-@-webkit-keyframes borderOptionsLeft {
-  0% {
-    top: 86%;
-  }
-  50% {
-    top: 88%;
-  }
-  100% {
-    top: 86%;
-  }
-}
-
-@keyframes borderOptionsLeft {
-  0% {
-    top: 86%;
-  }
-  50% {
-    top: 88%;
-  }
-  100% {
-    top: 86%;
-  }
-}
-
-@-webkit-keyframes bordersOptionsBottom {
-  0% {
-    left: 10.5%;
-  }
-  50% {
-    left: 8.5%;
-  }
-  100% {
-    left: 10.5%;
-  }
-}
-
-@keyframes bordersOptionsBottom {
-  0% {
-    left: 10.5%;
-  }
-  50% {
-    left: 8.5%;
-  }
-  100% {
-    left: 10.5%;
+  @keyframes bordersOptionsBottom {
+    0% {
+      left: 10.5%;
+    }
+    50% {
+      left: 8.5%;
+    }
+    100% {
+      left: 10.5%;
+    }
   }
 }
 

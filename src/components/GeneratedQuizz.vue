@@ -62,7 +62,7 @@ export default {
       questionGenerated : this.getQuestion(),
       successQuestion : this.$route.params.successQuestion || [],
       countAnsweredQuestion : 0,
-      showResultLink : false,
+      showResultLink : true,
       type: "",
       params: localStorage,
       finalResultAnswerAndQuestion : this.$route.params.finalResultAnswerAndQuestion
