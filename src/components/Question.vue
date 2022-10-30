@@ -215,6 +215,6 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style >
-@import '../assets/style/Components/Question/Question.scss';
+@import '../assets/style/Components/Question/Question.css';
 
 </style>

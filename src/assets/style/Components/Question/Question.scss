@@ -1,21 +1,36 @@
+@import  '../../Helpers/flexboxLayout.scss' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+
+
+//TODO: Responsivness moving border
+/**
+*       Scrollbar
+**/
+
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+/**
+*       Body
+**/
+
 .questionVue{
     text-align: justify;
     font-family: 'Mirage_Bold';
@@ -23,58 +38,174 @@
 }
 .headerQuestion{
     position: absolute;
-    font-size: 1.2vw;
     background-color: #DDFEC6;
     text-align: left;
-    width: 40%;
-    top: 10%;
-    left: 10%;
-    padding-block: 5%;
-    padding-left: 2%;
+    
+    @include devices(TV) {
+        font-size: 1.2vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(desktop) {
+        font-size: 1.4vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(laptops) {
+        font-size: 1.7vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(ipad) {
+        font-size: 2.5vw;
+        width: 70%;
+        top: 10%;
+        left: 15%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(mobile) {
+        font-size: 1.2vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-left: 2%;
+    }
 }
 .borderQuestionLeft{
     position: absolute;
-    left: 52%;
     padding-block: 5%;
     width: 30vw;
     height: 7vh;
     border-left: 1px solid #2C3E50;
     animation: borderQuestionLeftMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+    @include devices(TV) {
+        left: 83%;
+    }
+    @include devices(desktop) {
+        left: 83%;
+    }
+    @include devices(laptops) {
+        left: 83%;
+    }
+    @include devices(ipad) {
+        left: 88%;
+    }
+    @include devices(mobile) {
+        left: 83%;
+        
+    }
 }
 .borderQuestionBottom{
     position: absolute;
     top: 7%;
     left: 8%;
     padding-block: 5%;
-
     width: 10%;
     height: 15vh;
+    
     border-top: 1px solid #2C3E50;
     animation: borderQuestionBottomMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+    
 }
 .tips{
     position: absolute;
     background-color: #D9C6A1;
     text-align: center;
-    right: 10%;
-    top: 22%;
-    padding-block: 2% ;
-    font-size: 1.1vw;
-
-    width: 30vw;
+    
+    @include devices(TV) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.1vw;
+        width: 30vw;
+    }
+    @include devices(desktop) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.4vw;
+        width: 30vw;
+    }
+    @include devices(laptops) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.7vw;
+        width: 30vw;
+    }
+    @include devices(ipad) {
+        right: 30%;
+        top: 25vh;
+        padding-block: 2% ;
+        font-size: 2.5vw;
+        width: 40vw;
+        z-index: 2;
+    }
+    @include devices(mobile) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.1vw;
+        width: 30vw;
+    }
 }
 .answers{
     position: absolute;
-    right: 10%;
-    bottom: 6%;
-    z-index: 1;
-    font-size: 1.1vw;
-
     background-color: #EAFCFF;
-    width: 30vw;
-    height: 50vh;
     overflow-y: auto;
-    
+    padding-bottom: 10%;
+
+    @include devices(TV) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
+    @include devices(desktop) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
+    @include devices(laptops) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
+    @include devices(ipad) {
+        right: 15%;
+        top: 28vh;
+        z-index: 1;
+        font-size: 2.2vw;
+        width: 70vw;
+        height: 40vh;
+    }
+    @include devices(mobile) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
 }
 .borderAnswerTop{
     position: absolute;
@@ -108,6 +239,11 @@
     border: 1px solid #2C3E50;
     margin-top: 50px;
     border-collapse: collapse;
+    @include devices(TV) {}
+    @include devices(desktop) {}
+    @include devices(laptops) {}
+    @include devices(ipad) {}
+    @include devices(mobile) {}
 }
 .default{
     background-color: #D9D9D9;
@@ -130,20 +266,51 @@
     margin-left: 25%;
     max-width: 20vw;
     white-space: normal;
-
+    @include devices(TV) {}
+    @include devices(desktop) {}
+    @include devices(laptops) {}
+    @include devices(ipad) {}
+    @include devices(mobile) {}
 }
 .confirmAnswer{
     color: #2C3E50;
     position: absolute;
     z-index: 2;
-    right: 4%;
-    bottom: 2%;
-    padding: 3vh;
+    
     background-color: #859D75;
     border: none;
     font-family: 'Mirage_Bold';
-    font-size: 1.5rem;
     transition: 2s;
+    @include devices(TV) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(desktop) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(laptops) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(ipad) {
+        right: 4%;
+        bottom: 28%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(mobile) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
 }
 .confirmAnswer:hover{
     background-color: #55644b;
@@ -152,25 +319,87 @@
 .resultContainer{
     position: absolute;
     overflow: hidden;
-    font-size: 2rem;
-    width: 40vw;
-    height: 10vh;
-    top: 60%;
-    left: 10%;
+    
+    @include devices(TV) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
+    @include devices(desktop) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
+    @include devices(laptops) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
+    @include devices(ipad) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 6vh;
+        top: 70%;
+        left: 28%;
+    }
+    @include devices(mobile) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
 }
 .resultLink{
     font-family: 'Mirage_Bold';
-    font-size: 3rem;
     position: absolute;
     background-color: #D9C6A1;
     overflow: hidden;
-    width: 40vw;
-    left: 85%;
-    padding: 1vw;
-    height: 10vh;
+    
     border: none;
     border-left: 1px solid #2C3E50;
     transition: 2s;
+    @include devices(TV) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(desktop) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(laptops) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(ipad) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 6vh;
+    }
+    @include devices(mobile) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
 }
 .resultLink:hover .svgQuestion{
         transform: rotate(0deg);
@@ -182,7 +411,6 @@
 
 }
 .result{
-
     position: absolute;
     text-align: center;
     background-color:#FFECC7 ;
@@ -196,16 +424,42 @@
 }
 .svgQuestion{
     position: absolute;
-    left: 3%;
-    top: 0%;
-    width: 2.5vw;
-    height: 100%;
+    
     transition: 2s;
     transform: rotate(180deg);
     
     
     fill: #2C3E50;
-    
+    @include devices(TV) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
+    @include devices(desktop) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
+    @include devices(laptops) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
+    @include devices(ipad) {
+        left: 3%;
+        top: 0%;
+        width: 3.7vw;
+        height: 100%;
+    }
+    @include devices(mobile) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
 }
 
 /**
@@ -245,14 +499,59 @@
         top: 7%;
     }
 }
-@keyframes borderQuestionBottomMoving {
-    0%{
-        left: 42%;
+/**
+*  Border Question
+**/
+@include devices(TV) {
+    @keyframes borderQuestionBottomMoving {
+    
+        0%{
+            left: 73%;
+        }
+        50%{
+            left: 68%;
+        }
+        100%{
+            left: 73%;
+        }
     }
-    50%{
-        left: 40%;
+}
+@include devices(desktop) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 42%;
+        }
+        50%{
+            left: 40%;
+        }
+        100%{
+            left: 42%;
+        }
     }
-    100%{
-        left: 42%;
+}
+@include devices(laptop) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 42%;
+        }
+        50%{
+            left: 40%;
+        }
+        100%{
+            left: 42%;
+        }
+    }
+}
+@include devices(ipad) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 78%;
+        }
+        50%{
+            left: 76%;
+        }
+        100%{
+            left: 78%;
+        }
     }
 }
