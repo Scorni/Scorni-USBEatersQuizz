@@ -320,7 +320,7 @@
     left: 10%;
     height: 25vh;
     width: 60vw;
-    font-size: 2vw;
+    font-size: 4vw;
     padding: 2%;
   }
 }
@@ -386,7 +386,7 @@
     top: 40%;
     height: 25vh;
     width: 60vw;
-    font-size: 2vw;
+    font-size: 4vw;
     padding: 2%;
   }
 }
@@ -1140,7 +1140,7 @@ select:active, select:focus {
   }
 }
 
-@media only screen and (max-width: 481px) {
+@media only screen and (min-width: 1025px) {
   @-webkit-keyframes textAppearsLoop {
     0% {
       opacity: 0;
@@ -1148,11 +1148,11 @@ select:active, select:focus {
     }
     50% {
       opacity: 1;
-      margin-top: 10vh;
+      margin-top: 15vh;
     }
     80% {
       opacity: 1;
-      margin-top: 10vh;
+      margin-top: 15vh;
     }
     100% {
       opacity: 0;
@@ -1166,50 +1166,11 @@ select:active, select:focus {
     }
     50% {
       opacity: 1;
-      margin-top: 10vh;
+      margin-top: 15vh;
     }
     80% {
       opacity: 1;
-      margin-top: 10vh;
-    }
-    100% {
-      opacity: 0;
-      margin-top: 100vh;
-    }
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  @-webkit-keyframes textAppearsLoop {
-    0% {
-      opacity: 0;
-      margin-top: 100vh;
-    }
-    50% {
-      opacity: 1;
-      margin-top: 30vh;
-    }
-    80% {
-      opacity: 1;
-      margin-top: 30vh;
-    }
-    100% {
-      opacity: 0;
-      margin-top: 100vh;
-    }
-  }
-  @keyframes textAppearsLoop {
-    0% {
-      opacity: 0;
-      margin-top: 100vh;
-    }
-    50% {
-      opacity: 1;
-      margin-top: 30vh;
-    }
-    80% {
-      opacity: 1;
-      margin-top: 30vh;
+      margin-top: 15vh;
     }
     100% {
       opacity: 0;
@@ -1257,7 +1218,7 @@ select:active, select:focus {
   }
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (max-width: 820px) {
   @-webkit-keyframes textAppearsLoop {
     0% {
       opacity: 0;
@@ -1265,11 +1226,11 @@ select:active, select:focus {
     }
     50% {
       opacity: 1;
-      margin-top: 15vh;
+      margin-top: 30vh;
     }
     80% {
       opacity: 1;
-      margin-top: 15vh;
+      margin-top: 30vh;
     }
     100% {
       opacity: 0;
@@ -1283,11 +1244,50 @@ select:active, select:focus {
     }
     50% {
       opacity: 1;
-      margin-top: 15vh;
+      margin-top: 30vh;
     }
     80% {
       opacity: 1;
-      margin-top: 15vh;
+      margin-top: 30vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  @-webkit-keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 6vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 6vh;
+    }
+    100% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+  }
+  @keyframes textAppearsLoop {
+    0% {
+      opacity: 0;
+      margin-top: 100vh;
+    }
+    50% {
+      opacity: 1;
+      margin-top: 6vh;
+    }
+    80% {
+      opacity: 1;
+      margin-top: 6vh;
     }
     100% {
       opacity: 0;
