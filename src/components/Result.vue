@@ -12,15 +12,15 @@
         <p>What you did wrong</p>
       </div>
       <div class="contentReview">
-        <div v-if="fault > 0">
+        <div v-if="fault > 0 && this.questionAndWrongAnswers.length">
           <div v-for="(value,key) in Object.keys(this.questionAndWrongAnswers)" v-bind:key="key.answer" class="questionReviewed">
             <div>
               <p class="questionNumber" v-bind:id="key">Question {{parseInt(value) + 1 }} </p>
               <Svg class="svgResult"></Svg>
             </div>
             <div class="questionAnswer">
-              <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).substring(1)}}</div>
-              <div class="QChoosedAnswer">{{this.questionAndWrongAnswers[value][1].substring(1)}}</div>
+              <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).slice(1)}}</div>
+              <div class="QChoosedAnswer">{{(this.questionAndWrongAnswers[value][1]).slice(1)}}</div>
               <div class="QTrueAnswer">{{this.questionAndWrongAnswers[value][0]}}</div>
             </div>
           </div>
@@ -61,8 +61,10 @@ export default {
   mounted(){
     
     this.fault = (Object.keys(this.questionAndWrongAnswers).length || 0);
+    
     for(let i in this.questionAndWrongAnswers){
-      this.questionAndWrongAnswers[i] = (this.questionAndWrongAnswers[i]).split("#️⃣");
+      if( this.questionAndWrongAnswers[i] ) this.questionAndWrongAnswers[i] = (this.questionAndWrongAnswers[i]).split("#️⃣");
+      
     }
     // this.fault.length <= 5 
     // ? this.$confetti.start(

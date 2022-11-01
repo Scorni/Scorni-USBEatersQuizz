@@ -259,6 +259,10 @@
 /**
 *       Scrollbar
 **/
+body {
+  overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -350,8 +354,6 @@
 .borderQuestionLeft {
   position: absolute;
   padding-block: 5%;
-  width: 30vw;
-  height: 7vh;
   border-left: 1px solid #2C3E50;
   -webkit-animation: borderQuestionLeftMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
           animation: borderQuestionLeftMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
@@ -359,44 +361,87 @@
 
 @media only screen and (min-width: 1201px) {
   .borderQuestionLeft {
-    left: 83%;
+    left: 93%;
+    width: 1vw;
   }
 }
 
 @media only screen and (max-width: 1200px) {
   .borderQuestionLeft {
-    left: 83%;
+    left: 93%;
+    width: 1vw;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   .borderQuestionLeft {
-    left: 83%;
+    left: 93%;
+    width: 1vw;
   }
 }
 
 @media only screen and (max-width: 820px) {
   .borderQuestionLeft {
     left: 88%;
+    width: 5vw;
+    height: 7vh;
   }
 }
 
 @media only screen and (max-width: 481px) {
   .borderQuestionLeft {
-    left: 92%;
+    left: 97%;
+    width: 2vw;
+    height: 7vh;
   }
 }
 
 .borderQuestionBottom {
   position: absolute;
-  top: 4%;
-  left: 8%;
   padding-block: 5%;
-  width: 10%;
-  height: 15vh;
   border-top: 1px solid #2C3E50;
   -webkit-animation: borderQuestionBottomMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
           animation: borderQuestionBottomMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .borderQuestionBottom {
+    top: 15%;
+    width: 12%;
+    height: 1vh;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .borderQuestionBottom {
+    top: 18%;
+    width: 12%;
+    height: 1vh;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .borderQuestionBottom {
+    top: 18%;
+    width: 10%;
+    height: 1vh;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .borderQuestionBottom {
+    top: 7%;
+    width: 10%;
+    height: 1vh;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .borderQuestionBottom {
+    top: 4%;
+    width: 10%;
+    height: 1vh;
+  }
 }
 
 .tips {
@@ -522,25 +567,93 @@
 .borderAnswerTop {
   position: absolute;
   z-index: 0;
-  right: 30%;
-  bottom: 15%;
-  width: 12vw;
-  height: 45vh;
   border-top: 1px solid #2C3E50;
   -webkit-animation: borderTopAnswerMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
           animation: borderTopAnswerMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .borderAnswerTop {
+    bottom: 15%;
+    width: 12vw;
+    height: 45vh;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .borderAnswerTop {
+    bottom: 15%;
+    width: 12vw;
+    height: 45vh;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .borderAnswerTop {
+    bottom: 15%;
+    width: 12vw;
+    height: 45vh;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .borderAnswerTop {
+    bottom: 24%;
+    width: 12vw;
+    height: 5vh;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .borderAnswerTop {
+    bottom: 15%;
+    width: 40vw;
+    height: 5vh;
+  }
 }
 
 .borderAnswerLeft {
   position: absolute;
   z-index: 0;
   border-left: 1px solid #2C3E50;
-  right: 30%;
-  bottom: 35%;
-  width: 12vw;
-  height: 25vh;
+  height: 12vh;
   -webkit-animation: borderLeftAnswerMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
           animation: borderLeftAnswerMoving 5s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+
+@media only screen and (min-width: 1201px) {
+  .borderAnswerLeft {
+    right: 30%;
+    width: 12vw;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .borderAnswerLeft {
+    right: 30%;
+    width: 12vw;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .borderAnswerLeft {
+    right: 30%;
+    width: 12vw;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .borderAnswerLeft {
+    right: 10%;
+    width: 2vw;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .borderAnswerLeft {
+    right: 1%;
+    width: 2vw;
+  }
 }
 
 .default, .primary, .success, .danger {
@@ -657,7 +770,7 @@
 .confirmAnswer {
   color: #2C3E50;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   background-color: #859D75;
   border: none;
   font-family: 'Mirage_Bold';
@@ -694,7 +807,7 @@
 
 @media only screen and (max-width: 820px) {
   .confirmAnswer {
-    right: 4%;
+    right: 40%;
     bottom: 28%;
     padding: 3vh;
     font-size: 1.5rem;
@@ -755,8 +868,9 @@
     font-size: 1rem;
     width: 40vw;
     height: 7vh;
-    top: 70%;
+    top: 65%;
     left: 28%;
+    z-index: 2;
   }
 }
 
@@ -765,8 +879,9 @@
     font-size: 1rem;
     width: 40vw;
     height: 7vh;
-    top: 80%;
+    top: 75%;
     left: 30%;
+    z-index: 2;
   }
 }
 
@@ -776,7 +891,7 @@
   background-color: #D9C6A1;
   overflow: hidden;
   border: none;
-  border-left: 1px solid #2C3E50;
+  border-left: 1px solid #a59678;
   -webkit-transition: 2s;
   transition: 2s;
 }
@@ -939,9 +1054,9 @@
 
 @media only screen and (max-width: 481px) {
   .svgQuestion {
-    left: 3%;
+    left: 1%;
     top: 0%;
-    width: 2.5vw;
+    width: 5vw;
     height: 100%;
   }
 }
@@ -949,74 +1064,353 @@
 /**
 *       Animation
 **/
-@-webkit-keyframes borderLeftAnswerMoving {
-  0% {
-    bottom: 33%;
+@media only screen and (min-width: 1201px) {
+  @-webkit-keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 45%;
+    }
+    50% {
+      bottom: 48%;
+    }
+    100% {
+      bottom: 45%;
+    }
   }
-  50% {
-    bottom: 35%;
-  }
-  100% {
-    bottom: 33%;
-  }
-}
-@keyframes borderLeftAnswerMoving {
-  0% {
-    bottom: 33%;
-  }
-  50% {
-    bottom: 35%;
-  }
-  100% {
-    bottom: 33%;
-  }
-}
-
-@-webkit-keyframes borderTopAnswerMoving {
-  0% {
-    right: 28%;
-  }
-  50% {
-    right: 30%;
-  }
-  100% {
-    right: 28%;
+  @keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 45%;
+    }
+    50% {
+      bottom: 48%;
+    }
+    100% {
+      bottom: 45%;
+    }
   }
 }
 
-@keyframes borderTopAnswerMoving {
-  0% {
-    right: 28%;
+@media only screen and (max-width: 1200px) {
+  @-webkit-keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 45%;
+    }
+    50% {
+      bottom: 48%;
+    }
+    100% {
+      bottom: 45%;
+    }
   }
-  50% {
-    right: 30%;
-  }
-  100% {
-    right: 28%;
+  @keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 45%;
+    }
+    50% {
+      bottom: 48%;
+    }
+    100% {
+      bottom: 45%;
+    }
   }
 }
 
-@-webkit-keyframes borderQuestionLeftMoving {
-  0% {
-    top: 4%;
+@media only screen and (max-width: 1024px) {
+  @-webkit-keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 45%;
+    }
+    50% {
+      bottom: 48%;
+    }
+    100% {
+      bottom: 45%;
+    }
   }
-  50% {
-    top: 6%;
-  }
-  100% {
-    top: 4%;
+  @keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 45%;
+    }
+    50% {
+      bottom: 48%;
+    }
+    100% {
+      bottom: 45%;
+    }
   }
 }
 
-@keyframes borderQuestionLeftMoving {
-  0% {
-    top: 4%;
+@media only screen and (max-width: 820px) {
+  @-webkit-keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 29%;
+    }
+    50% {
+      bottom: 32%;
+    }
+    100% {
+      bottom: 29%;
+    }
   }
-  50% {
-    top: 6%;
+  @keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 29%;
+    }
+    50% {
+      bottom: 32%;
+    }
+    100% {
+      bottom: 29%;
+    }
   }
-  100% {
-    top: 4%;
+}
+
+@media only screen and (max-width: 481px) {
+  @-webkit-keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 23%;
+    }
+    50% {
+      bottom: 20%;
+    }
+    100% {
+      bottom: 23%;
+    }
+  }
+  @keyframes borderLeftAnswerMoving {
+    0% {
+      bottom: 23%;
+    }
+    50% {
+      bottom: 20%;
+    }
+    100% {
+      bottom: 23%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  @-webkit-keyframes borderTopAnswerMoving {
+    0% {
+      right: 28%;
+    }
+    50% {
+      right: 30%;
+    }
+    100% {
+      right: 28%;
+    }
+  }
+  @keyframes borderTopAnswerMoving {
+    0% {
+      right: 28%;
+    }
+    50% {
+      right: 30%;
+    }
+    100% {
+      right: 28%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  @-webkit-keyframes borderTopAnswerMoving {
+    0% {
+      right: 28%;
+    }
+    50% {
+      right: 30%;
+    }
+    100% {
+      right: 28%;
+    }
+  }
+  @keyframes borderTopAnswerMoving {
+    0% {
+      right: 28%;
+    }
+    50% {
+      right: 30%;
+    }
+    100% {
+      right: 28%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  @-webkit-keyframes borderTopAnswerMoving {
+    0% {
+      right: 28%;
+    }
+    50% {
+      right: 30%;
+    }
+    100% {
+      right: 28%;
+    }
+  }
+  @keyframes borderTopAnswerMoving {
+    0% {
+      right: 28%;
+    }
+    50% {
+      right: 30%;
+    }
+    100% {
+      right: 28%;
+    }
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  @-webkit-keyframes borderTopAnswerMoving {
+    0% {
+      right: 12%;
+    }
+    50% {
+      right: 17%;
+    }
+    100% {
+      right: 12%;
+    }
+  }
+  @keyframes borderTopAnswerMoving {
+    0% {
+      right: 12%;
+    }
+    50% {
+      right: 17%;
+    }
+    100% {
+      right: 12%;
+    }
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  @-webkit-keyframes borderTopAnswerMoving {
+    0% {
+      right: 9%;
+    }
+    50% {
+      right: 2.5%;
+    }
+    100% {
+      right: 9%;
+    }
+  }
+  @keyframes borderTopAnswerMoving {
+    0% {
+      right: 9%;
+    }
+    50% {
+      right: 2.5%;
+    }
+    100% {
+      right: 9%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  @-webkit-keyframes borderQuestionLeftMoving {
+    0% {
+      top: 17%;
+    }
+    50% {
+      top: 15%;
+    }
+    100% {
+      top: 17%;
+    }
+  }
+  @keyframes borderQuestionLeftMoving {
+    0% {
+      top: 17%;
+    }
+    50% {
+      top: 15%;
+    }
+    100% {
+      top: 17%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  @-webkit-keyframes borderQuestionLeftMoving {
+    0% {
+      top: 20%;
+    }
+    50% {
+      top: 18%;
+    }
+    100% {
+      top: 20%;
+    }
+  }
+  @keyframes borderQuestionLeftMoving {
+    0% {
+      top: 20%;
+    }
+    50% {
+      top: 18%;
+    }
+    100% {
+      top: 20%;
+    }
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  @-webkit-keyframes borderQuestionLeftMoving {
+    0% {
+      top: 9%;
+    }
+    50% {
+      top: 7%;
+    }
+    100% {
+      top: 9%;
+    }
+  }
+  @keyframes borderQuestionLeftMoving {
+    0% {
+      top: 9%;
+    }
+    50% {
+      top: 7%;
+    }
+    100% {
+      top: 9%;
+    }
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  @-webkit-keyframes borderQuestionLeftMoving {
+    0% {
+      top: 6%;
+    }
+    50% {
+      top: 4%;
+    }
+    100% {
+      top: 6%;
+    }
+  }
+  @keyframes borderQuestionLeftMoving {
+    0% {
+      top: 6%;
+    }
+    50% {
+      top: 4%;
+    }
+    100% {
+      top: 6%;
+    }
   }
 }
 
@@ -1026,24 +1420,24 @@
 @media only screen and (min-width: 1201px) {
   @-webkit-keyframes borderQuestionBottomMoving {
     0% {
-      left: 73%;
+      left: 77%;
     }
     50% {
-      left: 68%;
+      left: 81%;
     }
     100% {
-      left: 73%;
+      left: 77%;
     }
   }
   @keyframes borderQuestionBottomMoving {
     0% {
-      left: 73%;
+      left: 77%;
     }
     50% {
-      left: 68%;
+      left: 81%;
     }
     100% {
-      left: 73%;
+      left: 77%;
     }
   }
 }
@@ -1051,24 +1445,24 @@
 @media only screen and (max-width: 1200px) {
   @-webkit-keyframes borderQuestionBottomMoving {
     0% {
-      left: 42%;
+      left: 77%;
     }
     50% {
-      left: 40%;
+      left: 81%;
     }
     100% {
-      left: 42%;
+      left: 77%;
     }
   }
   @keyframes borderQuestionBottomMoving {
     0% {
-      left: 42%;
+      left: 77%;
     }
     50% {
-      left: 40%;
+      left: 81%;
     }
     100% {
-      left: 42%;
+      left: 77%;
     }
   }
 }
@@ -1076,24 +1470,24 @@
 @media only screen and (max-width: 820px) {
   @-webkit-keyframes borderQuestionBottomMoving {
     0% {
-      left: 78%;
-    }
-    50% {
       left: 76%;
     }
-    100% {
+    50% {
       left: 78%;
+    }
+    100% {
+      left: 76%;
     }
   }
   @keyframes borderQuestionBottomMoving {
     0% {
-      left: 78%;
-    }
-    50% {
       left: 76%;
     }
-    100% {
+    50% {
       left: 78%;
+    }
+    100% {
+      left: 76%;
     }
   }
 }
@@ -1101,24 +1495,24 @@
 @media only screen and (max-width: 481px) {
   @-webkit-keyframes borderQuestionBottomMoving {
     0% {
-      left: 82%;
-    }
-    50% {
       left: 80%;
     }
+    50% {
+      left: 87%;
+    }
     100% {
-      left: 82%;
+      left: 80%;
     }
   }
   @keyframes borderQuestionBottomMoving {
     0% {
-      left: 82%;
-    }
-    50% {
       left: 80%;
     }
+    50% {
+      left: 87%;
+    }
     100% {
-      left: 82%;
+      left: 80%;
     }
   }
 }

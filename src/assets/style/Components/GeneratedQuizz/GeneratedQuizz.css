@@ -279,7 +279,7 @@
 
 @media only screen and (max-width: 1200px) {
   .questionList {
-    top: 25%;
+    top: 12vh;
     left: 35vw;
     width: 30vw;
     padding-bottom: 20px;
@@ -380,6 +380,114 @@
   }
 }
 
+.questionList .questionsuccess {
+  border: #2C3E50 1px solid;
+  background-color: #C8FCB0;
+}
+
+@media only screen and (min-width: 1201px) {
+  .questionList .questionsuccess {
+    margin-bottom: 2.5vh;
+    height: 95%;
+    font-size: 2rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .questionList .questionsuccess {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .questionList .questionsuccess {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .questionList .questionsuccess {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .questionList .questionsuccess {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+.questionList .questiondanger {
+  border: #2C3E50 1px solid;
+  background-color: #FFD1D1;
+}
+
+@media only screen and (min-width: 1201px) {
+  .questionList .questiondanger {
+    margin-bottom: 2.5vh;
+    height: 95%;
+    font-size: 2rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .questionList .questiondanger {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .questionList .questiondanger {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .questionList .questiondanger {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .questionList .questiondanger {
+    padding-inline: 25%;
+    margin-bottom: 2vh;
+    height: 85%;
+    font-size: 1.5rem;
+    margin-inline: 15%;
+  }
+}
+
 .tagBanner, .categoryBanner {
   position: absolute;
   font-family: 'Mirage_Bold';
@@ -391,7 +499,7 @@
 @media only screen and (min-width: 1201px) {
   .tagBanner, .categoryBanner {
     font-size: 10rem;
-    right: 45vw;
+    right: 50vw;
     top: 40vh;
   }
 }
@@ -400,7 +508,7 @@
   .tagBanner, .categoryBanner {
     font-size: 8rem;
     top: 50vh;
-    right: 50vw;
+    right: 60vw;
   }
 }
 
@@ -416,7 +524,7 @@
   .tagBanner, .categoryBanner {
     font-size: 4rem;
     top: 40vh;
-    right: 65vw;
+    right: 70vw;
   }
 }
 
@@ -475,14 +583,6 @@
     top: 40vh;
     left: 80vw;
   }
-}
-
-.questionsLinksuccess {
-  background-color: #C8FCB0;
-}
-
-.questionsLinkdanger {
-  background-color: #FFD1D1;
 }
 
 .finalResultLink {

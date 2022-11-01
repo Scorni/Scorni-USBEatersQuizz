@@ -5,8 +5,8 @@
         <span>Questions.</span>
       </div>
       <div class="allQuestions">
-        <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" class="question"  ref="question" >
-          <div :class="('questionsLink' + this.type[questionGenerated.indexOf(value)])" :type="this.type[questionGenerated.indexOf(value)]" >
+        <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" :class="('question'+  (this.type[questionGenerated.indexOf(value)] || ''))"  ref="question" >
+          <div  :type="this.type[questionGenerated.indexOf(value)]" >
             <router-link class="'routerLink'"
             v-bind:type="type[questionGenerated.indexOf(value)]"
             :to="{ 
@@ -47,7 +47,6 @@
       <span class="tagBanner">{{ this.params.category }}</span>
       <span class="difficultyBanner">{{ this.params.difficulty}}</span>
     </div>
-    
   </div>
 </template>
 
@@ -126,8 +125,6 @@ export default {
   },
   
   updated(){
-    console.log(this.$route);
-
   }
 }
 </script>
