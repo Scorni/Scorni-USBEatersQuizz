@@ -259,10 +259,6 @@
 /**
 *       Scrollbar
 **/
-body {
-  overflow-x: hidden;
-}
-
 ::-webkit-scrollbar {
   width: 10px;
 }

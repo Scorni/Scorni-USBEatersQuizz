@@ -6,7 +6,7 @@
       </div>
       <div class="allQuestions">
         <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" :class="('question'+  (this.type[questionGenerated.indexOf(value)] || ''))"  ref="question" >
-          <div  :type="this.type[questionGenerated.indexOf(value)]" >
+          <div :class="('questionsLink' + this.type[questionGenerated.indexOf(value)])" :type="this.type[questionGenerated.indexOf(value)]" >
             <router-link class="'routerLink'"
             v-bind:type="type[questionGenerated.indexOf(value)]"
             :to="{ 

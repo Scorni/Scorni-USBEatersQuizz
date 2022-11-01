@@ -1,19 +1,54 @@
-@import  '../../Helpers/flexboxLayout.scss' ;
+@import  '../../Helpers/flexboxLayout' ;
 @import  '../../Helpers/mediaQueries' ;
 @import  '../../Helpers/ceaser' ;
 
 .HeaderResult{
     position: absolute;
-    top: 10%;
-    margin-bottom: 2%;
-    padding: 2%;
-    width: 50%;
-    left: 30%;
+    
     text-align: center;
     font-family: 'Mirage_Bold';
-    font-size: 3vw;
     background-color: #FFECC7;
-
+    @include devices(TV) {
+        top: 10%;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 50%;
+        left: 30%;
+        font-size: 3vw;
+    }
+    @include devices(desktop) {
+        top: 10%;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 50%;
+        left: 30%;
+        font-size: 3vw;
+    }
+    @include devices(laptops) {
+        top: 10%;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 50%;
+        left: 30%;
+        font-size: 3vw;
+    }
+    @include devices(ipad) {
+        top: 5%;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 50%;
+        left: 30%;
+        font-size: 3vw;
+    }
+    @include devices(mobile) {
+        top: 5%;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 80%;
+        left: 10%;
+        font-size: 5vw;
+    }
+    
 }
 .textResult{
     margin: auto;
@@ -21,46 +56,188 @@
     width: 100%;
     text-align: center;
     font-family: 'Mirage_Bold';
-    font-size: 1.5vw;
+    @include devices(TV) {
+        padding-top: 2%;
+        width: 100%;
+        font-size: 1.5vw;
+    }
+    @include devices(desktop) {
+        padding-top: 2%;
+        width: 100%;
+        font-size: 1.5vw;
+    }
+    @include devices(laptops) {
+        padding-top: 2%;
+        width: 100%;
+        font-size: 1.5vw;
+    }
+    @include devices(ipad) {
+        padding-top: 2%;
+        width: 100%;
+        font-size: 1.5vw;
+    }
+    @include devices(mobile) {
+        padding-top: 2%;
+        width: 100%;
+        font-size: 3vw;
+    }
 }
 .review{
     position: absolute;
-    top: 45%;
-    height: 45vh;
-    width: 40vw;
-    left: 30%;
+    
     background-color: #DDFEC6;
     overflow-y: auto;
     transition: 2s;
+    @include devices(TV) {
+        top: 45%;
+        height: 45vh;
+        width: 40vw;
+        left: 30%;
+    }
+    @include devices(desktop) {
+        top: 30%;
+        height: 55vh;
+        width: 40vw;
+        left: 30%;
+    }
+    @include devices(laptops) {
+        top: 30%;
+        height: 55vh;
+        width: 40vw;
+        left: 30%;
+    }
+    @include devices(ipad) {
+        top: 15%;
+        height: 45vh;
+        width: 40vw;
+        left: 30%;
+    }
+    @include devices(mobile) {
+        top: 17%;
+        height: 65vh;
+        width: 60vw;
+        left: 10%;
+    }
 
 }
 .headerReview{
-    margin-block: 1.5vh;
-    padding: 2.5%;
-    width: 100%;
-    left: 30%;
+    
     text-align: center;
     font-family: 'Mirage_Bold';
-    font-size: 2vw;
+    @include devices(TV) {
+        font-size: 2vw;
+        margin-block: 1.5vh;
+        padding: 2.5%;
+        width: 100%;
+        left: 30%;
+    }
+    @include devices(desktop) {
+        font-size: 2.5vw;
+        margin-block: 1.5vh;
+        padding: 2.5%;
+        width: 100%;
+        left: 30%;
+    }
+    @include devices(laptops) {
+        font-size: 2vw;
+        margin-block: 1.5vh;
+        padding: 2.5%;
+        width: 100%;
+        left: 30%;
+    }
+    @include devices(ipad) {
+        font-size: 3vw;
+        margin-block: 1.5vh;
+        padding: 2.5%;
+        width: 100%;
+        left: 30%;
+    }
+    @include devices(mobile) {
+        font-size: 5vw;
+        margin-block: 1.5vh;
+        padding: 2.5%;
+        width: 100%;
+        left: 30%;
+    }
 }
 
 .questionReviewed{
-    width: 28vw;
-    height: auto;
-    font-size:2rem;
-
+    
+    @include devices(TV) {
+        width: 28vw;
+        height: auto;
+        font-size:2rem;
+    }
+    @include devices(desktop) {
+        width: 28vw;
+        height: auto;
+        font-size:2rem;
+    }
+    @include devices(laptops) {
+        width: 28vw;
+        height: auto;
+        font-size:1.5rem;
+    }
+    @include devices(ipad) {
+        width: 28vw;
+        height: auto;
+        font-size:1.25rem;
+    }
+    @include devices(mobile) {
+        width: 70%;
+        height: auto;
+        font-size:1.25rem;
+    }
 }
 .questionNumber{
-    margin-left: -15%;
+        font-family: 'Mirage_Bold';
 
+    @include devices(TV) {
+        margin-left: -15%;
+    }
+    @include devices(desktop) {
+        margin-left: -15%;
+    }
+    @include devices(laptops) {
+        margin-left: -15%;
+    }
+    @include devices(ipad) {
+        margin-left: -15%;
+    }
+    @include devices(mobile) {
+        margin-left: 40%;
+    }
 }
 .svgResult{
-    margin-left: 100%; 
-    margin-top: -8%;   
+       
     fill: #2C3E50;
     
-    width: 2vw;
     height: auto;
+    @include devices(TV) {
+        margin-left: 100%; 
+        margin-top: -8%;
+        width: 2vw;
+    }
+    @include devices(desktop) {
+        margin-left: 100%; 
+        margin-top: -8%;
+        width: 2vw;
+    }
+    @include devices(laptops) {
+        margin-left: 100%; 
+        margin-top: -8%;
+        width: 2vw;
+    }
+    @include devices(ipad) {
+        margin-left: 100%; 
+        margin-top: -8%;
+        width: 2vw;
+    }
+    @include devices(mobile) {
+        margin-left: 110%; 
+        margin-top: -15%;
+        width: 4vw;
+    }
 }
 .svgResult .arrow{
     transform: rotate(90deg);
@@ -70,33 +247,114 @@
     transform: rotate(-90deg);
 }
 .questionReviewed:hover .QHeader{
-    margin-top: 2%;
-
+    @include devices(TV) {
+        margin-top: 2%;
+    }
+    @include devices(desktop) {
+        margin-top: 2%;
+    }
+    @include devices(laptops) {
+        margin-top: 2%;
+    }
+    @include devices(ipad) {
+        margin-top: 2%;
+    }
+    @include devices(mobile) {
+        margin-top: 2%;
+    }
 }
 .restart{
     position: absolute;
-    right: 20%;
-    top: 45%;
-    width : 9.5vw;
-    height: 45vh;
+    
     background-color: #EAFCFF;
     font-family: 'Mirage_Bold';
-    font-size: 1.5vw;
     text-align: center;
     transition: 2s;
+    @include devices(TV) {
+        right: 20%;
+        top: 45%;
+        width : 9.5vw;
+        height: 45vh;
+        font-size: 1.5vw;
+    }
+    @include devices(desktop) {
+        right: 20%;
+        top: 30%;
+        width : 9.5vw;
+        height: 55vh;
+        font-size: 1.5vw;
+    }
+    @include devices(laptops) {
+        right: 20%;
+        top: 30%;
+        width : 9.5vw;
+        height: 55vh;
+        font-size: 1.75vw;
+    }
+    @include devices(ipad) {
+        right: 20%;
+        top: 15%;
+        width : 9.5vw;
+        height: 45vh;
+        font-size: 2.25vw;
+    }
+    @include devices(mobile) {
+        right: 10%;
+        top: 17%;
+        width : 19.5vw;
+        height: 65vh;
+        font-size: 5vw;
+    }
 }
 .restart:hover{
     background-color: #9dd5df;
 }
 .textRestart{
     position: absolute;
-    top: 50%;
-    left: 25%;
+    @include devices(TV) {
+        top: 50%;
+        left: 25%;
+    }
+    @include devices(desktop) {
+        top: 50%;
+        left: 25%;
+    }
+    @include devices(laptops) {
+        top: 50%;
+        left: 20%;
+    }
+    @include devices(ipad) {
+        top: 50%;
+        left: 5%;
+    }
+    @include devices(mobile) {
+        top: 50%;
+        left: 5%;
+    }
 }
 .contentText{
-    margin-top: 5%;
     font-family: 'Mirage_Bold';
-    font-size: 4.5vw;
+    
+    @include devices(TV) {
+        margin-top: 5%;
+        font-size: 4.5vw;
+    }
+    @include devices(desktop) {
+        margin-top: 5%;
+        font-size: 4.5vw;
+    }
+    @include devices(laptops) {
+        margin-top: 5%;
+        font-size: 4.5vw;
+    }
+    @include devices(ipad) {
+        margin-top: 5%;
+        font-size: 4.5vw;
+    }
+    @include devices(mobile) {
+        margin-top: 5%;
+        font-size: 4.5vw;
+    }
 }
 .questionAnswer{
     margin-top: 0%;
@@ -105,26 +363,90 @@
     margin-left: 17%;
     width: 110%;
     overflow: hidden;
+    @include devices(TV) {
+        
+    }
+    @include devices(desktop) {
+    }
+    @include devices(laptops) {
+    }
+    @include devices(ipad) {
+        
+    }
+    @include devices(mobile) {
+   
+    }
 
 }
 
 .QHeader{
-    margin-top: -100%;
-    font-size: 1.25vw;
+    
     text-align: center;
     font-family: 'Mirage_Bold';
     transition: 2s;
+    @include devices(TV) {
+        margin-top: -100%;
+        font-size: 1.25vw;
+    }
+    @include devices(desktop) {
+        margin-top: -100%;
+        font-size: 1.25vw;
+    }
+    @include devices(laptops) {
+        margin-top: -100%;
+        font-size: 1.5vw;
+    }
+    @include devices(ipad) {
+        margin-top: -100%;
+        font-size: 1.5vw;
+    }
+    @include devices(mobile) {
+        margin-top: -100%;
+        font-size: 3vw;
+    }
 }
 .QChoosedAnswer{
-    font-size: 1.25vw;
     text-align: left;
     margin-bottom: 1%;
     width: 100%;
     color: #d46363;
+    font-family: 'Mirage_Bold';
+
+    @include devices(TV) {
+        font-size: 1.25vw;
+    }
+    @include devices(desktop) {
+        font-size: 1.25vw;
+    }
+    @include devices(laptops) {
+        font-size: 1.5vw;
+    }
+    @include devices(ipad) {
+        font-size: 1.5vw;
+    }
+    @include devices(mobile) {
+        font-size: 3vw;
+    }
 }
 .QTrueAnswer{
-    font-size: 1.25vw;
     text-align: left;
     width: 100%;
     color: #6dad4f;
+    font-family: 'Mirage_Bold';
+
+    @include devices(TV) {
+        font-size: 1.25vw;
+    }
+    @include devices(desktop) {
+        font-size: 1.25vw;
+    }
+    @include devices(laptops) {
+        font-size: 1.5vw;
+    }
+    @include devices(ipad) {
+        font-size: 1.5vw;
+    }
+    @include devices(mobile) {
+        font-size: 3vw;
+    }
 }
