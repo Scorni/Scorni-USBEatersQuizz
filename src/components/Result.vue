@@ -57,11 +57,17 @@ export default {
       //TODO: trop fait fait pour le faire il décide de laisser ça à plus tard
       for(let i in this.questionAndWrongAnswers){
         if( this.questionAndWrongAnswers[i] !== ""){
-          this.questionAndWrongAnswers["GoodAnswers"] = ((this.questionAndWrongAnswers[i]).split("#️⃣"));
-          this.questionAndWrongAnswers["GoodAnswers"].filter(function (str) { return str.includes("#️⃣"); })
-          this.questionAndWrongAnswers["ChoosedAnswers"] = ((this.questionAndWrongAnswers[i]).split("*️⃣"));
-          this.questionAndWrongAnswers["ChoosedAnswers"].filter(function (str) { return str.includes("*️⃣"); })
-          
+          this.questionAndWrongAnswers["ChoosedAnswers"] = ((this.questionAndWrongAnswers[i]).split("#️⃣"));
+          this.questionAndWrongAnswers["ChoosedAnswers"].filter(function (str) { return str.includes("#️⃣"); });
+          this.questionAndWrongAnswers["ChoosedAnswers"].pop()
+          this.questionAndWrongAnswers["Question"] = this.questionAndWrongAnswers["ChoosedAnswers"].slice(-1)
+          this.questionAndWrongAnswers["ChoosedAnswers"].pop()
+          console.log(((this.questionAndWrongAnswers["ChoosedAnswers"][0]).indexOf(',') + 1));
+          this.questionAndWrongAnswers["ChoosedAnswers"][0] = (this.questionAndWrongAnswers["ChoosedAnswers"][0]).slice(((this.questionAndWrongAnswers["ChoosedAnswers"][0]).indexOf(',') + 1))
+          this.questionAndWrongAnswers["Question"] =this.questionAndWrongAnswers["ChoosedAnswers"].slice(-1)
+          this.questionAndWrongAnswers["GoodAnswers"] = ((this.questionAndWrongAnswers[i]).split("*️⃣"));
+          this.questionAndWrongAnswers["GoodAnswers"].filter(function (str) { return str.includes("*️⃣"); })
+          this.questionAndWrongAnswers["GoodAnswers"].pop()
         } 
       }
       console.log(this.questionAndWrongAnswers);
