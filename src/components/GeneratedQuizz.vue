@@ -121,7 +121,7 @@ export default {
     this.updateStyle();
     this.finalResult();
     this.$confetti.stop()
-    
+    console.log(this.finalResultAnswerAndQuestion);
   },
   
   updated(){

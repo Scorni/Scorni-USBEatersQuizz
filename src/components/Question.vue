@@ -32,7 +32,7 @@
       <div class="borderAnswerLeft"></div>
       <div class="borderAnswerTop"></div>
 
-    <div v-if="this.numberOfAnswer > 0">
+    <div v-if="(this.numberOfAnswer > 0 && this.correct_answer) || (this.numberOfAnswer > 1 && this.correct_answers)">
       <div  ref="validateAnswers" id="validateAnswers">
         <button class="confirmAnswer" @click="this.getResult()">Confirm</button>
       </div>
@@ -58,7 +58,6 @@
         </button>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -158,7 +157,7 @@ export default {
     //check if the answer(s) are the right ones
     getResult : function(){
       this.finalResultAnswerAndQuestion[this.questionNumber] = []
-      if(this.checkCorrectAnswersLength()){
+      if((this.checkCorrectAnswersLength())){
         this.badAnswers = 0;
         this.goodAnswers = 0;
         for(const i in Object.keys(this.answersChoosed)){
@@ -169,8 +168,27 @@ export default {
             }else if(Object.keys(this.correct_answers)[j].slice(0,8) === Object.keys(this.answersChoosed)[i] && Object.values(this.correct_answers)[j] === 'false'){
               this.badAnswers++;
               this.type[Object.keys(this.correct_answers)[j].slice(0,8)] = "danger"
+              
             }
           }
+        }
+        if(this.goodAnswers !== (Object.keys(this.answersChoosed)).length){
+          this.result = false;
+          //Push answers choosed
+          for(const i in Object.keys(this.answersChoosed)){
+            if (this.finalResultAnswerAndQuestion[this.questionNumber][1] === undefined)  this.finalResultAnswerAndQuestion[this.questionNumber][1] = Object.values(this.answersChoosed)[i] + "#️⃣";
+            else this.finalResultAnswerAndQuestion[this.questionNumber][1] +=  Object.values(this.answersChoosed)[i] + "#️⃣";
+          }
+          //Push right answers
+          for(const j in Object.keys(this.correct_answers)){
+            if(Object.values(this.correct_answers)[j] === 'true')
+            {
+              if (this.finalResultAnswerAndQuestion[this.questionNumber][0] === undefined) this.finalResultAnswerAndQuestion[this.questionNumber][0] = this.answers[Object.keys(this.correct_answers)[j].slice(0,8)] + "*️⃣"
+              else this.finalResultAnswerAndQuestion[this.questionNumber][0] +=  this.answers[Object.keys(this.correct_answers)[j].slice(0,8)] + "*️⃣";
+            }
+          }
+          this.finalResultAnswerAndQuestion[this.questionNumber][2] =  this.question + "#️⃣";
+
         }
       }else{
         this.fillSingleAnswerThroughAnswers();
@@ -187,13 +205,11 @@ export default {
             this.finalResultAnswerAndQuestion[this.questionNumber][1] =  Object.values(this.answersChoosed)[0] + "#️⃣";
             this.finalResultAnswerAndQuestion[this.questionNumber][2] =  this.question + "#️⃣";
           }
-
-        }
-        for(let i in document.getElementsByClassName("answerButton")){
-          
-          if(document.getElementsByClassName("answerButton")[i] instanceof Element) (document.getElementsByClassName("answerButton")[i]).setAttribute('disabled', "")
         }
       }
+      this.disableButton()
+      // console.log(this.finalResultAnswerAndQuestion);
+
     },
     compareGoodAnswers: function(){
       let count = 0;
@@ -202,13 +218,17 @@ export default {
       }
       return count === this.goodAnswers ? true: false;
     },
+    // Disable button when confirmed button clicked
+    disableButton: function(){
+      for(let i in document.getElementsByClassName("answerButton")){
+          if(document.getElementsByClassName("answerButton")[i] instanceof Element) (document.getElementsByClassName("answerButton")[i]).setAttribute('disabled', "")
+      }
+    }
   },
   mounted(){
     this.$confetti.stop()
-
   },
   watch(){
-    this.finalResultAnswerAndQuestion ? console.log("yesy") : console.log("non");
   }
 }
 

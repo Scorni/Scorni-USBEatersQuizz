@@ -54,9 +54,17 @@ export default {
   
   methods: {
     splitArray(){
+      //TODO: trop fait fait pour le faire il décide de laisser ça à plus tard
       for(let i in this.questionAndWrongAnswers){
-        if( this.questionAndWrongAnswers[i] !== "") this.questionAndWrongAnswers[i] = (this.questionAndWrongAnswers[i]).split("#️⃣");
+        if( this.questionAndWrongAnswers[i] !== ""){
+          this.questionAndWrongAnswers["GoodAnswers"] = ((this.questionAndWrongAnswers[i]).split("#️⃣"));
+          this.questionAndWrongAnswers["GoodAnswers"].filter(function (str) { return str.includes("#️⃣"); })
+          this.questionAndWrongAnswers["ChoosedAnswers"] = ((this.questionAndWrongAnswers[i]).split("*️⃣"));
+          this.questionAndWrongAnswers["ChoosedAnswers"].filter(function (str) { return str.includes("*️⃣"); })
+          
+        } 
       }
+      console.log(this.questionAndWrongAnswers);
     },
     removeEmptyObject(){
       for(let i in this.questionAndWrongAnswers){
@@ -74,47 +82,48 @@ export default {
   mounted(){
     this.splitArray()
     this.removeEmptyObject()
-    this.fault <= 5 
-    ? this.$confetti.start(
-      {
-        particles: [
-          {
-            type: 'image',
-            size: 20,
-            url: '/emoji-fete.png',
-          },
-          {
-            type: 'heart',
-            size: 20,
-          },
-          {
-            type: 'image',
-            size: 15,
-            url: '/trophy.png',
-          },
-        ],
-        defaultColors: [
-          'Gold',
-          'DodgerBlue',
-        ],
-      }
-    )
-    : this.$confetti.start(
-      {
-        particles: [
-          {
-            type: 'image',
-            size: 20,
-            url: '/sad-pepe-designs-png-261776.png',
-          },
-          {
-            type: 'image',
-            size: 10,
-            url: '/cry-emoji.png',
-          },
-        ],
-      }
-    )
+    // this.fault <= 5 
+    // ? this.$confetti.start(
+    //   {
+    //     particles: [
+    //       {
+    //         type: 'image',
+    //         size: 20,
+    //         url: '/emoji-fete.png',
+    //       },
+    //       {
+    //         type: 'heart',
+    //         size: 20,
+    //       },
+    //       {
+    //         type: 'image',
+    //         size: 15,
+    //         url: '/trophy.png',
+    //       },
+    //     ],
+    //     defaultColors: [
+    //       'Gold',
+    //       'DodgerBlue',
+    //     ],
+    //   }
+    // )
+    // : this.$confetti.start(
+    //   {
+    //     particles: [
+    //       {
+    //         type: 'image',
+    //         size: 20,
+    //         url: '/sad-pepe-designs-png-261776.png',
+    //       },
+    //       {
+    //         type: 'image',
+    //         size: 10,
+    //         url: '/cry-emoji.png',
+    //       },
+    //     ],
+    //   }
+    // )
+    
   },
   updated(){
     
