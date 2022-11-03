@@ -19,9 +19,20 @@
               <Svg class="svgResult"></Svg>
             </div>
             <div class="questionAnswer">
-              <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).slice(1)}}</div>
-              <div class="QChoosedAnswer">{{(this.questionAndWrongAnswers[value][1]).slice(1)}}</div>
-              <div class="QTrueAnswer">{{this.questionAndWrongAnswers[value][0]}}</div>
+              <div v-if="this.questionAndWrongAnswers[value].ChoosedAnswer">
+                <div class="QHeader">{{this.questionAndWrongAnswers[value].Question}}</div>
+                <div v-for="answer in this.questionAndWrongAnswers[value].ChoosedAnswer" v-bind:key="answer" class="QChoosedAnswer">
+                  {{answer}}
+                </div>
+                <div v-for="goodAnswer in this.questionAndWrongAnswers[value].GoodAnswers" v-bind:key="goodAnswer" class="QTrueAnswer">
+                  {{goodAnswer}}
+                </div>
+              </div>
+              <div v-else>
+                  <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).slice(1)}}</div>
+                  <div class="QChoosedAnswer">{{(this.questionAndWrongAnswers[value][1]).slice(1)}}</div>
+                  <div class="QTrueAnswer">{{this.questionAndWrongAnswers[value][0]}}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -48,29 +59,29 @@ export default {
       result : 0,
       fault : 0,
       results : [],
-      questionAndWrongAnswers: this.$route.params.finalResultAnswerAndQuestion
+      questionAndWrongAnswers: []
     };
   },
   
   methods: {
     splitArray(){
-      //TODO: trop fait fait pour le faire il décide de laisser ça à plus tard
-      for(let i in this.questionAndWrongAnswers){
-        if( this.questionAndWrongAnswers[i] !== ""){
-          this.questionAndWrongAnswers["ChoosedAnswers"] = ((this.questionAndWrongAnswers[i]).split("#️⃣"));
-          this.questionAndWrongAnswers["ChoosedAnswers"].filter(function (str) { return str.includes("#️⃣"); });
-          this.questionAndWrongAnswers["ChoosedAnswers"].pop()
-          this.questionAndWrongAnswers["Question"] = this.questionAndWrongAnswers["ChoosedAnswers"].slice(-1)
-          this.questionAndWrongAnswers["ChoosedAnswers"].pop()
-          console.log(((this.questionAndWrongAnswers["ChoosedAnswers"][0]).indexOf(',') + 1));
-          this.questionAndWrongAnswers["ChoosedAnswers"][0] = (this.questionAndWrongAnswers["ChoosedAnswers"][0]).slice(((this.questionAndWrongAnswers["ChoosedAnswers"][0]).indexOf(',') + 1))
-          this.questionAndWrongAnswers["Question"] =this.questionAndWrongAnswers["ChoosedAnswers"].slice(-1)
-          this.questionAndWrongAnswers["GoodAnswers"] = ((this.questionAndWrongAnswers[i]).split("*️⃣"));
-          this.questionAndWrongAnswers["GoodAnswers"].filter(function (str) { return str.includes("*️⃣"); })
-          this.questionAndWrongAnswers["GoodAnswers"].pop()
-        } 
+      for(let i in this.$route.params.finalResultAnswerAndQuestion){
+        this.questionAndWrongAnswers[i] = []
+        if( this.$route.params.finalResultAnswerAndQuestion[i] !== "" && this.$route.params.finalResultAnswerAndQuestion[i].includes("*️⃣")){
+          this.questionAndWrongAnswers[i].ChoosedAnswer = ((this.$route.params.finalResultAnswerAndQuestion[i]).split("#️⃣"))
+          this.questionAndWrongAnswers[i].ChoosedAnswer.filter(function (str) { return str.includes("#️⃣"); });
+          this.questionAndWrongAnswers[i].ChoosedAnswer.pop()
+          this.questionAndWrongAnswers[i].Question = this.questionAndWrongAnswers[i].ChoosedAnswer.slice(-1)
+          this.questionAndWrongAnswers[i].Question = this.questionAndWrongAnswers[i].Question[0].slice(1)
+          this.questionAndWrongAnswers[i].ChoosedAnswer.pop()
+          this.questionAndWrongAnswers[i].ChoosedAnswer[0] = this.questionAndWrongAnswers[i].ChoosedAnswer[0].slice(((this.questionAndWrongAnswers[i].ChoosedAnswer[0]).indexOf(',') + 1))
+          this.questionAndWrongAnswers[i].GoodAnswers = ((this.$route.params.finalResultAnswerAndQuestion[i]).split("*️⃣"));
+          this.questionAndWrongAnswers[i].GoodAnswers.filter(function (str) { return str.includes("*️⃣"); })
+          this.questionAndWrongAnswers[i].GoodAnswers.pop()
+        } else if( this.questionAndWrongAnswers[i] !== ""){
+           this.questionAndWrongAnswers[i] = (this.$route.params.finalResultAnswerAndQuestion[i]).split("#️⃣");
+        }
       }
-      console.log(this.questionAndWrongAnswers);
     },
     removeEmptyObject(){
       for(let i in this.questionAndWrongAnswers){

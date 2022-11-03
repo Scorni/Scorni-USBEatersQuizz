@@ -31,8 +31,8 @@
       </div>
       <div class="borderAnswerLeft"></div>
       <div class="borderAnswerTop"></div>
-
-    <div v-if="(this.numberOfAnswer > 0 && this.correct_answer) || (this.numberOfAnswer > 1 && this.correct_answers)">
+<!-- TODO Fix error on simple choose -->
+    <div v-if="(this.numberOfAnswer > 0 ) || (this.numberOfAnswer > 1 && this.correct_answers)">
       <div  ref="validateAnswers" id="validateAnswers">
         <button class="confirmAnswer" @click="this.getResult()">Confirm</button>
       </div>
