@@ -389,7 +389,7 @@
   .questionList .questionsuccess {
     margin-bottom: 2.5vh;
     height: 95%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-inline: 15%;
   }
 }
@@ -443,7 +443,7 @@
   .questionList .questiondanger {
     margin-bottom: 2.5vh;
     height: 95%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-inline: 15%;
   }
 }

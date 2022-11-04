@@ -99,47 +99,47 @@ export default {
   mounted(){
     this.splitArray()
     this.removeEmptyObject()
-    // this.fault <= 5 
-    // ? this.$confetti.start(
-    //   {
-    //     particles: [
-    //       {
-    //         type: 'image',
-    //         size: 20,
-    //         url: '/emoji-fete.png',
-    //       },
-    //       {
-    //         type: 'heart',
-    //         size: 20,
-    //       },
-    //       {
-    //         type: 'image',
-    //         size: 15,
-    //         url: '/trophy.png',
-    //       },
-    //     ],
-    //     defaultColors: [
-    //       'Gold',
-    //       'DodgerBlue',
-    //     ],
-    //   }
-    // )
-    // : this.$confetti.start(
-    //   {
-    //     particles: [
-    //       {
-    //         type: 'image',
-    //         size: 20,
-    //         url: '/sad-pepe-designs-png-261776.png',
-    //       },
-    //       {
-    //         type: 'image',
-    //         size: 10,
-    //         url: '/cry-emoji.png',
-    //       },
-    //     ],
-    //   }
-    // )
+    this.fault <= 5 
+    ? this.$confetti.start(
+      {
+        particles: [
+          {
+            type: 'image',
+            size: 20,
+            url: '/emoji-fete.png',
+          },
+          {
+            type: 'heart',
+            size: 20,
+          },
+          {
+            type: 'image',
+            size: 15,
+            url: '/trophy.png',
+          },
+        ],
+        defaultColors: [
+          'Gold',
+          'DodgerBlue',
+        ],
+      }
+    )
+    : this.$confetti.start(
+      {
+        particles: [
+          {
+            type: 'image',
+            size: 20,
+            url: '/sad-pepe-designs-png-261776.png',
+          },
+          {
+            type: 'image',
+            size: 10,
+            url: '/cry-emoji.png',
+          },
+        ],
+      }
+    )
     
   },
   updated(){
