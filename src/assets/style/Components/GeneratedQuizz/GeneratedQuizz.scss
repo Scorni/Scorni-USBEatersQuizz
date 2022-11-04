@@ -10,7 +10,7 @@
         left: 40vw;
         width: 22.5vw;
         padding-bottom: 20px;
-        height: auto;
+        height: 90%;
         font-size:2.5rem;
     }
     @include devices(desktop) {
@@ -18,7 +18,7 @@
         left: 35vw;
         width: 30vw;        
         padding-bottom: 20px;
-        height: auto;
+        height: 85%;
         font-size:2.5rem;
     }
     @include devices(laptops) {
@@ -26,7 +26,7 @@
         left: 35vw;
         width: 30vw;        
         padding-bottom: 20px;
-        height: auto;
+        height: 80%;
         font-size:2.5rem;
     }
     @include devices(ipad) {
@@ -63,8 +63,8 @@
     .question{
         @include devices(TV) {
             margin-bottom: 2.5vh;
-            height: 95%;
-            font-size:2rem;
+            height: 90%;
+            font-size:1.5rem;
             margin-inline: 15%;
         }
         @include devices(desktop) {

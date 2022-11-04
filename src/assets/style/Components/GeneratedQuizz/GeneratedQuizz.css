@@ -272,7 +272,7 @@
     left: 40vw;
     width: 22.5vw;
     padding-bottom: 20px;
-    height: auto;
+    height: 90%;
     font-size: 2.5rem;
   }
 }
@@ -283,7 +283,7 @@
     left: 35vw;
     width: 30vw;
     padding-bottom: 20px;
-    height: auto;
+    height: 85%;
     font-size: 2.5rem;
   }
 }
@@ -294,7 +294,7 @@
     left: 35vw;
     width: 30vw;
     padding-bottom: 20px;
-    height: auto;
+    height: 80%;
     font-size: 2.5rem;
   }
 }
@@ -334,8 +334,8 @@
 @media only screen and (min-width: 1201px) {
   .questionList .question {
     margin-bottom: 2.5vh;
-    height: 95%;
-    font-size: 2rem;
+    height: 90%;
+    font-size: 1.5rem;
     margin-inline: 15%;
   }
 }
