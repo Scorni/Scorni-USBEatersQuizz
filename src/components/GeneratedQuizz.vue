@@ -19,7 +19,9 @@
                   successQuestion: successQuestion,
                   finalResultAnswerAndQuestion: this.$route.params.finalResultAnswerAndQuestion,
                 }
-              } ">
+              } "
+              
+              >
             {{this.questionGenerated.indexOf(value) + 1}}</router-link>
           </div>
         </div>
@@ -61,10 +63,10 @@ export default {
       questionGenerated : this.getQuestion(),
       successQuestion : this.$route.params.successQuestion || [],
       countAnsweredQuestion : 0,
-      showResultLink : true,
+      showResultLink : false,
       type: "",
       params: localStorage,
-      finalResultAnswerAndQuestion : this.$route.params.finalResultAnswerAndQuestion
+      finalResultAnswerAndQuestion : this.$route.params.finalResultAnswerAndQuestion,
     };
   },
   components : {

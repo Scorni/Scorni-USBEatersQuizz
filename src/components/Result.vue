@@ -14,24 +14,30 @@
       <div class="contentReview">
         <div v-if="fault > 0 && this.questionAndWrongAnswers.length > 0">
           <div v-for="(value,key) in Object.keys(this.questionAndWrongAnswers)" v-bind:key="key.answer" class="questionReviewed">
-            <div>
-              <p class="questionNumber" v-bind:id="key">Question {{parseInt(value) + 1 }} </p>
-              <Svg class="svgResult"></Svg>
-            </div>
-            <div class="questionAnswer">
-              <div v-if="this.questionAndWrongAnswers[value].ChoosedAnswer">
-                <div class="QHeader">{{this.questionAndWrongAnswers[value].Question}}</div>
-                <div v-for="answer in this.questionAndWrongAnswers[value].ChoosedAnswer" v-bind:key="answer" class="QChoosedAnswer">
-                  {{answer}}
-                </div>
-                <div v-for="goodAnswer in this.questionAndWrongAnswers[value].GoodAnswers" v-bind:key="goodAnswer" class="QTrueAnswer">
-                  {{goodAnswer}}
-                </div>
+            <div v-if="this.questionAndWrongAnswers[value].ChoosedAnswer">
+              <div>
+                <p class="questionNumber" v-bind:id="key">Question {{parseInt(value) + 1 }} </p>
+                <Svg class="svgResult"></Svg>
               </div>
-              <div v-else>
-                  <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).slice(1)}}</div>
-                  <div class="QChoosedAnswer">{{(this.questionAndWrongAnswers[value][1]).slice(1)}}</div>
-                  <div class="QTrueAnswer">{{this.questionAndWrongAnswers[value][0]}}</div>
+              <div class="questionAnswer">
+                  <div class="QHeader">{{this.questionAndWrongAnswers[value].Question}}</div>
+                  <div v-for="answer in this.questionAndWrongAnswers[value].ChoosedAnswer" v-bind:key="answer" class="QChoosedAnswer">
+                    {{answer}}
+                  </div>
+                  <div v-for="goodAnswer in this.questionAndWrongAnswers[value].GoodAnswers" v-bind:key="goodAnswer" class="QTrueAnswer">
+                    {{goodAnswer}}
+                  </div>
+              </div>
+            </div>
+            <div v-else-if='this.questionAndWrongAnswers[value][0]'>
+              <div>
+                <p class="questionNumber" v-bind:id="key">Question {{parseInt(value) + 1 }} </p>
+                <Svg class="svgResult"></Svg>
+              </div>
+              <div class="questionAnswer">
+                <div class="QHeader">{{(this.questionAndWrongAnswers[value][2]).slice(1)}}</div>
+                <div class="QChoosedAnswer">{{(this.questionAndWrongAnswers[value][1]).slice(1)}}</div>
+                <div class="QTrueAnswer">{{this.questionAndWrongAnswers[value][0]}}</div>
               </div>
             </div>
           </div>
@@ -42,9 +48,9 @@
     <div class="restart">
       <router-link class="routerLink textRestart" :to="{ name: 'home'}" >
         Restart.
-    </router-link>
-
+      </router-link>
     </div>
+    
   </div>
 </template>
 
@@ -78,17 +84,14 @@ export default {
           this.questionAndWrongAnswers[i].GoodAnswers = ((this.$route.params.finalResultAnswerAndQuestion[i]).split("*️⃣"));
           this.questionAndWrongAnswers[i].GoodAnswers.filter(function (str) { return str.includes("*️⃣"); })
           this.questionAndWrongAnswers[i].GoodAnswers.pop()
-        } else if( this.questionAndWrongAnswers[i] !== ""){
+        } else if( this.$route.params.finalResultAnswerAndQuestion[i] !== ("" || undefined)){
            this.questionAndWrongAnswers[i] = (this.$route.params.finalResultAnswerAndQuestion[i]).split("#️⃣");
         }
       }
     },
     removeEmptyObject(){
       for(let i in this.questionAndWrongAnswers){
-        if( typeof this.questionAndWrongAnswers[i] !== "object"){
-          delete this.questionAndWrongAnswers[i]
-        }
-        else this.fault++
+        if(this.questionAndWrongAnswers[i][0] !== "" )  this.fault++
       } 
     },
     
@@ -140,7 +143,6 @@ export default {
         ],
       }
     )
-    
   },
   updated(){
     

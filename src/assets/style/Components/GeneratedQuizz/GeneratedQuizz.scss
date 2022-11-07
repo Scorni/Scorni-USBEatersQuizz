@@ -101,6 +101,8 @@
 
     }
     .questionsuccess{
+        pointer-events: none;
+
         @include devices(TV) {
             margin-bottom: 2.5vh;
             height: 95%;
@@ -140,7 +142,10 @@
         
     
     }
+
     .questiondanger{
+        pointer-events: none;
+
         @include devices(TV) {
             margin-bottom: 2.5vh;
             height: 95%;
@@ -180,7 +185,6 @@
         
     
     }
-
 }
 
 .tagBanner, .categoryBanner{

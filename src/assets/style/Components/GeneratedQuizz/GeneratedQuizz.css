@@ -381,6 +381,7 @@
 }
 
 .questionList .questionsuccess {
+  pointer-events: none;
   border: #2C3E50 1px solid;
   background-color: #C8FCB0;
 }
@@ -435,6 +436,7 @@
 }
 
 .questionList .questiondanger {
+  pointer-events: none;
   border: #2C3E50 1px solid;
   background-color: #FFD1D1;
 }
