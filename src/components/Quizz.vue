@@ -30,21 +30,24 @@
       <div class="content tag">
         <select v-model="tagSelected" id="tagSelected" ref="tagSelected"  :disabled="tagDisabled" clearable>
           <option value="" selected disabled data-default>Tag</option>
-          <option v-for="value in this.requestOptions.tag" :key="value.tag" :value="value">
-            {{value}}
+          <option v-for="(value,key) in this.requestOptions.tag" :key="value.tag" :value="key">
+            {{key}}
           </option>
         </select>
       </div>
       <div class="content difficulty">
         <select v-model="difficultySelected" id="difficultySelected" >
           <option value="" selected disabled data-default>Difficulty</option>
-          <option v-for="value in this.requestOptions.difficulty" :key="value.difficulty" :value="value">
-            {{value}}
-          </option>
-      </select>
-      </div>
-      <div>
-        
+          <template v-if="this.tagSelected !== '' ">
+            <template v-for="(value,key) in this.requestOptions.tag" :key="value.difficulty" >
+              <template v-if="this.tagSelected === key">
+              <option v-for="difficulty in value" :key="difficulty" :value="difficulty">
+                  {{difficulty}}
+              </option>
+            </template>
+            </template>
+          </template>
+        </select>
       </div>
     </form>
   </div>
@@ -70,6 +73,7 @@ export default {
       requestOptions : getOptions(),
       categorySelected :"",
       difficultySelected :"",
+      difficultyAvailable : [] || this.requestOptions.tag[this.tagSelected],
       tagSelected :"",
       categoryDisabled :false,
       tagDisabled: false,
@@ -101,6 +105,8 @@ export default {
     },
     tagSelected: function() {
       this.tagSelected === "" ? this.categoryDisabled = false : this.categoryDisabled = true
+      console.log(this.tagSelected);
+
       this.showButtonGenerateQuizz();
     },
     difficultySelected: function() {
