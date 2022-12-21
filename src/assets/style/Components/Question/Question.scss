@@ -1,0 +1,876 @@
+@import  '../../Helpers/flexboxLayout.scss' ;
+@import  '../../Helpers/mediaQueries' ;
+@import  '../../Helpers/ceaser' ;
+
+
+//TODO: Responsivness moving border
+/**
+*       Scrollbar
+**/
+body{
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+/**
+*       Body
+**/
+
+.questionVue{
+    text-align: justify;
+    font-family: 'Mirage_Bold';
+    
+}
+.headerQuestion{
+    position: absolute;
+    background-color: #DDFEC6;
+    text-align: left;
+    
+    @include devices(TV) {
+        font-size: 1.2vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(desktop) {
+        font-size: 1.4vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(laptops) {
+        font-size: 1.7vw;
+        width: 40%;
+        top: 10%;
+        left: 10%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(ipad) {
+        font-size: 2.5vw;
+        width: 70%;
+        top: 10%;
+        left: 15%;
+        padding-block: 5%;
+        padding-inline: 2%;
+    }
+    @include devices(mobile) {
+        font-size: 3.5vw;
+        width: 75%;
+        top: 6%;
+        left: 12.5%;
+        padding-block: 5%;
+        padding-inline: 3%;
+    }
+}
+.borderQuestionLeft{
+    position: absolute;
+    padding-block: 5%;
+    
+    
+    border-left: 1px solid #2C3E50;
+    animation: borderQuestionLeftMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+    @include devices(TV) {
+        left: 93%;
+        width: 1vw;
+    }
+    @include devices(desktop) {
+        left: 93%;
+        width: 1vw;
+    }
+    @include devices(laptops) {
+        left: 93%;
+        width: 1vw;
+    }
+    @include devices(ipad) {
+        left: 88%;
+        width: 5vw;
+        height: 7vh;
+    }
+    @include devices(mobile) {
+        left: 97%;
+        width: 2vw;
+        height: 7vh;
+    }
+}
+.borderQuestionBottom{
+    position: absolute;
+    
+    padding-block: 5%;
+   
+    
+    border-top: 1px solid #2C3E50;
+    animation: borderQuestionBottomMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+    @include devices(TV) {
+        top: 15%;
+        width: 12%;
+        height: 1vh;
+    }
+    @include devices(desktop) {
+        top: 18%;
+        width: 12%;
+        height: 1vh;
+    }
+    @include devices(laptops) {
+        top: 18%;
+        width: 10%;
+        height: 1vh;
+    }
+    @include devices(ipad) {
+        top: 7%;
+        width: 10%;
+        height: 1vh;
+    }
+    @include devices(mobile) {
+        top: 4%;
+        width: 10%;
+        height: 1vh;
+    }
+}
+.tips{
+    position: absolute;
+    background-color: #D9C6A1;
+    text-align: center;
+    
+    @include devices(TV) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.1vw;
+        width: 30vw;
+    }
+    @include devices(desktop) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.4vw;
+        width: 30vw;
+    }
+    @include devices(laptops) {
+        right: 10%;
+        top: 22%;
+        padding-block: 2% ;
+        font-size: 1.7vw;
+        width: 30vw;
+    }
+    @include devices(ipad) {
+        right: 30%;
+        top: 25vh;
+        padding-block: 2% ;
+        font-size: 2.5vw;
+        width: 40vw;
+        z-index: 2;
+    }
+    @include devices(mobile) {
+        left: 22%;
+        top: 25vh;
+        padding-block: 5% ;
+        font-size: 3vw;
+        width: 55%;
+        z-index: 2;
+    }
+}
+
+.answers{
+    position: absolute;
+    background-color: #EAFCFF;
+    overflow-y: auto;
+
+    padding-bottom: 10%;
+
+    @include devices(TV) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
+    @include devices(desktop) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
+    @include devices(laptops) {
+        right: 10%;
+        bottom: 6%;
+        z-index: 1;
+        font-size: 1.1vw;
+        width: 30vw;
+        height: 50vh;
+    }
+    @include devices(ipad) {
+        right: 15%;
+        top: 28vh;
+        z-index: 1;
+        font-size: 2.2vw;
+        width: 70vw;
+        height: 40vh;
+    }
+    @include devices(mobile) {
+        right: 7.5%;
+        top: 28vh;
+        z-index: 1;
+        font-size: 3vw;
+        width: 85vw;
+        height: 50vh;
+    }
+}
+.borderAnswerTop{
+    position: absolute;
+    z-index: 0;
+    
+    border-top: 1px solid #2C3E50;
+    animation: borderTopAnswerMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+    @include devices(TV) {
+        bottom: 15%;
+        width: 12vw;
+        height: 45vh;
+    }
+    @include devices(desktop) {
+        bottom: 15%;
+        width: 12vw;
+        height: 45vh;
+    }
+    @include devices(laptops) {
+        bottom: 15%;
+        width: 12vw;
+        height: 45vh;
+    }
+    @include devices(ipad) {
+        bottom: 24%;
+        width: 12vw;
+        height: 5vh;
+    }
+    @include devices(mobile) {
+        bottom: 15%;
+        width: 40vw;
+        height: 5vh;
+    }
+}
+.borderAnswerLeft{
+    position: absolute;
+    z-index: 0;
+
+    border-left: 1px solid #2C3E50;
+    
+
+    height: 12vh;
+    animation: borderLeftAnswerMoving 5s cubic-bezier(0.860, 0.000, 0.070, 1.000)  infinite;
+    @include devices(TV) {
+        right: 30%;
+        width: 12vw;
+    }
+    @include devices(desktop) {
+        right: 30%;
+        width: 12vw;
+    }
+    @include devices(laptops) {
+        right: 30%;
+        width: 12vw;
+    }
+    @include devices(ipad) {
+        right: 10%;
+        width: 2vw;
+    }
+    @include devices(mobile) {
+        right: 1%;
+        width: 2vw;
+    }
+}
+
+.default, .primary, .success, .danger{
+    
+    border: 1px solid #2C3E50;
+    border-collapse: collapse;
+    @include devices(TV) {
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        margin-top: 50px;
+    }
+    @include devices(desktop) {
+        margin-left: 10%;
+        width: 40px;
+        height: 40px;
+        margin-top: 50px;
+    }
+    @include devices(laptops) {
+        margin-left: 10%;
+        width: 35px;
+        height: 35px;
+        margin-top: 50px;
+    }
+    @include devices(ipad) {
+        margin-left: 10%;
+        width: 50px;
+        height: 50px;
+        margin-top: 50px;
+    }
+    @include devices(mobile) {
+        margin-left: 10%;
+        width: 30px;
+        height: 30px;
+        margin-top: 50px;
+    }
+}
+.default{
+    background-color: #D9D9D9;
+
+}
+.primary{
+    background-color: #79BBFF;
+
+}
+.success{
+    background-color: #C8FCB0;
+
+}
+.danger{
+    background-color: #FFD1D1;
+
+}
+.answerText{
+    
+    @include devices(TV) {
+        margin-top: -12%;
+        margin-left: 25%;
+        max-width: 20vw;
+        white-space: normal;
+    }
+    @include devices(desktop) {
+        margin-top: -14%;
+        margin-left: 27%;
+        max-width: 20vw;
+        white-space: normal;
+    }
+    @include devices(laptops) {
+        margin-top: -8%;
+        margin-left: 25%;
+        max-width: 50vw;
+        white-space: normal;
+    }
+    @include devices(ipad) {
+        margin-top: -8%;
+        margin-left: 25%;
+        max-width: 50vw;
+        white-space: normal;
+    }
+    @include devices(mobile) {
+        top: -8%;
+        margin-left: 25%;
+        max-width: 50vw;
+        white-space: normal;
+
+    }
+}
+.confirmAnswer{
+    color: #2C3E50;
+    position: absolute;
+    z-index: 3;
+    
+    background-color: #859D75;
+    border: none;
+    font-family: 'Mirage_Bold';
+    transition: 2s;
+    @include devices(TV) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(desktop) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(laptops) {
+        right: 4%;
+        bottom: 2%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(ipad) {
+        right: 40%;
+        bottom: 28%;
+        padding: 3vh;
+        font-size: 1.5rem;
+    }
+    @include devices(mobile) {
+        right: 35%;
+        bottom: 17%;
+        padding: 3vh;
+        font-size: 1rem;
+    }
+}
+.confirmAnswer:hover{
+    background-color: #55644b;
+    cursor: pointer;
+}
+.resultContainer{
+    position: absolute;
+    overflow: hidden;
+    
+    @include devices(TV) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
+    @include devices(desktop) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
+    @include devices(laptops) {
+        font-size: 2rem;
+        width: 40vw;
+        height: 10vh;
+        top: 60%;
+        left: 10%;
+    }
+    @include devices(ipad) {
+        font-size: 1rem;
+        width: 40vw;
+        height: 7vh;
+        top: 65%;
+        left: 28%;
+        z-index: 2;
+    }
+    @include devices(mobile) {
+        font-size: 1rem;
+        width: 40vw;
+        height: 7vh;
+        top: 75%;
+        left: 30%;
+        z-index: 2;
+    }
+}
+.resultLink{
+    font-family: 'Mirage_Bold';
+    position: absolute;
+    background-color: #D9C6A1;
+    overflow: hidden;
+    
+    border: none;
+    border-left: 1px solid #a59678;
+    transition: 2s;
+    @include devices(TV) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(desktop) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(laptops) {
+        font-size: 3rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(ipad) {
+        font-size: 1.5rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 7vh;
+    }
+    @include devices(mobile) {
+        font-size:1.5rem;
+        width: 40vw;
+        left: 85%;
+        padding: 1vw;
+        height: 7vh;
+    }
+}
+.resultLink:hover .svgQuestion{
+        transform: rotate(0deg);
+        top: 0%;
+    
+} 
+.resultLink:hover{
+    left: 0%;
+
+}
+.result{
+    position: absolute;
+    text-align: center;
+    background-color:#FFECC7 ;
+   
+    @include devices(TV) {
+        width: 40vw;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(desktop) {
+        width: 40vw;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(laptops) {
+        width: 40vw;
+        padding: 1vw;
+        height: 10vh;
+    }
+    @include devices(ipad) {
+        width: 40vw;
+        padding-top: 3vw;
+        height: 7vh;
+    }
+    @include devices(mobile) {
+        width: 40vw;
+        padding-top: 3vw;
+        height: 7vh;
+    }
+}
+.arrow{
+    width: 100%;
+    height: 100%; 
+}
+.svgQuestion{
+    position: absolute;
+    
+    transition: 2s;
+    transform: rotate(180deg);
+    
+    
+    fill: #2C3E50;
+    @include devices(TV) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
+    @include devices(desktop) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
+    @include devices(laptops) {
+        left: 3%;
+        top: 0%;
+        width: 2.5vw;
+        height: 100%;
+    }
+    @include devices(ipad) {
+        left: 3%;
+        top: 0%;
+        width: 3.7vw;
+        height: 100%;
+    }
+    @include devices(mobile) {
+        left: 1%;
+        top: 0%;
+        width: 5vw;
+        height: 100%;
+    }
+}
+
+/**
+*       Animation
+**/
+    
+@include devices(TV) {
+    @keyframes borderLeftAnswerMoving {
+        0%{
+            bottom: 45%;
+        }
+        50%{
+            bottom: 48%;
+        }
+        100%{
+            bottom: 45%;
+        }
+    }
+}
+@include devices(desktop) {
+    @keyframes borderLeftAnswerMoving {
+        0%{
+            bottom: 45%;
+        }
+        50%{
+            bottom: 48%;
+        }
+        100%{
+            bottom: 45%;
+        }
+    }
+}
+@include devices(laptops) {
+    @keyframes borderLeftAnswerMoving {
+        0%{
+            bottom: 45%;
+        }
+        50%{
+            bottom: 48%;
+        }
+        100%{
+            bottom: 45%;
+        }
+    }
+}
+@include devices(ipad) {
+    @keyframes borderLeftAnswerMoving {
+        0%{
+            bottom: 29%;
+        }
+        50%{
+            bottom: 32%;
+        }
+        100%{
+            bottom: 29%;
+        }
+    }
+}
+@include devices(mobile) {
+    @keyframes borderLeftAnswerMoving {
+        0%{
+            bottom: 23%;
+        }
+        50%{
+            bottom: 20%;
+        }
+        100%{
+            bottom: 23%;
+        }
+    }
+}
+
+@include devices(TV) {
+    @keyframes borderTopAnswerMoving {
+        0%{
+            right: 28%;
+        }
+        50%{
+            right: 30%;
+        }
+        100%{
+            right: 28%;
+        }
+    }
+}
+@include devices(desktop) {
+    @keyframes borderTopAnswerMoving {
+        0%{
+            right: 28%;
+        }
+        50%{
+            right: 30%;
+        }
+        100%{
+            right: 28%;
+        }
+    }
+}
+@include devices(laptops) {
+    @keyframes borderTopAnswerMoving {
+        0%{
+            right: 28%;
+        }
+        50%{
+            right: 30%;
+        }
+        100%{
+            right: 28%;
+        }
+    }
+}
+@include devices(ipad) {
+    @keyframes borderTopAnswerMoving {
+        0%{
+            right: 12%;
+        }
+        50%{
+            right: 17%;
+        }
+        100%{
+            right: 12%;
+        }
+    }
+}
+@include devices(mobile) {
+    @keyframes borderTopAnswerMoving {
+        0%{
+            right: 9%;
+        }
+        50%{
+            right: 2.5%;
+        }
+        100%{
+            right: 9%;
+        }
+    }
+}
+
+
+
+@include devices(TV) {
+    @keyframes borderQuestionLeftMoving {
+        0%{
+            top: 17%;
+        }
+        50%{
+            top: 15%;
+        }
+        100%{
+            top: 17%;
+        }
+    }
+}
+@include devices(desktop) {
+    @keyframes borderQuestionLeftMoving {
+        0%{
+            top: 20%;
+        }
+        50%{
+            top: 18%;
+        }
+        100%{
+            top: 20%;
+        }
+    }
+}
+@include devices(laptop) {
+    @keyframes borderQuestionLeftMoving {
+        0%{
+            top: 7%;
+        }
+        50%{
+            top: 9%;
+        }
+        100%{
+            top: 7%;
+        }
+    }
+}
+@include devices(ipad) {
+    @keyframes borderQuestionLeftMoving {
+        0%{
+            top: 9%;
+        }
+        50%{
+            top: 7%;
+        }
+        100%{
+            top: 9%;
+        }
+    }
+}
+@include devices(mobile) {
+    @keyframes borderQuestionLeftMoving {
+        0%{
+            top: 6%;
+        }
+        50%{
+            top: 4%;
+        }
+        100%{
+            top: 6%;
+        }
+    }
+}
+/**
+*  Border Question
+**/
+@include devices(TV) {
+    @keyframes borderQuestionBottomMoving {
+    
+        0%{
+            left: 77%;
+        }
+        50%{
+            left: 81%;
+        }
+        100%{
+            left: 77%;
+        }
+    }
+}
+@include devices(desktop) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 77%;
+        }
+        50%{
+            left: 81%;
+        }
+        100%{
+            left: 77%;
+        }
+    }
+}
+@include devices(laptop) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 40%;
+        }
+        50%{
+            left: 42%;
+        }
+        100%{
+            left: 40%;
+        }
+    }
+}
+@include devices(ipad) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 76%;
+        }
+        50%{
+            left: 78%;
+        }
+        100%{
+            left: 76%;
+        }
+    }
+}
+@include devices(mobile) {
+    @keyframes borderQuestionBottomMoving {
+        0%{
+            left: 80%;
+        }
+        50%{
+            left: 87%;
+        }
+        100%{
+            left: 80%;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Quizz msg="Welcome on this Quizz for USB Eaters 💻 "/>
+    <Quizz/>
     <Footer />
   </div>
 </template>

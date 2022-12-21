@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Mirage_Bold';
+  src: URL("../../font/Mirage_Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Mirage_Regular';
+  src: URL("../../font/Mirage_Regular.otf") format("truetype");
+}
+/*# sourceMappingURL=font.css.map */

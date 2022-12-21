@@ -1,70 +1,61 @@
 <template>
-  <div class="hello">
-    <el-row :gutter="20" justify="center">
-      <el-col  :span="12" class = "headers">
-          <h1>Your generated Quizz 💾 </h1>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20" justify="center">
-      <el-col  :span="12" >
-          <div class="content" v-if="$route.params.category">
-            <span>Selected: {{ $route.params.category}} - {{$route.params.difficulty}}</span>
+  <div>
+    <div class="questionList">
+      <div class="questionHeader">
+        <span>Questions.</span>
+      </div>
+      <div class="allQuestions">
+        <div v-for="value in questionGenerated" :key="value.question" v-bind:id="questionGenerated.indexOf(value)" :class="('question'+  (this.type[questionGenerated.indexOf(value)] || ''))"  ref="question" >
+          <div :class="('questionsLink' + this.type[questionGenerated.indexOf(value)])" :type="this.type[questionGenerated.indexOf(value)]" >
+            <router-link class="'routerLink'"
+            v-bind:type="type[questionGenerated.indexOf(value)]"
+            :to="{ 
+              name: 'question', 
+              params: 
+                { 
+                  question:JSON.stringify(value), 
+                  number: this.questionGenerated.indexOf(value),
+                  questionsList: JSON.stringify(this.questionGenerated), 
+                  successQuestion: successQuestion,
+                  finalResultAnswerAndQuestion: this.$route.params.finalResultAnswerAndQuestion,
+                }
+              } "
+              
+              >
+            {{this.questionGenerated.indexOf(value) + 1}}</router-link>
           </div>
-          <div v-else-if="$route.params.tag">
-            <span>Selected: {{ $route.params.tag }} - {{ $route.params.difficulty}} </span>
-          </div>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20" justify="center">    
-      <el-col :xs="12" :sm="6" :md="6" :lg="5" :xl="5">
-        <el-card class="box-card">
-            <template #header>
-            <div class="card-header">
-              <span>Question's List</span>
-            </div>
-          </template>
-          <div v-for="value in questionGenerated" :key="value.question"  v-bind:id="questionGenerated.indexOf(value)" ref="question" >
-            <el-button  class="questionLink" :type="this.type[questionGenerated.indexOf(value)]" round>
-              <router-link class="routerLink"
-              v-bind:type="type[questionGenerated.indexOf(value)]"
-              :to="{ 
-                name: 'question', 
-                params: 
-                  { 
-                    question:JSON.stringify(value), 
-                    number: this.questionGenerated.indexOf(value),
-                    questionsList: JSON.stringify(this.questionGenerated), 
-                    successQuestion: successQuestion
-                  }
-                } ">
-              Question n°{{this.questionGenerated.indexOf(value)}}</router-link>
-            </el-button>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20" justify="center">    
-      <el-col  :span="12" >
-        <div v-show="showResultLink">
-        <el-button class="questionLink" type="warning" round>
+        </div>
+      </div>
+      <div v-show="showResultLink">
+        <button class="finalResultLink" type="warning" round>
+          <Svg></Svg>
           <router-link class="routerLink" :to="{
             name : 'result',
             params: {
-              answers : successQuestion
+              answers : successQuestion,
+              finalResultAnswerAndQuestion: this.$route.params.finalResultAnswerAndQuestion,
             }
           }">
-          To the result page
+          Final Results.
           </router-link>
-        </el-button>
-        </div>
-      </el-col>
-    </el-row>
-        
+        </button>
+      </div>
     </div>
+    <div class="content" v-if="this.params.tag">
+        <span class="categoryBanner">{{this.params.tag}}</span>
+      <span class="difficultyBanner">{{this.params.difficulty}}</span>
+    </div>
+    <div v-else-if="this.params.category">
+      <span class="tagBanner">{{ this.params.category }}</span>
+      <span class="difficultyBanner">{{ this.params.difficulty}}</span>
+    </div>
+  </div>
 </template>
 
 <script>
 import { getQuestions } from '../services/generateQuestion';
+import Svg from '../components/SVG/Arrow.vue'
+
 export default {
   name: 'GeneratedQuizz',
   data() {
@@ -74,7 +65,12 @@ export default {
       countAnsweredQuestion : 0,
       showResultLink : false,
       type: "",
+      params: localStorage,
+      finalResultAnswerAndQuestion : this.$route.params.finalResultAnswerAndQuestion,
     };
+  },
+  components : {
+    Svg,
   },
   methods: {
     getQuestion:async function(){
@@ -98,41 +94,43 @@ export default {
       for(let i in this.type){
           (this.type[i] === ( "success") || this.type[i] === ( "danger")) ? this.countAnsweredQuestion++ : this.countAnsweredQuestion
       }   
-      this.countAnsweredQuestion === 10 ?  this.showResultLink = true : this.showResultLink
+
+      if(this.countAnsweredQuestion === 10){
+        this.showResultLink = true;
+        localStorage.setItem('result',this.$route.params.successQuestion) ;
+
+      }
+      else this.showResultLink
+    },
+    setInStorage: function(){
+      if(!localStorage.tag || !localStorage.category){
+        if(this.$route.params.category){
+          localStorage.clear()
+          localStorage.setItem('category',this.$route.params.category)
+          localStorage.setItem('difficulty',this.$route.params.difficulty)
+          
+        }else if( this.$route.params.tag){
+          localStorage.clear()
+          localStorage.setItem('tag',this.$route.params.tag)
+          localStorage.setItem('difficulty',this.$route.params.difficulty)
+        }
+      }
     }
   },
   mounted(){
+    this.setInStorage()
     this.countSuccessQuestion();
     this.updateStyle();
     this.finalResult();
     this.$confetti.stop()
+    console.log(this.finalResultAnswerAndQuestion);
   },
+  
   updated(){
   }
 }
-
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #926dde;
-}
-.questionLink{
-  margin: 5px;
-}
-.box-card{
-  background-color: #ebb563;
-}
+<style >
+@import '../assets/style/Components/GeneratedQuizz/GeneratedQuizz';
 </style>
